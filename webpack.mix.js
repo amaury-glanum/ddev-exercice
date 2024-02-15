@@ -18,7 +18,7 @@ const chore = process.env.npm_config_chore
  | Assets destination path
  |
  */
-const url = "https://els-togo.onrender.com/"
+const url = process.env.URL
 const assetsPath = "./assets"
 const distPath = isProduction && state === "build" ? `${assetsPath}/build` : `${assetsPath}/build`
 
