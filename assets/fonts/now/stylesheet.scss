@@ -1,0 +1,156 @@
+@font-face {
+    font-family: 'Now';
+    src: url('#{$fonts-path}/now/Now-Bold.eot');
+    src: url('#{$fonts-path}/now/Now-Bold.eot?#iefix') format('embedded-opentype'),
+        url('#{$fonts-path}/now/Now-Bold.woff2') format('woff2'),
+        url('#{$fonts-path}/now/Now-Bold.woff') format('woff'),
+        url('#{$fonts-path}/now/Now-Bold.ttf') format('truetype'),
+        url('#{$fonts-path}/now/Now-Bold.svg#Now-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Now Alt';
+    src: url('#{$fonts-path}/now/NowAlt-Thin.eot');
+    src: url('#{$fonts-path}/now/NowAlt-Thin.eot?#iefix') format('embedded-opentype'),
+        url('#{$fonts-path}/now/NowAlt-Thin.woff2') format('woff2'),
+        url('#{$fonts-path}/now/NowAlt-Thin.woff') format('woff'),
+        url('#{$fonts-path}/now/NowAlt-Thin.ttf') format('truetype'),
+        url('#{$fonts-path}/now/NowAlt-Thin.svg#NowAlt-Thin') format('svg');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Now';
+    src: url('#{$fonts-path}/now/Now-Black.eot');
+    src: url('#{$fonts-path}/now/Now-Black.eot?#iefix') format('embedded-opentype'),
+        url('#{$fonts-path}/now/Now-Black.woff2') format('woff2'),
+        url('#{$fonts-path}/now/Now-Black.woff') format('woff'),
+        url('#{$fonts-path}/now/Now-Black.ttf') format('truetype'),
+        url('#{$fonts-path}/now/Now-Black.svg#Now-Black') format('svg');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Now';
+    src: url('#{$fonts-path}/now/Now-Light.eot');
+    src: url('#{$fonts-path}/now/Now-Light.eot?#iefix') format('embedded-opentype'),
+        url('#{$fonts-path}/now/Now-Light.woff2') format('woff2'),
+        url('#{$fonts-path}/now/Now-Light.woff') format('woff'),
+        url('#{$fonts-path}/now/Now-Light.ttf') format('truetype'),
+        url('#{$fonts-path}/now/Now-Light.svg#Now-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Now Alt';
+    src: url('#{$fonts-path}/now/NowAlt-Black.eot');
+    src: url('#{$fonts-path}/now/NowAlt-Black.eot?#iefix') format('embedded-opentype'),
+        url('#{$fonts-path}/now/NowAlt-Black.woff2') format('woff2'),
+        url('#{$fonts-path}/now/NowAlt-Black.woff') format('woff'),
+        url('#{$fonts-path}/now/NowAlt-Black.ttf') format('truetype'),
+        url('#{$fonts-path}/now/NowAlt-Black.svg#NowAlt-Black') format('svg');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Now Alt';
+    src: url('#{$fonts-path}/now/NowAlt-Regular.eot');
+    src: url('#{$fonts-path}/now/NowAlt-Regular.eot?#iefix') format('embedded-opentype'),
+        url('#{$fonts-path}/now/NowAlt-Regular.woff2') format('woff2'),
+        url('#{$fonts-path}/now/NowAlt-Regular.woff') format('woff'),
+        url('#{$fonts-path}/now/NowAlt-Regular.ttf') format('truetype'),
+        url('#{$fonts-path}/now/NowAlt-Regular.svg#NowAlt-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Now Alt';
+    src: url('#{$fonts-path}/now/NowAlt-Medium.eot');
+    src: url('#{$fonts-path}/now/NowAlt-Medium.eot?#iefix') format('embedded-opentype'),
+        url('#{$fonts-path}/now/NowAlt-Medium.woff2') format('woff2'),
+        url('#{$fonts-path}/now/NowAlt-Medium.woff') format('woff'),
+        url('#{$fonts-path}/now/NowAlt-Medium.ttf') format('truetype'),
+        url('#{$fonts-path}/now/NowAlt-Medium.svg#NowAlt-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Now';
+    src: url('#{$fonts-path}/now/Now-Medium.eot');
+    src: url('#{$fonts-path}/now/Now-Medium.eot?#iefix') format('embedded-opentype'),
+        url('#{$fonts-path}/now/Now-Medium.woff2') format('woff2'),
+        url('#{$fonts-path}/now/Now-Medium.woff') format('woff'),
+        url('#{$fonts-path}/now/Now-Medium.ttf') format('truetype'),
+        url('#{$fonts-path}/now/Now-Medium.svg#Now-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Now Alt';
+    src: url('#{$fonts-path}/now/NowAlt-Bold.eot');
+    src: url('#{$fonts-path}/now/NowAlt-Bold.eot?#iefix') format('embedded-opentype'),
+        url('#{$fonts-path}/now/NowAlt-Bold.woff2') format('woff2'),
+        url('#{$fonts-path}/now/NowAlt-Bold.woff') format('woff'),
+        url('#{$fonts-path}/now/NowAlt-Bold.ttf') format('truetype'),
+        url('#{$fonts-path}/now/NowAlt-Bold.svg#NowAlt-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Now';
+    src: url('#{$fonts-path}/now/Now-Regular.eot');
+    src: url('#{$fonts-path}/now/Now-Regular.eot?#iefix') format('embedded-opentype'),
+        url('#{$fonts-path}/now/Now-Regular.woff2') format('woff2'),
+        url('#{$fonts-path}/now/Now-Regular.woff') format('woff'),
+        url('#{$fonts-path}/now/Now-Regular.ttf') format('truetype'),
+        url('#{$fonts-path}/now/Now-Regular.svg#Now-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Now Alt';
+    src: url('#{$fonts-path}/now/NowAlt-Light.eot');
+    src: url('#{$fonts-path}/now/NowAlt-Light.eot?#iefix') format('embedded-opentype'),
+        url('#{$fonts-path}/now/NowAlt-Light.woff2') format('woff2'),
+        url('#{$fonts-path}/now/NowAlt-Light.woff') format('woff'),
+        url('#{$fonts-path}/now/NowAlt-Light.ttf') format('truetype'),
+        url('#{$fonts-path}/now/NowAlt-Light.svg#NowAlt-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Now';
+    src: url('#{$fonts-path}/now/Now-Thin.eot');
+    src: url('#{$fonts-path}/now/Now-Thin.eot?#iefix') format('embedded-opentype'),
+        url('#{$fonts-path}/now/Now-Thin.woff2') format('woff2'),
+        url('#{$fonts-path}/now/Now-Thin.woff') format('woff'),
+        url('#{$fonts-path}/now/Now-Thin.ttf') format('truetype'),
+        url('#{$fonts-path}/now/Now-Thin.svg#Now-Thin') format('svg');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+

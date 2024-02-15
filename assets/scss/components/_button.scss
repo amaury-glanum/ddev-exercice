@@ -1,0 +1,51 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+
+.button {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  padding: 10px 30px;
+  overflow: hidden;
+  //transition: border 0.2s ease-in-out, color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  border: none;
+  //border-radius: 10px;
+  outline: none;
+  background-color: $primary;
+  box-shadow: none;
+  color: $white;
+  font-family: $font-now;
+  font-size: 18px;
+  font-weight: $fw-light;
+  line-height: 1.3;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    // border: 1px solid makeCSSVariables('text-color');
+    outline: none;
+    background-color: $primary-darken;
+    box-shadow: none;
+    color: $white;
+    text-decoration: none;
+  }
+
+  &--small {
+    padding: 4px 22px 3px 22px;
+    font-size: 13px !important;
+  }
+
+  &--secondary {
+    background-color: $secondary;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $secondary-darken;
+    }
+  }
+}

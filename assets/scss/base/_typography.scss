@@ -1,0 +1,98 @@
+// -----------------------------------------------------------------------------
+// Basic typography style for text.
+// -----------------------------------------------------------------------------
+
+html {
+  font-size: var(--font-level-16);
+}
+
+body {
+  font-family: $font-montserrat;
+  font-size: 100%;
+  font-weight: $fw-light;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-title);
+}
+
+// Basic styles for links
+a {
+  color: makeCSSVariables('primary');
+  text-decoration: none;
+
+  @include on-event {
+    color: makeCSSVariables('primary-darken');
+    text-decoration: underline;
+  }
+}
+
+p {
+  color: $black;
+  font-size: 18px;
+  font-weight: $fw-light;
+  line-height: 1.22;
+
+  @include media-breakpoint-only(md) {
+    font-size: 20px;
+  }
+}
+
+.title {
+  font-family: $font-title;
+  font-size: 35px;
+}
+
+.pre-title {
+  position: relative;
+  margin-bottom: 20px;
+  padding-bottom: 6px;
+  color: $black;
+  font-family: $font-pretitle;
+  font-size: 30px;
+  line-height: 1.2;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 96px;
+    height: 1px;
+    background-color: $black;
+  }
+}
+
+.title {
+  color: $white;
+  color: $black;
+  font-family: $font-title;
+  font-size: 30px;
+  font-weight: $fw-bold;
+  line-height: 1.2;
+
+  @include media-breakpoint-up(md) {
+    font-size: 26px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    font-size: 30px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    font-size: 35px;
+  }
+
+  .title-color {
+    color: $primary;
+  }
+}
+
+.text-nowrap {
+  white-space: nowrap;
+}

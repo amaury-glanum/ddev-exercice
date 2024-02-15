@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+// 1. Configuration and helpers
+@import 'abstracts/functions';
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+@import 'abstracts/animations';
+@import 'abstracts/keyframes';
+@import 'abstracts/responsive';
+
+// 2. Vendors
+@import '../lib/bootstrap5/scss/bootstrap-reboot.scss';
+@import '../lib/bootstrap5/scss/bootstrap-grid.scss';
+
+// 3. Base stuff
+@import 'base/root';
+@import 'base/base';
+@import 'base/fonts';
+@import 'base/typography';
+@import 'base/helpers';
+
+// 4. Layout-related sections
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/section-hero';
+
+// 5. Components
+@import 'components/button';
+@import 'components/image-text';
+
+// 6. Page-specific styles
+@import 'pages/home';
+@import 'pages/404';
+
+// 7. Themes
+@import 'themes/default';
