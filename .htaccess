@@ -1,6 +1,6 @@
-AuthType Basic
-AuthName "Accès protégé"
-AuthUserFile /var/www/html/.htpasswd
-require valid-user
+#AuthType Basic
+#AuthName "Accès protégé"
+#AuthUserFile /var/www/html/.htpasswd
+#require valid-user
 
 #AuthUserFile C:\laragon\www\elsTogo/.htpasswd

@@ -1,11 +1,13 @@
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
 import { putScrollbarSizeInCSSVariables } from './common/functions'
 import { menuBurger } from './components/menuBurger'
+import { scrollToAnchor } from './components/scrollToAnchor'
+import { gsapHeaderLinksOnScroll, gsapTitleAnim } from './components/gsapAnimScroll'
 
 window.addEventListener('DOMContentLoaded', (event) => {
-  /*
-   * Feature code example
-   * */
-
+  
   var swiper = new Swiper(".swiper", {
     effect: "coverflow",
     grabCursor: true,
@@ -45,7 +47,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
   });
   
-
+  scrollToAnchor()
+  gsapHeaderLinksOnScroll()
   putScrollbarSizeInCSSVariables()
   menuBurger()
 })

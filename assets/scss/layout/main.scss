@@ -1,0 +1,19 @@
+.page-home {
+    #mission {
+        &:target {
+            padding-top: var(--header-height);
+        }
+    }
+
+    #nos-projets {
+        &:target {
+            padding-top: var(--header-height);
+        }
+    }
+
+    #qui-sommes-nous {
+        &:target {
+            padding-top: var(--header-height);
+        }
+    }
+}

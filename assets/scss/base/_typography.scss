@@ -32,6 +32,31 @@ a {
   }
 }
 
+.els-text-link {
+  margin: 0;
+  transition: color 200ms ease-in-out;
+  color: $gray-700;
+  font-size: 15px;
+  font-weight: $fw-light;
+
+  @include on-event {
+    color: $black;
+    text-decoration: none;
+  }
+}
+
+.els-text-xs {
+  font-family: $font-montserrat;
+  color: $black;
+  font-size: 16px;
+  font-weight: $fw-light;
+  line-height: 1.22;
+
+  @include media-breakpoint-only(md) {
+    font-size: 16px;
+  } 
+}
+
 p {
   color: $black;
   font-size: 18px;
@@ -126,3 +151,30 @@ p {
 .text-nowrap {
   white-space: nowrap;
 }
+
+
+// .els-title-xl {
+  // margin-top: $els-title-xl-mt;
+  // margin-bottom: $dci-title-xl-mb;
+  // color: $dci-dark-blue;
+  // font-family: $font-family-title;
+
+  // @include font-text(1, $fw-normal, 1.2);
+
+  // &.--italic {
+  //   font-style: italic;
+  // }
+
+  // &.--bold {
+  //   @include font-text(1, $fw-bold, 1.2);
+  // }
+
+  // &.--justify {
+  //   text-align: justify;
+  //   hyphens: auto;
+  // }
+
+  // &.--uppercase {
+  //   text-transform: uppercase;
+  // }
+// }

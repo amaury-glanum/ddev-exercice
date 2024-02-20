@@ -19,15 +19,19 @@
             max-width: initial;
         }
     }
-  
-  
+
     .container,
     .row {
       align-items: center;
       height: 100%;
       width: 100%;
     }
-  
+
+    .FooterMainRow {
+      justify-content: space-between;
+      align-items: center;
+    }
+ 
     .logo {
       height: 100%;
       margin-right: 45px;
@@ -46,8 +50,17 @@
   
     .nav {
       display: flex;
-      justify-content: flex-end;
-  
+      column-gap: 20px;
+    
+      @include media-breakpoint-down(lg) {
+        flex-direction: column;
+        padding: 20px 20px 40px;
+      }
+
+      @include media-breakpoint-up(lg) {
+        justify-content: flex-end;
+      }
+
       ul.footer-menu {
         display: flex;
         flex-direction: column;

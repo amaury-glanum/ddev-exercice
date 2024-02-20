@@ -1,15 +1,17 @@
 version: '3.1'
 
 services:
-  php:
+  php-dev:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - '8080:80'
       - '443:443'
-    restart: unless-stopped
+    restart: always
     volumes:
       - ./:/var/www/html
     tty: true
+    container_name: els-togo
+
 
