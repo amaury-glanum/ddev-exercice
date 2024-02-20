@@ -7,6 +7,7 @@
     <title>Association ELS-Togo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="assets/build/style.css" />
@@ -168,6 +169,82 @@
     <div class="swiper-pagination"></div>
   </div>
 </div>
+<section>
+<div class="container">
+  <div class="box">
+    <div class="top-bar"></div>
+    <div class="top">
+      <i class="fa fa-check-circle" aria-hidden="true"></i>
+      <input type="checkbox" class="heart-btn" id="heart-btn-1">
+      <label class="heart" for="heart-btn-1"></label>
+    </div>
+    <div class="content">
+      <img src="https://images.pexels.com/photos/2570145/pexels-photo-2570145.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
+      <strong>David Warner</strong>
+      <p>thewarner@gmail.com</p>
+    </div>
+    <div class="btn">
+      <a href="#"><i class="fa fa-clipboard" aria-hidden="true"></i>Assign</a>
+      <a href="#"><i class="fa fa-eye" aria-hidden="true"></i>View</a>
+    </div>
+  </div>
+  <div class="box">
+    <div class="top-bar"></div>
+    <div class="top">
+      <div>
+        <i class="fa fa-check-circle" aria-hidden="true"></i>
+      </div>
+      <div>
+        <input type="checkbox" class="heart-btn" id="heart-btn-2">
+        <label class="heart" for="heart-btn-2"></label>
+      </div>
+    </div>
+    <div class="content">
+      <img src=https://images.pexels.com/photos/2826131/pexels-photo-2826131.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260 alt="">
+      <strong>Rohan Tolani</strong>
+      <p>rooohan@gmail.com</p>
+    </div>
+    <div class="btn">
+      <a href="#"><i class="fa fa-clipboard" aria-hidden="true"></i>Assign</a>
+      <a href="#"><i class="fa fa-eye" aria-hidden="true"></i>View</a>
+    </div>
+  </div>
+  <div class="box">
+    <div class="top-bar"></div>
+    <div class="top">
+      <i class="fa fa-check-circle" aria-hidden="true"></i>
+      <input type="checkbox" class="heart-btn" id="heart-btn-3">
+      <label class="heart" for="heart-btn-3"></label>
+    </div>
+    <div class="content">
+      <img src=https://images.pexels.com/photos/3681591/pexels-photo-3681591.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 alt="">
+      <strong>Raquel John</strong>
+      <p>Raqueljohn@gmail.com</p>
+    </div>
+    <div class="btn">
+      <a href="#"><i class="fa fa-clipboard" aria-hidden="true"></i>Assign</a>
+      <a href="#"><i class="fa fa-eye" aria-hidden="true"></i>View</a>
+    </div>
+  </div>
+  <div class="box">
+    <div class="top-bar"></div>
+    <div class="top">
+      <i class="fa fa-check-circle" aria-hidden="true"></i>
+      <input type="checkbox" class="heart-btn" id="heart-btn-4">
+      <label class="heart" for="heart-btn-4"></label>
+    </div>
+    <div class="content">
+      <img src=https://images.pexels.com/photos/1689731/pexels-photo-1689731.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 alt="">
+      <strong>Priya Mehra</strong>
+      <p>priyamehraa@gmail.com</p>
+    </div>
+    <div class="btn">
+      <a href="#"><i class="fa fa-clipboard" aria-hidden="true"></i>Assign</a>
+      <a href="#"><i class="fa fa-eye" aria-hidden="true"></i>View</a>
+    </div>
+  </div>
+</div>
+</section>
 
 </div>
 </section>
