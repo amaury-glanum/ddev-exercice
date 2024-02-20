@@ -23,13 +23,16 @@
 // 4. Layout-related sections
 @import 'layout/header';
 @import 'layout/footer';
+@import 'layout/main';
 @import 'layout/section-hero';
 @import 'layout/mission-section';
 @import 'layout/team-section';
 @import 'layout/our-projects';
+
 // 5. Components
 @import 'components/button';
 @import 'components/image-text';
+@import 'components/text-cards-horizon';
 
 
 // 6. Page-specific styles

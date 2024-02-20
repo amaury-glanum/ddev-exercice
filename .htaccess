@@ -1,8 +1,6 @@
-AuthType Basic
-AuthName "Accès protégé"
-AuthUserFile /var/www/html/.htpasswd
-require valid-user
-
-Header set X-Robots-Tag "noindex, nofollow"
+#AuthType Basic
+#AuthName "Accès protégé"
+#AuthUserFile /var/www/html/.htpasswd
+#require valid-user
 
 #AuthUserFile C:\laragon\www\elsTogo/.htpasswd

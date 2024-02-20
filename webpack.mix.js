@@ -468,13 +468,21 @@ mix.sourceMaps(!isProduction)
 mix.browserSync({
   watch: true,
   watchOptions: {
+    poll: true,
     ignoreInitial: true,
     ignored: "*.map.css",
   },
   proxy: url,
+  host: '0.0.0.0',
+  allowedHosts: 'all',
   port: 3000,
   injectChanges: true,
   files: filesToWatch,
+  client: {
+    webSocketURL: {
+      port: 443
+    }
+  },
   notify: {
     styles: {
       top: "0",

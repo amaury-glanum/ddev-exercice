@@ -53,5 +53,7 @@
   "keywords": [],
   "author": "",
   "license": "(╯°□°）╯︵ ┻━┻",
-  "dependencies": {}
+  "dependencies": {
+    "gsap": "^3.12.5"
+  }
 }

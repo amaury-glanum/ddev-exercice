@@ -1,0 +1,47 @@
+.text-cards-horizon {
+
+    .mainRow {
+        align-items: center;
+        row-gap: 50px;
+    }
+
+    &__textWrapper {
+        
+        .title {
+          @include media-breakpoint-up(lg) {
+            padding-right: 20%;
+          }
+        }
+    
+        p {
+          margin-top: 16px;
+        }
+    
+        .button {
+          margin-top: 30px;
+        }
+      }
+    
+      &__cardsWrapper {
+        
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        column-gap: 10px;
+
+        @include media-breakpoint-up(md) {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .box {
+            flex: 1;
+            margin: 0;
+        }
+
+      }
+
+    
+}
