@@ -1,0 +1,202 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Noto+Serif+Vithkuqi:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chonburi&display=swap");
+
+@mixin mQ($px) {
+  @media screen and (min-width: $px) {
+    @content;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.projects-section {
+    background: $horizon;
+}
+
+.projects-section-inner {
+  position: relative;
+  column-gap: 3rem;
+  padding-block: min(20vh, 3rem);
+  padding-inline: 2.3em;
+  justify-content: center;
+  background: transparent;
+  overflow: hidden;
+
+  @include mQ(960px) {
+    display: flex;
+    padding-inline: 0;
+  }
+
+  .content {
+    width: 100%;
+    color: $black;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 3em;
+
+    @include mQ(960px) {
+      width: 40%;
+      margin-bottom: 0;
+    }
+  }
+
+  h2 {
+    letter-spacing: 0.8px;
+    font-weight: 700;
+    font-size: 2.8rem;
+    line-height: 1.2;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-inline: auto;
+    margin-top: 10px;
+  }
+}
+
+.swiper-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  right: 0px;
+  margin: 0 auto;
+
+  @include mQ(960px) {
+    width: 100%;
+    right: -60px;
+  }
+}
+
+.swiper {
+  position: relative;
+  width: 100%;
+  z-index: 2;
+}
+
+.swiper-slide {
+   width: 50rem;
+   height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: self-start;
+  position: relative;
+  border-radius: 12px;
+  box-shadow: -1px 5px 15px #0000001f;
+  text-align: center;
+  opacity: 0.4;
+  transition: opacity 0.4s ease-in;
+
+  span {
+    display: inline-block;
+    background: $primary;
+    border-radius: 0 50px 50px 0;
+    text-transform: capitalize;
+    padding: 12px 20px;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    position: absolute;
+    top: 2em;
+    left: 0;
+    color: #fAFAFA;
+  }
+
+  h3 {
+    color: #FAFAFA;
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 0.625rem;
+    letter-spacing: 0.8px;
+    position: relative;
+    word-wrap: none;
+
+    @include mQ(800px) {
+      font-size: 1.8rem;
+    }
+  }
+
+  p {
+    color: #fAFAFA;
+    line-height: 1.6;
+    font-size: 0.8rem;
+  }
+
+  .slide-content {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -10px);
+    width: 90%;
+  }
+
+  &--one {
+    background: #0f2027;
+    background: linear-gradient(to bottom, #2c536400, #203a4303, #0f2027cc),
+      url("/assets/img/ecole/AMORY\ 11.jpg")
+        no-repeat 50% 50% / cover;
+  }
+
+  &--two {
+    background: linear-gradient(to bottom, #2c536400, #203a4303, #0f2027cc),
+      url("/assets/img/ecole/AMORY\ 11.jpg")
+        no-repeat 50% 50% / cover;
+  }
+
+  &--three {
+    background: url("/assets/img/ecole/AMORY\ 7.jpg")
+      no-repeat 50% 50% / cover;
+  }
+
+  &--four {
+    background: url("/assets/img/ecole/AMORY\ 8.jpg")
+      no-repeat 50% 50% / cover;
+  }
+
+  &--five {
+    background: url("/assets/img/ecole/AMORY\ 9.jpg")
+      no-repeat 50% 50% / cover;
+  }
+
+  &--six {
+    background: linear-gradient(to bottom, #2c536400, #203a4303, #0f2027cc),
+      url("/assets/img/ecole/AMORY\ 10.jpg")
+        no-repeat 50% 50% / cover;
+  }
+}
+
+.swiper-slide-active {
+  display: grid;
+  opacity: 1;
+}
+
+.swiper-pagination {
+  position: relative;
+  bottom: -0.313rem;
+  text-align: center;
+  margin-top: 35px;
+  width: auto;
+
+  &-bullet {
+    border-radius: 5px;
+    width: 1.5rem;
+    height: 0.8rem;
+    background: $primary;
+
+    &-active {
+      background: #fff;
+    }
+  }
+}
+

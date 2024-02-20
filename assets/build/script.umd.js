@@ -2,15 +2,18 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 656:
-/***/ (() => {
+/***/ "./assets/js/common/functions.js":
+/*!***************************************!*\
+  !*** ./assets/js/common/functions.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-
-;// CONCATENATED MODULE: ./assets/js/common/variables.js
-var variables_variables = {};
-var $ = jQuery.noConflict();
-
-;// CONCATENATED MODULE: ./assets/js/common/functions.js
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   minWidth: () => (/* binding */ minWidth),
+/* harmony export */   putScrollbarSizeInCSSVariables: () => (/* binding */ putScrollbarSizeInCSSVariables)
+/* harmony export */ });
+/* harmony import */ var _variables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./variables */ "./assets/js/common/variables.js");
 // eslint-disable-next-line no-unused-vars
 
 var putScrollbarSizeInCSSVariables = function putScrollbarSizeInCSSVariables() {
@@ -27,34 +30,118 @@ var putScrollbarSizeInCSSVariables = function putScrollbarSizeInCSSVariables() {
   }, 0);
 };
 var minWidth = function minWidth(value) {
-  return window.matchMedia("(min-width: ".concat(variables.breakpoints[value], ")")).matches;
+  return window.matchMedia("(min-width: ".concat(_variables__WEBPACK_IMPORTED_MODULE_0__.variables.breakpoints[value], ")")).matches;
 };
-;// CONCATENATED MODULE: ./assets/js/components/menuBurger.js
+
+/***/ }),
+
+/***/ "./assets/js/common/variables.js":
+/*!***************************************!*\
+  !*** ./assets/js/common/variables.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   $: () => (/* binding */ $),
+/* harmony export */   variables: () => (/* binding */ variables)
+/* harmony export */ });
+var variables = {};
+var $ = jQuery.noConflict();
+
+
+/***/ }),
+
+/***/ "./assets/js/components/menuBurger.js":
+/*!********************************************!*\
+  !*** ./assets/js/components/menuBurger.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   menuBurger: () => (/* binding */ menuBurger)
+/* harmony export */ });
+/* harmony import */ var _common_variables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common/variables */ "./assets/js/common/variables.js");
 
 var menuBurger = function menuBurger() {
-  $('.burger-menu__button, .header-menu li a').on('click', function () {
-    $('body').toggleClass('menu-opened');
+  (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)('.burger-menu__button, .header-menu li a').on('click', function () {
+    (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)('body').toggleClass('menu-opened');
   });
-  $('.js-contact-open, .modal-close').on('click', function () {
-    $('body').toggleClass('modal-open');
+  (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)('.js-contact-open, .modal-close').on('click', function () {
+    (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)('body').toggleClass('modal-open');
   });
 };
-;// CONCATENATED MODULE: ./assets/js/script.js
+
+/***/ }),
+
+/***/ "./assets/js/script.js":
+/*!*****************************!*\
+  !*** ./assets/js/script.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _common_functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common/functions */ "./assets/js/common/functions.js");
+/* harmony import */ var _components_menuBurger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/menuBurger */ "./assets/js/components/menuBurger.js");
 
 
 window.addEventListener('DOMContentLoaded', function (event) {
   /*
    * Feature code example
    * */
-  putScrollbarSizeInCSSVariables();
-  menuBurger();
+
+  var swiper = new Swiper(".swiper", {
+    effect: "coverflow",
+    grabCursor: true,
+    spaceBetween: 30,
+    centeredSlides: false,
+    coverflowEffect: {
+      rotate: 0,
+      stretch: 0,
+      depth: 0,
+      modifier: 1,
+      slideShadows: false
+    },
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    },
+    keyboard: {
+      enabled: true
+    },
+    mousewheel: {
+      thresholdDelta: 70
+    },
+    breakpoints: {
+      460: {
+        slidesPerView: 3
+      },
+      768: {
+        slidesPerView: 3
+      },
+      1024: {
+        slidesPerView: 3
+      },
+      1600: {
+        slidesPerView: 3.6
+      }
+    }
+  });
+  (0,_common_functions__WEBPACK_IMPORTED_MODULE_0__.putScrollbarSizeInCSSVariables)();
+  (0,_components_menuBurger__WEBPACK_IMPORTED_MODULE_1__.menuBurger)();
 });
 
 /***/ }),
 
-/***/ 344:
-/***/ (() => {
+/***/ "./assets/scss/style.scss":
+/*!********************************!*\
+  !*** ./assets/scss/style.scss ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+__webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
 
@@ -122,9 +209,32 @@ window.addEventListener('DOMContentLoaded', function (event) {
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
@@ -135,8 +245,8 @@ window.addEventListener('DOMContentLoaded', function (event) {
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			644: 0,
-/******/ 			720: 0
+/******/ 			"/assets/build/script.umd": 0,
+/******/ 			"assets/build/style": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -186,8 +296,8 @@ window.addEventListener('DOMContentLoaded', function (event) {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, [720], () => (__webpack_require__(656)))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [720], () => (__webpack_require__(344)))
+/******/ 	__webpack_require__.O(undefined, ["assets/build/style"], () => (__webpack_require__("./assets/js/script.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/build/style"], () => (__webpack_require__("./assets/scss/style.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

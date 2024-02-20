@@ -68,8 +68,34 @@ p {
   }
 }
 
-.title {
+.pre-title--light {
+  position: relative;
+  margin-bottom: 20px;
+  padding-bottom: 6px;
   color: $white;
+  font-family: $font-pretitle;
+  font-size: 30px;
+  line-height: 1.2;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 96px;
+    height: 1px;
+    background-color: $white;
+  }
+}
+
+.text-light-lg {
+  color: $white;
+  font-family: $font-text;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.title {
   color: $black;
   font-family: $font-title;
   font-size: 30px;
@@ -90,6 +116,10 @@ p {
 
   .title-color {
     color: $primary;
+  }
+
+  &--light {
+    color: $white;
   }
 }
 

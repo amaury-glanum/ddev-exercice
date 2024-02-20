@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="assets/build/style.css" />
 </head>
 <body>
@@ -21,13 +22,13 @@
                     <div class="row nav-and-cta g-lg-0">
                         <div class="col-auto me-lg-3">
                             <ul class="header-menu">
-                                <li><a href="#commitment">S'engager</a></li>
+                                <li><a href="#engager">S'engager</a></li>
                                 <li><a href="#qui-sommes-nous">Qui sommes-nous ?</a></li>
                                 <li><a href="#nos-projets">Nos projets</a></li>
                             </ul>
                         </div>
                         <div class="col-auto ms-lg-5">
-                            <button class="button button--secondary"></button>
+                            <button class="button button--secondary">Nous contacter</button>
                         </div>
                     </div>
                 </nav>
@@ -44,7 +45,6 @@
                 </div>
             </div>
         </div>
-
     </header>
 
 
@@ -64,11 +64,116 @@
                 </div>
             </div>
         </section>
+        <section class="mission-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="pre-title--light">Notre Mission</h2>
+                <p class="text-light-lg">Ici une phrase résume la mission</p>
+            </div>
+        </div>
+        <div class="row value-cards">
+            <!-- Carte 1 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="/assets/img/icons/43089.jpg" alt="personnes tenant des feuilles" />
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Valeur 1</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Carte 2 -->
+            <div class="col-md-4">
+                <div class="card">
+                <div class="card-image">
+                        <img src="/assets/img/icons/9046651.jpg" alt="mains assemblant un puzzle" />
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Valeur 2</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Carte 3 -->
+            <div class="col-md-4">
+                <div class="mb-5 card">
+                    <div class="card-image">
+                        <img src="/assets/img/icons/5236.jpg" alt="mains assemblant un puzzle" />
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Valeur 3</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="projects-section">
+<div class="projects-section-inner container">
+  <div class="content">
+            <div class="image-text__textWrapper">
+                <div class="pre-title">Nos projets</div>
+                <div class="title">Découvrez nos projets.</div>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+            </div>
+  </div>
+  <div class="swiper-container">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide swiper-slide--one">
+
+          <span>15 avril - 12 mai</span>
+          <div class="slide-content">
+            <h3>Education</h3>
+            <p>Tsévié</p>
+          </div>
+        </div>
+        <div class="swiper-slide swiper-slide--two">
+          <span>15 avril - 12 mai</span>
+          <div class="slide-content">
+            <h3>Reboisement</h3>
+            <p>Tsévié</p>
+
+          </div>
+
+        </div>
+        <div class="swiper-slide swiper-slide--three">
+          <span>15 avril - 12 mai</span>
+
+        </div>
+        <div class="swiper-slide swiper-slide--four">
+          <span>15 avril - 12 mai</span>
+
+        </div>
+        <div class="swiper-slide swiper-slide--five">
+          <span>15 avril - 12 mai</span>
+
+        </div>
+        <div class="swiper-slide swiper-slide--six">
+          <span>15 avril - 12 mai</span>
+          <div class="slide-content">
+            <h3>Loisir</h3>
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
 
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+
+</div>
+</section>
     <header class="mainFooter">
         <div class="container">
-            <div class="row align-sm-items-center mainRow g-lg-0">
+            <div class="row align-sm-items-center g-lg-0">
                 <div class="col-4 col-sm-auto logo">
                     <img src="assets/img/logo-els.jpg" alt="Logo ELS-TOGO">
                 </div>
@@ -84,9 +189,9 @@
                 </nav>
             </div>
         </div>
-
     </header>
     <script src="assets/lib/jquery/jquery-3.7.1.min.js"></script>
     <script src="assets/build/script.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 </html>

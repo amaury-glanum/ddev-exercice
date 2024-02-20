@@ -11,6 +11,7 @@
 // 2. Vendors
 @import '../lib/bootstrap5/scss/bootstrap-reboot.scss';
 @import '../lib/bootstrap5/scss/bootstrap-grid.scss';
+@import '../lib/bootstrap5/scss/card';
 
 // 3. Base stuff
 @import 'base/root';
@@ -23,10 +24,13 @@
 @import 'layout/header';
 @import 'layout/footer';
 @import 'layout/section-hero';
-
+@import 'layout/mission-section';
+@import 'layout/team-section';
+@import 'layout/our-projects';
 // 5. Components
 @import 'components/button';
 @import 'components/image-text';
+
 
 // 6. Page-specific styles
 @import 'pages/home';
