@@ -135,6 +135,29 @@ var menuBurger = function menuBurger() {
 
 /***/ }),
 
+/***/ "./assets/js/components/modal.js":
+/*!***************************************!*\
+  !*** ./assets/js/components/modal.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   modalToggle: () => (/* binding */ modalToggle)
+/* harmony export */ });
+var modalToggle = function modalToggle() {
+  var openModal = function openModal() {
+    document.querySelector('.modal').classList.toggle('modal-opened');
+    document.querySelector('body').classList.toggle('has-modal');
+  };
+  document.querySelectorAll('.modal-close-btn, .modal-open-btn').forEach(function (element) {
+    element.removeEventListener('click', openModal);
+    element.addEventListener('click', openModal);
+  });
+};
+
+/***/ }),
+
 /***/ "./assets/js/components/scrollToAnchor.js":
 /*!************************************************!*\
   !*** ./assets/js/components/scrollToAnchor.js ***!
@@ -169,13 +192,15 @@ var scrollToAnchor = function scrollToAnchor() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
 /* harmony import */ var gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap/ScrollTrigger */ "./node_modules/gsap/ScrollTrigger.js");
-/* harmony import */ var _common_functions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common/functions */ "./assets/js/common/functions.js");
-/* harmony import */ var _components_menuBurger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/menuBurger */ "./assets/js/components/menuBurger.js");
-/* harmony import */ var _components_scrollToAnchor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/scrollToAnchor */ "./assets/js/components/scrollToAnchor.js");
-/* harmony import */ var _components_gsapAnimScroll__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/gsapAnimScroll */ "./assets/js/components/gsapAnimScroll.js");
+/* harmony import */ var _components_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/modal */ "./assets/js/components/modal.js");
+/* harmony import */ var _common_functions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./common/functions */ "./assets/js/common/functions.js");
+/* harmony import */ var _components_menuBurger__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/menuBurger */ "./assets/js/components/menuBurger.js");
+/* harmony import */ var _components_scrollToAnchor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/scrollToAnchor */ "./assets/js/components/scrollToAnchor.js");
+/* harmony import */ var _components_gsapAnimScroll__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/gsapAnimScroll */ "./assets/js/components/gsapAnimScroll.js");
 
 
 gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__.ScrollTrigger);
+
 
 
 
@@ -219,10 +244,11 @@ window.addEventListener('DOMContentLoaded', function (event) {
       }
     }
   });
-  (0,_components_scrollToAnchor__WEBPACK_IMPORTED_MODULE_4__.scrollToAnchor)();
-  (0,_components_gsapAnimScroll__WEBPACK_IMPORTED_MODULE_5__.gsapHeaderLinksOnScroll)();
-  (0,_common_functions__WEBPACK_IMPORTED_MODULE_2__.putScrollbarSizeInCSSVariables)();
-  (0,_components_menuBurger__WEBPACK_IMPORTED_MODULE_3__.menuBurger)();
+  (0,_components_modal__WEBPACK_IMPORTED_MODULE_2__.modalToggle)();
+  (0,_components_scrollToAnchor__WEBPACK_IMPORTED_MODULE_5__.scrollToAnchor)();
+  (0,_components_gsapAnimScroll__WEBPACK_IMPORTED_MODULE_6__.gsapHeaderLinksOnScroll)();
+  (0,_common_functions__WEBPACK_IMPORTED_MODULE_3__.putScrollbarSizeInCSSVariables)();
+  (0,_components_menuBurger__WEBPACK_IMPORTED_MODULE_4__.menuBurger)();
 });
 
 /***/ }),

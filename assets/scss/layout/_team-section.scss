@@ -22,6 +22,7 @@
     .box{
         position: relative;
         min-width: 250px;
+        min-height: 350px;
         background-color: #fff;
         display: flex;
         flex-direction: column;
@@ -75,10 +76,13 @@
         align-items: center;
     }
 
-    .content strong{
+    .content strong, .content i {
+        margin-top: 10px;
+    }
+
+    .content strong {
         font-weight: 500;
         color: #141414;
-        margin-top: 10px;
     }
 
     .content p{

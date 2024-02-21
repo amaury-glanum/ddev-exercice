@@ -8,21 +8,15 @@
   }
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
 
 .projects-section {
-    background: $horizon;
+  background: $horizon;
+    
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
 }
 
 .projects-section-inner {

@@ -55,6 +55,14 @@ a {
   @include media-breakpoint-only(md) {
     font-size: 16px;
   } 
+
+  &--light {
+    color: $white;
+  }
+
+  &--blue {
+    color: $primary;
+  }
 }
 
 p {

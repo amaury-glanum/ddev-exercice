@@ -14,12 +14,29 @@
   box-sizing: inherit;
 }
 
+// Scroll bar
+* {
+	scrollbar-width: 0;
+}
+
+*::-webkit-scrollbar {
+	background-color: transparent;
+	width: 12px;
+}
+
+*::-webkit-scrollbar-thumb {
+	border-radius: 99px;
+	background-color: $primary;
+	border: 1px solid #fafafa;
+}
+
 //Set up a decent box model on the root element
 html {
   box-sizing: border-box;
 }
 
 body {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -29,17 +46,17 @@ body {
   color: $black;
 
   &.menu-opened,
-  &.modal-open,
+  &.has-modal,
   &.modal-active {
     overflow: hidden;
   }
 
-  &.modal-open {
+  &.has-modal {
     padding-right: var(--scrollbarWidth);
   }
 }
 
-.page {
+.page-home {
   flex: 1;
   overflow: hidden;
 }
@@ -51,8 +68,4 @@ body {
   -o-transition: none !important;
 }
 
-//.container {
-//  @include media-breakpoint-down(sm) {
-//    max-width: initial;
-//  }
-//}
+
