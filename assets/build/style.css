@@ -6536,12 +6536,28 @@ progress {
           box-sizing: inherit;
 }
 
+* {
+  scrollbar-width: 0;
+}
+
+*::-webkit-scrollbar {
+  background-color: transparent;
+  width: 12px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 99px;
+  background-color: #004aad;
+  border: 1px solid #fafafa;
+}
+
 html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
 body {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -6555,14 +6571,14 @@ body {
   background-color: #fff;
   color: #262c28;
 }
-body.menu-opened, body.modal-open, body.modal-active {
+body.menu-opened, body.has-modal, body.modal-active {
   overflow: hidden;
 }
-body.modal-open {
+body.has-modal {
   padding-right: var(--scrollbarWidth);
 }
 
-.page {
+.page-home {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -6732,6 +6748,12 @@ a:hover, a:active, a:focus {
     font-size: 16px;
   }
 }
+.els-text-xs--light {
+  color: #fff;
+}
+.els-text-xs--blue {
+  color: #004aad;
+}
 
 p {
   color: #262c28;
@@ -6790,7 +6812,7 @@ p {
 
 .text-light-lg {
   color: #fff;
-  font-family: "Now";
+  font-family: "Montserrat", sans-serif;
   font-size: 18px;
   line-height: 1.5;
 }
@@ -6869,7 +6891,7 @@ p {
   background-color: #fff;
   -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1607843137);
           box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1607843137);
-  font-family: "Now";
+  font-family: "Montserrat", sans-serif;
   text-align: center;
 }
 @media (max-width: 991.98px) {
@@ -7087,7 +7109,7 @@ body.menu-opened .mainHeader .burger-menu .line3 {
   -ms-flex-negative: 1;
       flex-shrink: 1;
   background-color: hsl(215, 51%, 80%);
-  font-family: "Now";
+  font-family: "Montserrat", sans-serif;
   text-align: center;
 }
 @media (min-width: 576px) {
@@ -7231,7 +7253,7 @@ body.menu-opened .mainHeader .burger-menu .line3 {
 }
 
 .value-cards {
-  margin-top: 300px;
+  margin-top: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -7239,10 +7261,13 @@ body.menu-opened .mainHeader .burger-menu .line3 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  row-gap: 200px;
+  row-gap: 20px;
 }
 @media (min-width: 768px) {
   .value-cards {
@@ -7251,6 +7276,8 @@ body.menu-opened .mainHeader .burger-menu .line3 {
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -7258,12 +7285,18 @@ body.menu-opened .mainHeader .burger-menu .line3 {
     row-gap: 0px;
   }
 }
+.value-cards > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 400px;
+}
 .value-cards .card {
-  max-width: 450px;
+  margin: 20px auto;
+  max-width: 350px;
   background-color: hsl(215, 51%, 80%);
   color: #262c28;
-  min-height: 250px;
-  margin-bottom: 20px;
+  min-height: 280px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -7277,25 +7310,44 @@ body.menu-opened .mainHeader .burger-menu .line3 {
   gap: 30px;
 }
 .value-cards .card .card-image {
+  -ms-flex-item-align: center;
+      align-self: center;
+  width: 75%;
+  min-height: 160px;
+  margin-top: -20px;
+  border-radius: 5px;
+  background-color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 .value-cards .card .card-image img {
-  margin-top: -50px;
+  overflow: hidden;
+  -o-object-position: center;
+     object-position: center;
   border-radius: 5px;
-  height: 200px;
-  width: 75%;
+  height: auto;
+  width: 100%;
 }
 .value-cards .card .card-body {
   -ms-flex-item-align: end;
       align-self: flex-end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 .value-cards .card .card-body .card-title {
   color: #004aad;
@@ -7333,6 +7385,7 @@ body.menu-opened .mainHeader .burger-menu .line3 {
 .team-section .box {
   position: relative;
   min-width: 250px;
+  min-height: 350px;
   background-color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7402,10 +7455,12 @@ body.menu-opened .mainHeader .burger-menu .line3 {
       -ms-flex-align: center;
           align-items: center;
 }
+.team-section .content strong, .team-section .content i {
+  margin-top: 10px;
+}
 .team-section .content strong {
   font-weight: 500;
   color: #141414;
-  margin-top: 10px;
 }
 .team-section .content p {
   font-size: 0.9rem;
@@ -7419,22 +7474,13 @@ body.menu-opened .mainHeader .burger-menu .line3 {
   text-align: center;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+.projects-section {
+  background: hsl(215, 51%, 80%);
 }
-
-ul {
+.projects-section ul {
   margin: 0;
   padding: 0;
   list-style: none;
-}
-
-.projects-section {
-  background: hsl(215, 51%, 80%);
 }
 
 .projects-section-inner {
@@ -7628,7 +7674,7 @@ ul {
   -webkit-box-shadow: none;
           box-shadow: none;
   color: #fff;
-  font-family: "Now";
+  font-family: "Montserrat", sans-serif;
   font-size: 18px;
   font-weight: 300;
   line-height: 1.3;
@@ -7730,10 +7776,169 @@ ul {
   }
 }
 .text-cards-horizon__cardsWrapper .box {
+  cursor: pointer;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   margin: 0;
+}
+
+.modal {
+  opacity: 0;
+  height: 0;
+  -webkit-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
+          transform: translateY(-100%);
+  z-index: 9999;
+  margin-top: var(--header-height);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: rgba(0, 74, 173, 0.8);
+  -webkit-transition: all 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+.modal.modal-opened {
+  opacity: 1;
+  height: 100%;
+  -webkit-transform: translateY(0%);
+      -ms-transform: translateY(0%);
+          transform: translateY(0%);
+}
+.modal.modal-opened .modal-container {
+  opacity: 1;
+  -webkit-transform: translateY(0%);
+      -ms-transform: translateY(0%);
+          transform: translateY(0%);
+}
+
+.modal-container {
+  opacity: 0;
+  margin-top: 10%;
+  width: 80%;
+  height: 100%;
+  background-color: #fff;
+  -webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.25);
+          box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-transform: translateY(199%);
+      -ms-transform: translateY(199%);
+          transform: translateY(199%);
+  -webkit-transition: opacity 0.8s ease-in, -webkit-transform 1.2s ease-in;
+  transition: opacity 0.8s ease-in, -webkit-transform 1.2s ease-in;
+  transition: opacity 0.8s ease-in, transform 1.2s ease-in;
+  transition: opacity 0.8s ease-in, transform 1.2s ease-in, -webkit-transform 1.2s ease-in;
+}
+@media (max-width: 575.98px) {
+  .modal-container {
+    margin-top: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.modal-container-header {
+  background-image: url("/assets/img/ecole/IMG-20231102-WA0047.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100px;
+  padding: 16px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.modal-container-title .title-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  background-color: rgba(0, 74, 173, 0.8);
+  border-radius: 0 50px 50px 0;
+  padding: 12px 20px;
+  color: #fafafa;
+}
+.modal-container-title .title-wrapper h1 {
+  margin: 0;
+}
+
+.modal-container-body {
+  max-height: 80vh;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 20px 10px;
+  overflow-y: auto;
+}
+
+.modal-container-footer {
+  display: none;
+  background-color: #fafafa;
+  min-height: 20vh;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 20px 32px;
+}
+
+.modal-close-btn {
+  padding: 0;
+  margin-right: 32px;
+  border: 0;
+  background-color: #004aad;
+  width: 50px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 8px;
+  -webkit-transition: 0.15s ease;
+  transition: 0.15s ease;
+}
+.modal-close-btn svg {
+  color: #fafafa;
+  width: 30px;
+  height: 30px;
+}
+.modal-close-btn:hover, .modal-close-btn:focus {
+  background-color: #004199;
 }
 
 /*# sourceMappingURL=style.css.map*/

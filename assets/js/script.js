@@ -1,6 +1,8 @@
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
+
+import { modalToggle } from './components/modal'
 import { putScrollbarSizeInCSSVariables } from './common/functions'
 import { menuBurger } from './components/menuBurger'
 import { scrollToAnchor } from './components/scrollToAnchor'
@@ -46,7 +48,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       }
     }
   });
-  
+  modalToggle()
   scrollToAnchor()
   gsapHeaderLinksOnScroll()
   putScrollbarSizeInCSSVariables()

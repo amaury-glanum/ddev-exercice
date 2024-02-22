@@ -6,11 +6,10 @@ $fonts-path: '../fonts';
 $icomoon-font-path: '#{$fonts-path}/icomoon/fonts';
 
 $font-montserrat: "Montserrat", sans-serif;
-$font-now: 'Now';
 
 $font-pretitle: $font-montserrat;
 $font-title: $font-montserrat;
-$font-text: $font-now;
+$font-text:  $font-montserrat;
 
 $theme-fonts: (
   'font-title': $font-title,
@@ -57,6 +56,8 @@ $state-colors: (
 //colors
 $primary: #004aad;
 $primary-darken: darken(#004aad, 4%);
+$primary-05: rgb(0, 74, 173, 0.5);
+$primary-08: rgb(0, 74, 173, 0.8);
 
 $secondary: #0036a3;
 $secondary-darken: darken(#0036a3, 4%);
