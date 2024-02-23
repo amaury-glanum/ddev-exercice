@@ -6404,11 +6404,19 @@ progress {
   --screen-size: -webkit-calc(100vw - var(--scrollbarsize, 0px));
   --screen-size: calc(100vw - var(--scrollbarsize, 0px));
   --header-height: 70px;
-  --footer-height: 70px;
-  --footer-padding: 5px 15px;
   --header-padding: 5px 15px;
   --header-logo-padding: 5px 0;
-  --section-padding-y: 40px;
+  --section-padding-top: 40px;
+  --section-padding-bottom: 40px;
+  --section-margin-top: 0;
+  --section-margin-bottom: 0;
+  --pre-title-size: 30px;
+  --title-xl-size: 40px;
+  --title-lg-size: 35px;
+  --text-xs-size: 14px;
+  --text-size: 18px;
+  --text-xl-size: 20px;
+  --font-list-size: 18px;
   --color-danger: #dc3545;
   --color-rgb-danger: 220,53,69;
   --color-warning: #ffc107;
@@ -6471,22 +6479,28 @@ progress {
   --els-breakpoint-xxl: 1440px;
   --els-breakpoint-fhd: 1700px;
 }
+@media (min-width: 768px) {
+  :root {
+    --title-xl-size: 40px;
+    --title-lg-size: 35px;
+  }
+}
 @media (min-width: 992px) {
   :root {
     --header-height: 90px;
-    --footer-height: 90px;
     --header-padding: 10px;
-    --footer-padding: 15px;
     --header-logo-padding: 0;
+    --title-xl-size: 35px;
+    --title-lg-size: 30px;
   }
 }
 @media (min-width: 1200px) {
   :root {
     --header-height: 110px;
-    --footer-height: 110px;
-    --footer-padding: 15px;
     --header-padding: 15px;
     --header-logo-padding: 0;
+    --title-xl-size: 40px;
+    --title-lg-size: 35px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -7213,7 +7227,8 @@ body.menu-opened .mainHeader .burger-menu .line3 {
   overflow: hidden;
 }
 .page-home section {
-  padding: var(--section-padding-y);
+  padding-top: var(--section-padding-top);
+  padding-bottom: var(--section-padding-bottom);
 }
 .page-home #mission:target {
   padding-top: -webkit-calc(var(--header-height) * 1.2);

@@ -351,7 +351,7 @@ $partners = [
             <div class="content">
               <img src="<?php echo $member['img']['src'] ?? '' ?>" alt="<?php echo $member['img']['alt'] ?? '' ?>">
               <strong><?php echo $member['firstname'] ?? "" ?></strong>
-              <i><?php echo $member['name'] ?? "" ?></i>
+              <p><?php echo $member['name'] ?? "" ?></p>
               <p><?php echo $member['email'] ?? "" ?></p>
             </div>
             <div class="box-footer">

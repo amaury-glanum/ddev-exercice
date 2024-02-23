@@ -3,7 +3,8 @@
     overflow: hidden;
       
     section {
-        padding: var(--section-padding-y)
+        padding-top: var(--section-padding-top);
+        padding-bottom: var(--section-padding-bottom);
     }
 
     #mission {
