@@ -21,7 +21,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
 RUN npm install
 
 #Run the Webpack build (modify the command according to your needs)
-RUN npm run prod
+RUN npm run build
 
 # Make port 80 available to the world outside this container
 EXPOSE 80
