@@ -6587,109 +6587,27 @@ body.has-modal {
 }
 
 @font-face {
-  font-family: "AR BONNIE";
-  src: url("../fonts/ar-bonnie/hinted-ARBONNIE.eot");
-  src: url("../fonts/ar-bonnie/hinted-ARBONNIE.eot?#iefix") format("embedded-opentype"), url("../fonts/ar-bonnie/hinted-ARBONNIE.woff2") format("woff2"), url("../fonts/ar-bonnie/hinted-ARBONNIE.woff") format("woff"), url("../fonts/ar-bonnie/hinted-ARBONNIE.ttf") format("truetype"), url("../fonts/ar-bonnie/hinted-ARBONNIE.svg#ARBONNIE") format("svg");
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Now";
-  src: url("../fonts/now/Now-Bold.eot");
-  src: url("../fonts/now/Now-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/now/Now-Bold.woff2") format("woff2"), url("../fonts/now/Now-Bold.woff") format("woff"), url("../fonts/now/Now-Bold.ttf") format("truetype"), url("../fonts/now/Now-Bold.svg#Now-Bold") format("svg");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Now Alt";
-  src: url("../fonts/now/NowAlt-Thin.eot");
-  src: url("../fonts/now/NowAlt-Thin.eot?#iefix") format("embedded-opentype"), url("../fonts/now/NowAlt-Thin.woff2") format("woff2"), url("../fonts/now/NowAlt-Thin.woff") format("woff"), url("../fonts/now/NowAlt-Thin.ttf") format("truetype"), url("../fonts/now/NowAlt-Thin.svg#NowAlt-Thin") format("svg");
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Now";
-  src: url("../fonts/now/Now-Black.eot");
-  src: url("../fonts/now/Now-Black.eot?#iefix") format("embedded-opentype"), url("../fonts/now/Now-Black.woff2") format("woff2"), url("../fonts/now/Now-Black.woff") format("woff"), url("../fonts/now/Now-Black.ttf") format("truetype"), url("../fonts/now/Now-Black.svg#Now-Black") format("svg");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Now";
-  src: url("../fonts/now/Now-Light.eot");
-  src: url("../fonts/now/Now-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/now/Now-Light.woff2") format("woff2"), url("../fonts/now/Now-Light.woff") format("woff"), url("../fonts/now/Now-Light.ttf") format("truetype"), url("../fonts/now/Now-Light.svg#Now-Light") format("svg");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Now Alt";
-  src: url("../fonts/now/NowAlt-Black.eot");
-  src: url("../fonts/now/NowAlt-Black.eot?#iefix") format("embedded-opentype"), url("../fonts/now/NowAlt-Black.woff2") format("woff2"), url("../fonts/now/NowAlt-Black.woff") format("woff"), url("../fonts/now/NowAlt-Black.ttf") format("truetype"), url("../fonts/now/NowAlt-Black.svg#NowAlt-Black") format("svg");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Now Alt";
-  src: url("../fonts/now/NowAlt-Regular.eot");
-  src: url("../fonts/now/NowAlt-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/now/NowAlt-Regular.woff2") format("woff2"), url("../fonts/now/NowAlt-Regular.woff") format("woff"), url("../fonts/now/NowAlt-Regular.ttf") format("truetype"), url("../fonts/now/NowAlt-Regular.svg#NowAlt-Regular") format("svg");
+  font-family: "icomoon_example";
+  src: url("../fonts/icomoon/fonts/icomoon_example.eot?s2nsdb");
+  src: url("../fonts/icomoon/fonts/icomoon_example.eot?s2nsdb#iefix") format("embedded-opentype"), url("../fonts/icomoon/fonts/icomoon_example.ttf?s2nsdb") format("truetype"), url("../fonts/icomoon/fonts/icomoon_example.woff?s2nsdb") format("woff"), url("../fonts/icomoon/fonts/icomoon_example.svg?s2nsdb#icomoon_example") format("svg");
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
-@font-face {
-  font-family: "Now Alt";
-  src: url("../fonts/now/NowAlt-Medium.eot");
-  src: url("../fonts/now/NowAlt-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/now/NowAlt-Medium.woff2") format("woff2"), url("../fonts/now/NowAlt-Medium.woff") format("woff"), url("../fonts/now/NowAlt-Medium.ttf") format("truetype"), url("../fonts/now/NowAlt-Medium.svg#NowAlt-Medium") format("svg");
-  font-weight: 500;
+[class^=icons-], [class*=" icons-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "icomoon_example" !important;
+  speak: never;
   font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Now";
-  src: url("../fonts/now/Now-Medium.eot");
-  src: url("../fonts/now/Now-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/now/Now-Medium.woff2") format("woff2"), url("../fonts/now/Now-Medium.woff") format("woff"), url("../fonts/now/Now-Medium.ttf") format("truetype"), url("../fonts/now/Now-Medium.svg#Now-Medium") format("svg");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Now Alt";
-  src: url("../fonts/now/NowAlt-Bold.eot");
-  src: url("../fonts/now/NowAlt-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/now/NowAlt-Bold.woff2") format("woff2"), url("../fonts/now/NowAlt-Bold.woff") format("woff"), url("../fonts/now/NowAlt-Bold.ttf") format("truetype"), url("../fonts/now/NowAlt-Bold.svg#NowAlt-Bold") format("svg");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Now";
-  src: url("../fonts/now/Now-Regular.eot");
-  src: url("../fonts/now/Now-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/now/Now-Regular.woff2") format("woff2"), url("../fonts/now/Now-Regular.woff") format("woff"), url("../fonts/now/Now-Regular.ttf") format("truetype"), url("../fonts/now/Now-Regular.svg#Now-Regular") format("svg");
   font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-@font-face {
-  font-family: "Now Alt";
-  src: url("../fonts/now/NowAlt-Light.eot");
-  src: url("../fonts/now/NowAlt-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/now/NowAlt-Light.woff2") format("woff2"), url("../fonts/now/NowAlt-Light.woff") format("woff"), url("../fonts/now/NowAlt-Light.ttf") format("truetype"), url("../fonts/now/NowAlt-Light.svg#NowAlt-Light") format("svg");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Now";
-  src: url("../fonts/now/Now-Thin.eot");
-  src: url("../fonts/now/Now-Thin.eot?#iefix") format("embedded-opentype"), url("../fonts/now/Now-Thin.woff2") format("woff2"), url("../fonts/now/Now-Thin.woff") format("woff"), url("../fonts/now/Now-Thin.ttf") format("truetype"), url("../fonts/now/Now-Thin.svg#Now-Thin") format("svg");
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
-}
+
 html {
   font-size: var(--font-level-16);
 }
@@ -7188,6 +7106,39 @@ body.menu-opened .mainHeader .burger-menu .line3 {
       -ms-flex-pack: justify;
           justify-content: space-between;
   row-gap: 20px;
+}
+.els-footer .footer-list {
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style: none;
+  gap: 20px;
+}
+@media (min-width: 576px) {
+  .els-footer .footer-list {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+@media (min-width: 768px) {
+  .els-footer .footer-list {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
 }
 .els-footer a {
   color: #fff;

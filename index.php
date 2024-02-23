@@ -384,26 +384,72 @@ $partners = [
     </div>
 </section>
 
+<section id="nos-avantages">
+            <div class="container">
+                <div class="container__inner">
+                    <div class="row upperRow">
+                        <div class="col-12">
+                            <div class="pre-title-lg pre-title--centered">Nos Avantages</div>
+                            <h2 class="title-lg title-lg--centered">Une expertise de la toile confectionnée <br /> jusqu’à l’assemblage <span class="text-nowrap">du produit fini</span></h2>
+                        </div>
+                    </div>
+                    <div class="row mainRow">
+                        <div class="box-asset col-12 col-md-6 col-xl-4">
+                            <i class="box-asset__icon iconSrp-lightbulb"></i>
+                            <h3 class="box-asset__title">Innovant</h3>
+                            <p class="box-asset__text">Avec nos produits, la connectivité et la domotique sont à votre portée</p>
+                        </div>
+                        <div class="box-asset col-12 col-md-6 col-xl-4">
+                            <i class="box-asset__icon iconSrp-lightbulb"></i>
+                            <h3 class="box-asset__title">Innovant</h3>
+                            <p class="box-asset__text">Avec nos produits, la connectivité et la domotique sont à votre portée</p>
+                        </div>
+                        <div class="box-asset col-12 col-md-6 col-xl-4">
+                            <i class="box-asset__icon iconSrp-lightbulb"></i>
+                            <h3 class="box-asset__title">Innovant</h3>
+                            <p class="box-asset__text">Avec nos produits, la connectivité et la domotique sont à votre portée</p>
+                        </div>
+                        <div class="box-asset col-12 col-md-6 col-xl-4">
+                            <i class="box-asset__icon iconSrp-lightbulb"></i>
+                            <h3 class="box-asset__title">Innovant</h3>
+                            <p class="box-asset__text">Avec nos produits, la connectivité et la domotique sont à votre portée</p>
+                        </div>
+                        <div class="box-asset col-12 col-md-6 col-xl-4">
+                            <i class="box-asset__icon iconSrp-lightbulb"></i>
+                            <h3 class="box-asset__title">Innovant</h3>
+                            <p class="box-asset__text">Avec nos produits, la connectivité et la domotique sont à votre portée</p>
+                        </div>
+                        <div class="box-asset col-12 col-md-6 col-xl-4">
+                            <i class="box-asset__icon iconSrp-lightbulb"></i>
+                            <h3 class="box-asset__title">Innovant</h3>
+                            <p class="box-asset__text">Avec nos produits, la connectivité et la domotique sont à votre portée</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
 </main>
     <!-- end homepage -->
-    <footer class="mainFooter">
-        <div class="container">
 
-            <div class="row FooterMainRow g-lg-0">
-                <nav class="col-auto nav">
-                    <ul class="footer-menu">
-                        <li><a href="#politique-confidentialite">Politique de confidentialité</a></li>
-                        <li><a href="#mentions-legales">Mentions légales</a></li>
-                    </ul>
-                </nav>
-                <div class="col-auto footer-copyright">
-                  <p class="els-text-link">&copy Els-Togo - Tous droit réservés</p>
+    <footer class="els-footer">
+    <div class="container">
+        <div class="row mainRow">
+            <div class="col-12 col-md-6">
+                <div class="text--light text-xs">
+                    <span>&copy;</span> 2024 Els-Togo
                 </div>
             </div>
-
+            <div class="col-12 col-md-6">
+                <ul class="footer-list">
+                    <li class="text--light text-xs modal-open-btn">Mentions légales</li>
+                    <li class="text--light text-xs modal-open-btn">Politique de confidentialité</li>
+                </ul>
+            </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
     <!-- MODAL  -->
 
@@ -436,7 +482,6 @@ $partners = [
         </article>
     </div>
     <!-- END MODAL  -->
-
 
 
     <script src="assets/lib/jquery/jquery-3.7.1.min.js"></script>
