@@ -1,15 +1,57 @@
 .image-text {
-  
+  padding: 45px 0;
+
+  &--inverted {
+    .mainRow {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &--boxed {
+    .mainRow {
+      background: $primary;
+      padding: 30px;
+      border-radius: 10px;
+    }
+
+    & > {
+      .container {
+        padding-left: calc((var(--bs-gutter-x) * 0.5) + (1.5rem * 0.5));
+        padding-right: calc((var(--bs-gutter-x) * 0.5) + (1.5rem * 0.5));
+
+        &, .row {
+          @include media-breakpoint-up(lg) {
+            --bs-gutter-x: 2.5rem;
+          }
+          @include media-breakpoint-up(xl) {
+            --bs-gutter-x: 5rem;
+          }
+        }
+      }
+    }
+
+  }
+
+  &--lightText {
+    .pre-title, .title, p {
+      color: $white;
+    }
+    .pre-title {
+      &::after {
+        background-color: $white;
+      }
+    }
+  }
+
   .mainRow {
     align-items: center;
     row-gap: 50px;
   }
 
   &__textWrapper {
-    padding: 45px 0;
     .title {
       @include media-breakpoint-up(lg) {
-        padding-right: 20%;
+        padding-right: 13%;
       }
     }
 
@@ -18,15 +60,15 @@
     }
 
     .button {
-      margin-top: 30px;
+      margin-top: 20px;
     }
   }
 
   &__imageWrapper {
-    padding: 45px 0;
     img {
-      border-radius: 5%;
       width: 100%;
     }
   }
 }
+
+
