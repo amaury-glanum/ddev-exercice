@@ -32,15 +32,108 @@ $members = [
 
 $projects = [
     [
-        'date-start' => "Dés 2024",
+        'date' => "Avril 2024",
         'place' => "Tsévié, Togo",
+        'category' => "Santé",
         'title' => "Création d'un centre optique",
+        'accroche' => '',
         'description' => "Création d'un centre optique social et solidaire",
         'goal' => "Améliorer l'acuité visuelle des jeunes et des personnes âgées dans le but  d'aider les populations vulnérables",
-        'how-we-do' => "Organisation des missions humanitaires dans les milieux ruraux pauvres"
+        'how-we-do' => "Organisation des missions humanitaires dans les milieux ruraux pauvres",
+        'results' => "",
+        'img' => ""
+    ],
+    [
+        'date' => "Juin - Septembre 2024",
+        'place' => "Tsévié, Togo",
+        'category' => "Volontariat",
+        'title' => "Camp Chantier",
+        'accroche' => '',
+        'description' => "Organisation des missions humanitaires dans les milieux ruraux pauvres",
+        'goal' => "",
+        'how-we-do' => "Organisation des missions humanitaires dans les milieux ruraux pauvres",
+        'results' => "",
+        'img' => ""
+    ],
+    [
+        'date' => "Depuis 2024",
+        'place' => "Commune Moyen Mono 1, Togo",
+        'category' => "Santé et environnement",
+        'title' => "Collecte des ordures ménagères",
+        'accroche' => '',
+        'description' => "Pré-collecte et la valorisation des déchets ménagers.",
+        'goal' => "Contribuer à l'amélioration du cadre de vie de la population",
+        'how-we-do' => "En collaboration avec l'ONG ENGPRO spécialisée dans la pré-collecte et la valorisation des déchets ménagers.",
+        'results' => "",
+        'img' => ""
+    ],
+    [
+        'date' => "Dés 2024",
+        'place' => "Tsévié, Togo",
+        'category' => "Environnement",
+        'title' => "Reboisement transfrontalier",
+        'accroche' => '',
+        'description' => "Projet de reboisement autour du fleuve Mono dans les communes de Moyen Mono 1 (Togo) et Aplahoué (Bénin).",
+        'goal' => "Contribuer au projet de reboisement du gouvernement togolais (Atteindre 1 milliard d'arbres d'ici 2030), à la lutte contre la faim et à la protection de l'environnement.",
+        'how-we-do' => "Des arbres fruitiers seront plantés ...",
+        'results' => "",
+        'img' => ""
     ]
-]
+];
 
+$items = [
+    [
+        'title' => 'lorem ipsum',
+        'description' => 'Lorem ipsum dolor, sit amet consectetur dolorem magni molestias ipsam laboriosam recusandae, corporis aut!'
+    ],
+    [
+        'title' => 'lorem ipsum',
+        'description' => 'Lorem ipsum dolor, sit amet consectetur dolorem magni molestias ipsam laboriosam recusandae, corporis aut!'
+    ],
+    [
+        'title' => 'lorem ipsum',
+        'description' => 'Lorem ipsum dolor, sit amet consectetur dolorem magni molestias ipsam laboriosam recusandae, corporis aut!'
+    ],
+    [
+        'title' => 'lorem ipsum',
+        'description' => 'Lorem ipsum dolor, sit amet consectetur dolorem magni molestias ipsam laboriosam recusandae, corporis aut!'
+    ],
+    [
+        'title' => 'lorem ipsum',
+        'description' => 'Lorem ipsum dolor, sit amet consectetur dolorem magni molestias ipsam laboriosam recusandae, corporis aut!'
+    ],
+    [
+        'title' => 'lorem ipsum',
+        'description' => 'Lorem ipsum dolor, sit amet consectetur dolorem magni molestias ipsam laboriosam recusandae, corporis aut!'
+    ],
+    [
+        'title' => 'lorem ipsum',
+        'description' => 'Lorem ipsum dolor, sit amet consectetur dolorem magni molestias ipsam laboriosam recusandae, corporis aut!'
+    ],
+];
+
+$partners = [
+    [
+        'link' => [ 'href' => '', 'text'=>''],
+        'img' => ['src' =>'./assets/img/icons/handshake.png', 'alt'=> 'handshakes'],
+        'partner-name' => 'partner'
+    ],
+    [
+        'link' => [ 'href' => '', 'text'=>''],
+        'img' => ['src' =>'./assets/img/icons/handshake.png', 'alt'=> 'handshakes'],
+        'partner-name' => 'partner'
+    ],
+    [
+        'link' => [ 'href' => '', 'text'=>''],
+        'img' => ['src' =>'./assets/img/icons/handshake.png', 'alt'=> 'handshakes'],
+        'partner-name' => 'partner'
+    ],
+    [
+        'link' => [ 'href' => '', 'text'=>''],
+        'img' => ['src' =>'./assets/img/icons/handshake.png', 'alt'=> 'handshakes'],
+        'partner-name' => 'partner'
+    ],
+];
 
 ?>
 <!DOCTYPE html>
@@ -117,10 +210,10 @@ $projects = [
                 <h2 class="pre-title--light">Notre Mission</h2>
                 <p class="text-light-lg">Nous contribuons à l'amélioration du cadre de vie des personnes. Pour ce faire nous promouvons une éducation de qualité et inclusive.</p>
                 <p class="text-light-lg">Nos champs d'action:</p>
-                <ul>
-                    <li class="els-text-xs--light">Sauver des vies</li>
-                    <li class="els-text-xs--light">Protéger l'environnement</li>
-                    <li class="els-text-xs--light">Lutter contre la faim</li>
+                <ul class="els-list els-list--light">
+                    <li class="els-text-xs els-text-xs--light">Sauver des vies</li>
+                    <li class="els-text-xs els-text-xs--light">Protéger l'environnement</li>
+                    <li class="els-text-xs els-text-xs--light">Lutter contre la faim</li>
                     <li class="els-text-xs--light">Offrir des moments de divertissements à tous</li>
                 </ul>
             </div>
@@ -134,7 +227,7 @@ $projects = [
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-image">
-                        <img src="/assets/img/icons/43089.jpg" alt="personnes tenant des feuilles" />
+                        <img src="/assets/img/icons/5236.jpg" alt="personnes tenant des feuilles" />
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Dignité</h5>
@@ -146,7 +239,7 @@ $projects = [
             <div class="col-md-4">
                 <div class="card">
                 <div class="card-image">
-                        <img src="/assets/img/icons/9046651.jpg" alt="mains assemblant un puzzle" />
+                        <img src="/assets/img/icons/5236.jpg" alt="mains assemblant un puzzle" />
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Amour</h5>
@@ -190,54 +283,56 @@ $projects = [
                 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
             </div>
   </div>
-  <div class="swiper-container">
-    <div class="swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide swiper-slide--one modal-open-btn">
-
-          <span>15 avril - 12 mai</span>
-          <div class="slide-content">
-            <h3>Education</h3>
-            <p>Tsévié</p>
-          </div>
+    <div class="swiper-container">
+        <div class="swiper">
+        <div class="swiper-wrapper">
+            <?php 
+            if(!empty($projects)) {
+                $i = 1;
+                foreach($projects as $project) { ?> 
+                <div class="swiper-slide swiper-slide--num<?php echo strval($i) ?>">
+                <span><?php echo $project['date']; ?></span>
+                <div class="swiper__inner-btn">
+                    <button 
+                    data-typebtn="project-btn" 
+                    data-title="<?php echo $project['title'] ?>" 
+                    data-description="<?php echo $project['description'] ?>"
+                    data-slideid="slide-btn-<?php echo strval($i) ?>" 
+                    class="button button--secondary button--radius-light modal-open-btn">
+                    En savoir +
+                </button>
+                </div>
+                <div class="slide-content">
+                    <h3><?php echo $project['title']; ?></h3>
+                    <p><?php echo $project['place']; ?></p>
+                </div>
+                </div> 
+                <?php $i++; } ?> 
+            <?php } ?> 
         </div>
-
-        <div class="swiper-slide swiper-slide--two modal-open-btn">
-          <span>15 avril - 12 mai</span>
-          <div class="slide-content">
-            <h3>Reboisement</h3>
-            <p>Tsévié</p>
-
-          </div>
-
         </div>
-        <div class="swiper-slide swiper-slide--three modal-open-btn">
-          <span>15 avril - 12 mai</span>
-
-        </div>
-        <div class="swiper-slide swiper-slide--four modal-open-btn">
-          <span>15 avril - 12 mai</span>
-
-        </div>
-        <div class="swiper-slide swiper-slide--five modal-open-btn">
-          <span>15 avril - 12 mai</span>
-
-        </div>
-        <div class="swiper-slide swiper-slide--six modal-open-btn">
-          <span>15 avril - 12 mai</span>
-          <div class="slide-content">
-            <h3>Loisir</h3>
-          </div>
-
-        </div>
-
-      </div>
-
+        <div class="swiper-pagination"></div>
     </div>
-
-    <div class="swiper-pagination"></div>
-  </div>
 </div>
+
+
+<section id="nos-partenaires" class="items-rows">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="pre-title">Nos partenaires</div>
+                    </div>
+                </div>
+                <div class="row mainRow">
+                    <?php foreach ($partners as $partner) { ?> 
+                    <div class="col-12 col-md-4 col-xl-2">
+                        <img src="<?php echo $partner['img']['src'] ?? ""; ?>" alt="$partner['img']['alt'] ?? "";"/>
+                    </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </section>
+
 <section id="qui-sommes-nous" class="text-cards-horizon team-section">
   <div class="container">
       <div class="row mainRow">
@@ -250,7 +345,8 @@ $projects = [
         <?php 
         if(!empty($members))
         foreach($members as $member) { ?>
-          <div class="box modal-open-btn">
+          <div data-typebtn="team-btn" class="box modal-open-btn" 
+                data-title="<?php echo $member['name'] . $member['firstname'] ?>">
             <div class="top-bar"></div>
             <div class="content">
               <img src="<?php echo $member['img']['src'] ?? '' ?>" alt="<?php echo $member['img']['alt'] ?? '' ?>">
@@ -267,15 +363,34 @@ $projects = [
       </div>
   </div>
 </section>
+
+<section id="nos-avantages" class="nos-avantages boxed section--centered">
+    <div class="container">
+
+        <div class="boxedWrapper">
+            <div class="els-pre-title">Nos valeurs</div>
+            <div class="els-title">Découvrez nos valeurs</div>
+
+            <div class="row mainRow">
+            <?php foreach($items as $item) { ?>
+                <div class="col-12 col-md-6 col-xl-4">
+                    <div class="item__icon"><img src="./assets/img/icons/handshake.png" alt="handshake by @lakonicon" /></div>
+                    <div class="item__title"><?php echo $item['title']; ?></div>
+                    <p class="item__text"><?php echo $item['description']; ?></p>
+                </div>
+            <?php } ?>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 </main>
     <!-- end homepage -->
     <footer class="mainFooter">
         <div class="container">
 
             <div class="row FooterMainRow g-lg-0">
-                <div class="col-4 col-sm-auto logo">
-                    <img src="assets/img/logo-els.jpg" alt="Logo ELS-TOGO">
-                </div>
                 <nav class="col-auto nav">
                     <ul class="footer-menu">
                         <li><a href="#politique-confidentialite">Politique de confidentialité</a></li>
@@ -307,37 +422,13 @@ $projects = [
                     </svg>
                 </button>
             </header>
-            <section class="modal-container-body rtf">
-                <h2>Quarum ambarum rerum cum medicinam pollicetur, luxuriae licentiam pollicetur.</h2>
+            <section class="modal-container-body">
+                <h2 class="title modal-body-title">Exemple de titre</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Unum nescio, quo modo possit, si luxuriosus sit, finitas cupiditates habere. 
-                    Hoc est non modo cor non habere, sed ne palatum quidem. Sic, et quidem diligentius saepiusque ista loquemur inter nos agemusque communiter. 
-                    Paulum, cum regem Persem captum adduceret, eodem flumine invectio? Quid igitur dubitamus in tota eius natura quaerere quid sit effectum? 
-                    Duo Reges: constructio interrete. </p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Unum nescio, quo modo possit, si luxuriosus sit, finitas cupiditates habere. 
-                    Hoc est non modo cor non habere, sed ne palatum quidem. Sic, et quidem diligentius saepiusque ista loquemur inter nos agemusque communiter. 
-                    Paulum, cum regem Persem captum adduceret, eodem flumine invectio? Quid igitur dubitamus in tota eius natura quaerere quid sit effectum? 
-                    Duo Reges: constructio interrete. </p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Unum nescio, quo modo possit, si luxuriosus sit, finitas cupiditates habere. 
-                    Hoc est non modo cor non habere, sed ne palatum quidem. Sic, et quidem diligentius saepiusque ista loquemur inter nos agemusque communiter. 
-                    Paulum, cum regem Persem captum adduceret, eodem flumine invectio? Quid igitur dubitamus in tota eius natura quaerere quid sit effectum? 
-                    Duo Reges: constructio interrete. </p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Unum nescio, quo modo possit, si luxuriosus sit, finitas cupiditates habere. 
-                    Hoc est non modo cor non habere, sed ne palatum quidem. Sic, et quidem diligentius saepiusque ista loquemur inter nos agemusque communiter. 
-                    Paulum, cum regem Persem captum adduceret, eodem flumine invectio? Quid igitur dubitamus in tota eius natura quaerere quid sit effectum? 
-                    Duo Reges: constructio interrete. </p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Unum nescio, quo modo possit, si luxuriosus sit, finitas cupiditates habere. 
-                    Hoc est non modo cor non habere, sed ne palatum quidem. Sic, et quidem diligentius saepiusque ista loquemur inter nos agemusque communiter. 
-                    Paulum, cum regem Persem captum adduceret, eodem flumine invectio? Quid igitur dubitamus in tota eius natura quaerere quid sit effectum? 
-                    Duo Reges: constructio interrete. </p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Unum nescio, quo modo possit, si luxuriosus sit, finitas cupiditates habere. 
-                    Hoc est non modo cor non habere, sed ne palatum quidem. Sic, et quidem diligentius saepiusque ista loquemur inter nos agemusque communiter. 
-                    Paulum, cum regem Persem captum adduceret, eodem flumine invectio? Quid igitur dubitamus in tota eius natura quaerere quid sit effectum? 
-                    Duo Reges: constructio interrete. </p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Unum nescio, quo modo possit, si luxuriosus sit, finitas cupiditates habere. 
-                    Hoc est non modo cor non habere, sed ne palatum quidem. Sic, et quidem diligentius saepiusque ista loquemur inter nos agemusque communiter. 
-                    Paulum, cum regem Persem captum adduceret, eodem flumine invectio? Quid igitur dubitamus in tota eius natura quaerere quid sit effectum? 
-                    Duo Reges: constructio interrete. </p>
+                <div class="modal-paragraph-wrapper">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates molestias voluptatibus incidunt praesentium dolor repudiandae cum omnis fuga, veniam quia, consequatur possimus quidem nesciunt? Inventore earum et quisquam explicabo culpa!</p>
+                </div>
+                 
             </section>
             <footer class="modal-container-footer">
       
@@ -345,6 +436,8 @@ $projects = [
         </article>
     </div>
     <!-- END MODAL  -->
+
+
 
     <script src="assets/lib/jquery/jquery-3.7.1.min.js"></script>
     <script src="assets/build/script.umd.js"></script>

@@ -81,17 +81,21 @@
 }
 
 .swiper-slide {
-   width: 50rem;
-   height: 50vh;
+  height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: self-start;
   position: relative;
-  border-radius: 12px;
+  border-radius: 10px;
   box-shadow: -1px 5px 15px #0000001f;
   text-align: center;
   opacity: 0.4;
   transition: opacity 0.4s ease-in;
+
+  .swiper__inner-btn {
+    opacity: 0;
+    pointer-events: none;
+  }
 
   span {
     display: inline-block;
@@ -128,42 +132,44 @@
   }
 
   .slide-content {
+    border-radius: 0 0 10px 10px;
+    background-color: $primary-05;
     position: absolute;
     bottom: 0;
     left: 50%;
-    transform: translate(-50%, -10px);
-    width: 90%;
+    transform: translateX(-50%);
+    width: 100%;
   }
 
-  &--one {
+  &--num1 {
     background: #0f2027;
     background: linear-gradient(to bottom, #2c536400, #203a4303, #0f2027cc),
       url("/assets/img/ecole/AMORY\ 11.jpg")
         no-repeat 50% 50% / cover;
   }
 
-  &--two {
+  &--num2 {
     background: linear-gradient(to bottom, #2c536400, #203a4303, #0f2027cc),
       url("/assets/img/ecole/AMORY\ 11.jpg")
         no-repeat 50% 50% / cover;
   }
 
-  &--three {
+  &--num3 {
     background: url("/assets/img/ecole/AMORY\ 7.jpg")
       no-repeat 50% 50% / cover;
   }
 
-  &--four {
+  &--num4 {
     background: url("/assets/img/ecole/AMORY\ 8.jpg")
       no-repeat 50% 50% / cover;
   }
 
-  &--five {
+  &--num5 {
     background: url("/assets/img/ecole/AMORY\ 9.jpg")
       no-repeat 50% 50% / cover;
   }
 
-  &--six {
+  &--num6 {
     background: linear-gradient(to bottom, #2c536400, #203a4303, #0f2027cc),
       url("/assets/img/ecole/AMORY\ 10.jpg")
         no-repeat 50% 50% / cover;
@@ -173,6 +179,17 @@
 .swiper-slide-active {
   display: grid;
   opacity: 1;
+
+  .swiper__inner-btn {
+    pointer-events: auto;
+    opacity: 1;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .swiper-pagination {

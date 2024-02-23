@@ -10,7 +10,7 @@
   overflow: hidden;
   //transition: border 0.2s ease-in-out, color 0.2s ease-in-out, background-color 0.2s ease-in-out;
   border: none;
-  border-radius: 10px;
+  //border-radius: 10px;
   outline: none;
   background-color: $primary;
   box-shadow: none;
@@ -22,6 +22,7 @@
   text-decoration: none;
   cursor: pointer;
   -webkit-appearance: none;
+  appearance: none;
 
   &:hover,
   &:active,
@@ -40,12 +41,17 @@
   }
 
   &--secondary {
-    background-color: $secondary;
+    background-color: #00AD9C;
 
     &:hover,
     &:active,
     &:focus {
-      background-color: $secondary-darken;
+      background-color: darken(#00AD9C, 4%);
     }
   }
+
+  &--radius-light {
+    border-radius: 10px;
+  }
 }
+
