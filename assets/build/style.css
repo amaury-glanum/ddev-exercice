@@ -6587,25 +6587,84 @@ body.has-modal {
 }
 
 @font-face {
-  font-family: "icomoon_example";
-  src: url("../fonts/icomoon/fonts/icomoon_example.eot?s2nsdb");
-  src: url("../fonts/icomoon/fonts/icomoon_example.eot?s2nsdb#iefix") format("embedded-opentype"), url("../fonts/icomoon/fonts/icomoon_example.ttf?s2nsdb") format("truetype"), url("../fonts/icomoon/fonts/icomoon_example.woff?s2nsdb") format("woff"), url("../fonts/icomoon/fonts/icomoon_example.svg?s2nsdb#icomoon_example") format("svg");
+  font-family: "icomoon";
+  src: url("../fonts/icomoon/fonts/icomoon.eot?3ktjl3");
+  src: url("../fonts/icomoon/fonts/icomoon.eot?3ktjl3#iefix") format("embedded-opentype"), url("../fonts/icomoon/fonts/icomoon.ttf?3ktjl3") format("truetype"), url("../fonts/icomoon/fonts/icomoon.woff?3ktjl3") format("woff"), url("../fonts/icomoon/fonts/icomoon.svg?3ktjl3#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
-[class^=icons-], [class*=" icons-"] {
+i, .icomoon-liga {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: "icomoon_example" !important;
+  font-family: "icomoon" !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
   line-height: 1;
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga";
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home:before {
+  content: "\e900";
+}
+
+.icon-phone:before {
+  content: "\e942";
+}
+
+.icon-location2:before {
+  content: "\e948";
+}
+
+.icon-user:before {
+  content: "\e971";
+}
+
+.icon-users:before {
+  content: "\e972";
+}
+
+.icon-spinner6:before {
+  content: "\e97f";
+}
+
+.icon-info:before {
+  content: "\ea0c";
+}
+
+.icon-cancel-circle:before {
+  content: "\ea0d";
+}
+
+.icon-circle-right:before {
+  content: "\ea42";
+}
+
+.icon-circle-left:before {
+  content: "\ea44";
+}
+
+.icon-mail:before {
+  content: "\ea83";
+}
+
+.icon-facebook2:before {
+  content: "\ea91";
+}
+
+.icon-instagram:before {
+  content: "\ea92";
 }
 
 html {
@@ -8037,6 +8096,86 @@ body.menu-opened .mainHeader .burger-menu .line3 {
 .items-rows .mainRow div img {
   margin: 0 auto;
   width: 100%;
+}
+
+#nos-avantages .container__inner {
+  z-index: -2;
+  width: 100%;
+  padding: 50px 50px 75px 50px;
+  background-color: #f6f6f6;
+}
+#nos-avantages .upperRow > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 20px;
+}
+#nos-avantages .mainRow {
+  margin-top: 60px;
+  row-gap: 30px;
+}
+#nos-avantages .mainRow .box-asset {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 14px;
+}
+#nos-avantages .mainRow .box-asset__icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #fff;
+  font-size: 45px;
+}
+#nos-avantages .mainRow .box-asset__icon::before {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 100px;
+  background-color: #004aad;
+}
+#nos-avantages .mainRow .box-asset__title {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+}
+#nos-avantages .mainRow .box-asset__text {
+  margin-top: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.2222222222;
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map*/
