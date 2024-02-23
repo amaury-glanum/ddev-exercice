@@ -2,326 +2,12 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./assets/js/common/functions.js":
-/*!***************************************!*\
-  !*** ./assets/js/common/functions.js ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   minWidth: () => (/* binding */ minWidth),
-/* harmony export */   putScrollbarSizeInCSSVariables: () => (/* binding */ putScrollbarSizeInCSSVariables)
-/* harmony export */ });
-/* harmony import */ var _variables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./variables */ "./assets/js/common/variables.js");
-// eslint-disable-next-line no-unused-vars
-
-var putScrollbarSizeInCSSVariables = function putScrollbarSizeInCSSVariables() {
-  var timeout = false;
-  var delay = 250;
-  window.addEventListener('resize', function () {
-    clearTimeout(timeout);
-    timeout = setTimeout(function () {
-      document.documentElement.style.setProperty('--scrollbarsize', "".concat(window.innerWidth - document.documentElement.clientWidth, "px"));
-    }, delay);
-  });
-  setTimeout(function () {
-    document.documentElement.style.setProperty('--scrollbarsize', "".concat(window.innerWidth - document.documentElement.clientWidth, "px"));
-  }, 0);
-};
-var minWidth = function minWidth(value) {
-  return window.matchMedia("(min-width: ".concat(_variables__WEBPACK_IMPORTED_MODULE_0__.variables.breakpoints[value], ")")).matches;
-};
-
-/***/ }),
-
-/***/ "./assets/js/common/variables.js":
-/*!***************************************!*\
-  !*** ./assets/js/common/variables.js ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   $: () => (/* binding */ $),
-/* harmony export */   variables: () => (/* binding */ variables)
-/* harmony export */ });
-var variables = {};
-var $ = jQuery.noConflict();
+/***/ 455:
+/***/ (() => {
 
 
-/***/ }),
-
-/***/ "./assets/js/components/gsapAnimScroll.js":
-/*!************************************************!*\
-  !*** ./assets/js/components/gsapAnimScroll.js ***!
-  \************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   gsapHeaderLinksOnScroll: () => (/* binding */ gsapHeaderLinksOnScroll),
-/* harmony export */   gsapTitleAnim: () => (/* binding */ gsapTitleAnim)
-/* harmony export */ });
-/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
-/* harmony import */ var gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap/ScrollTrigger */ "./node_modules/gsap/ScrollTrigger.js");
-var reveal = document.querySelectorAll('.text-anim-wrapper');
-var gsapTitleAnim = function gsapTitleAnim() {
-  reveal.forEach(function (el) {
-    var headings = el.querySelectorAll('.text-anim-wrapper .animated-title');
-    var tl = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline().from(headings, {
-      y: 80,
-      stagger: 0.05,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out'
-    });
-    gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__.ScrollTrigger.create({
-      trigger: el,
-      start: 'center 100%',
-      end: 'top 50%',
-      markers: false,
-      toggleActions: 'play none none reverse ',
-      animation: tl
-    });
-  });
-};
-
-
-gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__.ScrollTrigger);
-var links = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.utils.toArray('.menu__nav-item a');
-var gsapHeaderLinksOnScroll = function gsapHeaderLinksOnScroll() {
-  links.forEach(function (a) {
-    var element = document.querySelector(a.getAttribute('href'));
-    gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__.ScrollTrigger.create({
-      trigger: element,
-      start: 'top center',
-      end: 'bottom center',
-      onToggle: function onToggle(self) {
-        return self.isActive && setActive(a);
-      }
-    });
-  });
-};
-function setActive(link) {
-  links.forEach(function (el) {
-    return el.classList.remove('active-header-link');
-  });
-  link.classList.add('active-header-link');
-}
-
-/***/ }),
-
-/***/ "./assets/js/components/menuBurger.js":
-/*!********************************************!*\
-  !*** ./assets/js/components/menuBurger.js ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   menuBurger: () => (/* binding */ menuBurger)
-/* harmony export */ });
-/* harmony import */ var _common_variables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common/variables */ "./assets/js/common/variables.js");
-
-var menuBurger = function menuBurger() {
-  (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)('.burger-menu__button, .header-menu li a').on('click', function () {
-    (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)('body').toggleClass('menu-opened');
-  });
-  (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)('.js-contact-open, .modal-close').on('click', function () {
-    (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)('body').toggleClass('modal-open');
-  });
-};
-
-/***/ }),
-
-/***/ "./assets/js/components/modal.js":
-/*!***************************************!*\
-  !*** ./assets/js/components/modal.js ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   modalToggle: () => (/* binding */ modalToggle)
-/* harmony export */ });
-/* harmony import */ var _common_variables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common/variables */ "./assets/js/common/variables.js");
-
-var modalToggle = function modalToggle() {
-  var modalHeaderTitle = document.querySelector('.modal-container-title h1');
-  var modalBodyTextWrapper = document.querySelector('.modal-paragraph-wrapper');
-  var modalBodyTitle = document.querySelector('.modal-body-title');
-  var displayProjectTitle = function displayProjectTitle(event) {
-    var dataBtn = event.target.dataset.title;
-    var dataDescription = event.target.dataset.description;
-    (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)(modalBodyTextWrapper).empty();
-    modalHeaderTitle.textContent = "";
-    modalBodyTitle.textContent = "";
-    if (dataBtn) {
-      modalHeaderTitle.textContent = "".concat(dataBtn);
-    }
-    if (dataDescription) {
-      modalBodyTitle.textContent = "".concat(dataDescription);
-      var node = document.createElement("p");
-      var textnode = document.createTextNode(dataDescription);
-      node.appendChild(textnode);
-      modalBodyTextWrapper.appendChild(node);
-    }
-  };
-  var openModal = function openModal(e) {
-    document.querySelector('.modal').classList.toggle('modal-opened');
-    document.querySelector('body').classList.toggle('has-modal');
-    if (e.target.dataset.typebtn === 'project-btn') {
-      console.log('bouton trouvé slide', e.target.dataset.typebtn);
-      document.querySelectorAll('.projects-section .swiper__inner-btn button').forEach(function (btn) {
-        displayProjectTitle(e);
-      });
-    } else if (e.target.dataset.typebtn === 'team-btn') {
-      document.querySelectorAll('.box').forEach(function (btn) {
-        displayProjectTitle(e);
-      });
-    } else {
-      (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)(modalBodyTextWrapper).empty();
-      modalHeaderTitle.textContent = "";
-      modalBodyTitle.textContent = "";
-    }
-  };
-  document.querySelectorAll('.modal-close-btn, .modal-open-btn').forEach(function (element) {
-    element.removeEventListener('click', openModal);
-    element.addEventListener('click', openModal);
-  });
-};
-
-/***/ }),
-
-/***/ "./assets/js/components/scroll.js":
-/*!****************************************!*\
-  !*** ./assets/js/components/scroll.js ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   scrollToId: () => (/* binding */ scrollToId)
-/* harmony export */ });
-/* harmony import */ var _common_variables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common/variables */ "./assets/js/common/variables.js");
-
-var scrollToId = function scrollToId() {
-  (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)("a[href^='#']:not([href='#'])").click(function (e) {
-    e.preventDefault();
-    this.blur();
-    var hash = this.hash;
-    var section = (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)(hash);
-    var $header = (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)('.mainHeader'); // Le header
-    var heightOffset = 0; // Offset pour créer un espace entre le header et l'ancre
-
-    var $headerHeight = $header.outerHeight();
-    if (hash) {
-      (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)('html, body').stop().animate({
-        scrollTop: section.offset().top - $headerHeight - heightOffset
-      }, 1000, 'swing', function () {
-        if (hash !== '#homepage') {
-          history.replaceState({}, '', hash);
-        } else {
-          history.replaceState({}, '', '/');
-        }
-      });
-    }
-  });
-};
-
-/***/ }),
-
-/***/ "./assets/js/components/swiper.js":
-/*!****************************************!*\
-  !*** ./assets/js/components/swiper.js ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   getSwiperJs: () => (/* binding */ getSwiperJs)
-/* harmony export */ });
-var getSwiperJs = function getSwiperJs() {
-  var swiper = new Swiper(".swiper", {
-    effect: "coverflow",
-    grabCursor: true,
-    spaceBetween: 30,
-    centeredSlides: false,
-    coverflowEffect: {
-      rotate: 0,
-      stretch: 0,
-      depth: 0,
-      modifier: 1,
-      slideShadows: false
-    },
-    loop: true,
-    // navigation: {
-    //   nextEl: '.swiper-button-next',
-    //   prevEl: '.swiper-button-prev',
-    // },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true
-    },
-    keyboard: {
-      enabled: true
-    },
-    mousewheel: {
-      thresholdDelta: 70
-    },
-    breakpoints: {
-      460: {
-        slidesPerView: 3
-      },
-      768: {
-        slidesPerView: 3
-      },
-      1024: {
-        slidesPerView: 3
-      },
-      1600: {
-        slidesPerView: 3.6
-      }
-    }
-  });
-};
-
-/***/ }),
-
-/***/ "./assets/js/script.js":
-/*!*****************************!*\
-  !*** ./assets/js/script.js ***!
-  \*****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
-/* harmony import */ var gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap/ScrollTrigger */ "./node_modules/gsap/ScrollTrigger.js");
-/* harmony import */ var _components_swiper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/swiper */ "./assets/js/components/swiper.js");
-/* harmony import */ var _components_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/modal */ "./assets/js/components/modal.js");
-/* harmony import */ var _common_functions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./common/functions */ "./assets/js/common/functions.js");
-/* harmony import */ var _components_menuBurger__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/menuBurger */ "./assets/js/components/menuBurger.js");
-/* harmony import */ var _components_scroll__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/scroll */ "./assets/js/components/scroll.js");
-/* harmony import */ var _components_gsapAnimScroll__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/gsapAnimScroll */ "./assets/js/components/gsapAnimScroll.js");
-
-
-gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__.ScrollTrigger);
-
-
-
-
-// import { scrollToAnchor } from './components/scrollToAnchor'
-
-
-window.addEventListener('DOMContentLoaded', function (event) {
-  (0,_components_swiper__WEBPACK_IMPORTED_MODULE_2__.getSwiperJs)();
-  (0,_components_modal__WEBPACK_IMPORTED_MODULE_3__.modalToggle)();
-  (0,_components_scroll__WEBPACK_IMPORTED_MODULE_6__.scrollToId)();
-  (0,_components_gsapAnimScroll__WEBPACK_IMPORTED_MODULE_7__.gsapHeaderLinksOnScroll)();
-  (0,_common_functions__WEBPACK_IMPORTED_MODULE_4__.putScrollbarSizeInCSSVariables)();
-  (0,_components_menuBurger__WEBPACK_IMPORTED_MODULE_5__.menuBurger)();
-});
+;// CONCATENATED MODULE: ./node_modules/gsap/gsap-core.js
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
@@ -9738,21 +9424,101 @@ ScrollTrigger_ScrollTrigger.core = {
 };
 ScrollTrigger_getGSAP() && ScrollTrigger_gsap.registerPlugin(ScrollTrigger_ScrollTrigger);
 
-;// CONCATENATED MODULE: ./assets/js/components/modal.js
-var modalToggle = function modalToggle() {
-  var openModal = function openModal() {
-    document.querySelector('.modal').classList.toggle('modal-opened');
-    document.querySelector('body').classList.toggle('has-modal');
-  };
-  document.querySelectorAll('.modal-close-btn, .modal-open-btn').forEach(function (element) {
-    element.removeEventListener('click', openModal);
-    element.addEventListener('click', openModal);
+;// CONCATENATED MODULE: ./assets/js/components/swiper.js
+var getSwiperJs = function getSwiperJs() {
+  var swiper = new Swiper(".swiper", {
+    effect: "coverflow",
+    grabCursor: true,
+    spaceBetween: 30,
+    centeredSlides: false,
+    coverflowEffect: {
+      rotate: 0,
+      stretch: 0,
+      depth: 0,
+      modifier: 1,
+      slideShadows: false
+    },
+    loop: true,
+    // navigation: {
+    //   nextEl: '.swiper-button-next',
+    //   prevEl: '.swiper-button-prev',
+    // },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    },
+    keyboard: {
+      enabled: true
+    },
+    mousewheel: {
+      thresholdDelta: 70
+    },
+    breakpoints: {
+      460: {
+        slidesPerView: 3
+      },
+      768: {
+        slidesPerView: 3
+      },
+      1024: {
+        slidesPerView: 3
+      },
+      1600: {
+        slidesPerView: 3.6
+      }
+    }
   });
 };
 ;// CONCATENATED MODULE: ./assets/js/common/variables.js
 var variables_variables = {};
 var $ = jQuery.noConflict();
 
+;// CONCATENATED MODULE: ./assets/js/components/modal.js
+
+var modalToggle = function modalToggle() {
+  var modalHeaderTitle = document.querySelector('.modal-container-title h1');
+  var modalBodyTextWrapper = document.querySelector('.modal-paragraph-wrapper');
+  var modalBodyTitle = document.querySelector('.modal-body-title');
+  var displayProjectTitle = function displayProjectTitle(event) {
+    var dataBtn = event.target.dataset.title;
+    var dataDescription = event.target.dataset.description;
+    $(modalBodyTextWrapper).empty();
+    modalHeaderTitle.textContent = "";
+    modalBodyTitle.textContent = "";
+    if (dataBtn) {
+      modalHeaderTitle.textContent = "".concat(dataBtn);
+    }
+    if (dataDescription) {
+      modalBodyTitle.textContent = "".concat(dataDescription);
+      var node = document.createElement("p");
+      var textnode = document.createTextNode(dataDescription);
+      node.appendChild(textnode);
+      modalBodyTextWrapper.appendChild(node);
+    }
+  };
+  var openModal = function openModal(e) {
+    document.querySelector('.modal').classList.toggle('modal-opened');
+    document.querySelector('body').classList.toggle('has-modal');
+    if (e.target.dataset.typebtn === 'project-btn') {
+      console.log('bouton trouvé slide', e.target.dataset.typebtn);
+      document.querySelectorAll('.projects-section .swiper__inner-btn button').forEach(function (btn) {
+        displayProjectTitle(e);
+      });
+    } else if (e.target.dataset.typebtn === 'team-btn') {
+      document.querySelectorAll('.box').forEach(function (btn) {
+        displayProjectTitle(e);
+      });
+    } else {
+      $(modalBodyTextWrapper).empty();
+      modalHeaderTitle.textContent = "";
+      modalBodyTitle.textContent = "";
+    }
+  };
+  document.querySelectorAll('.modal-close-btn, .modal-open-btn').forEach(function (element) {
+    element.removeEventListener('click', openModal);
+    element.addEventListener('click', openModal);
+  });
+};
 ;// CONCATENATED MODULE: ./assets/js/common/functions.js
 // eslint-disable-next-line no-unused-vars
 
@@ -9782,18 +9548,30 @@ var menuBurger = function menuBurger() {
     $('body').toggleClass('modal-open');
   });
 };
-;// CONCATENATED MODULE: ./assets/js/components/scrollToAnchor.js
-var scrollToAnchor = function scrollToAnchor() {
-  var element = document.querySelector(window.location.hash);
-  if (element) {
-    // Options à adapter selon vos besoins
-    // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
-    var options = {
-      behavior: 'smooth',
-      block: 'start'
-    };
-    element.scrollIntoView(options);
-  }
+;// CONCATENATED MODULE: ./assets/js/components/scroll.js
+
+var scrollToId = function scrollToId() {
+  $("a[href^='#']:not([href='#'])").click(function (e) {
+    e.preventDefault();
+    this.blur();
+    var hash = this.hash;
+    var section = $(hash);
+    var $header = $('.mainHeader'); // Le header
+    var heightOffset = 0; // Offset pour créer un espace entre le header et l'ancre
+
+    var $headerHeight = $header.outerHeight();
+    if (hash) {
+      $('html, body').stop().animate({
+        scrollTop: section.offset().top - $headerHeight - heightOffset
+      }, 1000, 'swing', function () {
+        if (hash !== '#homepage') {
+          history.replaceState({}, '', hash);
+        } else {
+          history.replaceState({}, '', '/');
+        }
+      });
+    }
+  });
 };
 ;// CONCATENATED MODULE: ./assets/js/components/gsapAnimScroll.js
 var reveal = document.querySelectorAll('.text-anim-wrapper');
@@ -9848,48 +9626,13 @@ gsapWithCSS.registerPlugin(ScrollTrigger_ScrollTrigger);
 
 
 
+// import { scrollToAnchor } from './components/scrollToAnchor'
+
 
 window.addEventListener('DOMContentLoaded', function (event) {
-  var swiper = new Swiper(".swiper", {
-    effect: "coverflow",
-    grabCursor: true,
-    spaceBetween: 30,
-    centeredSlides: false,
-    coverflowEffect: {
-      rotate: 0,
-      stretch: 0,
-      depth: 0,
-      modifier: 1,
-      slideShadows: false
-    },
-    loop: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true
-    },
-    keyboard: {
-      enabled: true
-    },
-    mousewheel: {
-      thresholdDelta: 70
-    },
-    breakpoints: {
-      460: {
-        slidesPerView: 3
-      },
-      768: {
-        slidesPerView: 3
-      },
-      1024: {
-        slidesPerView: 3
-      },
-      1600: {
-        slidesPerView: 3.6
-      }
-    }
-  });
+  getSwiperJs();
   modalToggle();
-  scrollToAnchor();
+  scrollToId();
   gsapHeaderLinksOnScroll();
   putScrollbarSizeInCSSVariables();
   menuBurger();
@@ -10031,7 +9774,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, [720], () => (__webpack_require__(712)))
+/******/ 	__webpack_require__.O(undefined, [720], () => (__webpack_require__(455)))
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [720], () => (__webpack_require__(344)))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
