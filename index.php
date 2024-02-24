@@ -3,28 +3,28 @@ $members = [
     [
         'name' => 'Kpeglo Bessou',
         'firstname' => 'Kokou Jacques',
-        'img' => ['src'=>'https://images.pexels.com/photos/1689731/pexels-photo-1689731.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'alt'=>""],
+        'img' => ['src'=>'./assets/img/persons/persons.svg', 'alt'=>"personne"],
         'email' => 'email@mail.com',
         'role' => 'Président du Conseil d\'Administration'
     ],
     [
         'name' => 'Azanli',
         'firstname' => 'Koffi Djifa',
-        'img' => ['src'=>'https://images.pexels.com/photos/2570145/pexels-photo-2570145.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260', 'alt'=>""],
+        'img' => ['src'=>'./assets/img/persons/persons.svg', 'alt'=>"personne"],
         'email' => 'email@mail.com',
         'role' => 'Directeur exécutif'
     ],
     [
         'name' => 'Dewa Kassa',
         'firstname' => 'Kodjo Akonta Florent',
-        'img' => ['src'=>'https://images.pexels.com/photos/2826131/pexels-photo-2826131.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260', 'alt'=>""],
+        'img' => ['src'=>'./assets/img/persons/persons.svg', 'alt'=>"personne"],
         'email' => 'email@mail.com',
         'role' => 'Responsable planification et suivi'
     ],
     [
         'name' => 'Tate',
         'firstname' => 'Yawo Akponi',
-        'img' => ['src'=>'https://images.pexels.com/photos/2826131/pexels-photo-2826131.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260', 'alt'=>""],
+        'img' => ['src'=>'./assets/img/persons/persons.svg', 'alt'=>"personne"],
         'email' => 'email@mail.com',
         'role' => 'Coordonnateur de l\'association'
     ],
@@ -41,7 +41,7 @@ $projects = [
         'goal' => "Améliorer l'acuité visuelle des jeunes et des personnes âgées dans le but  d'aider les populations vulnérables",
         'how-we-do' => "Organisation des missions humanitaires dans les milieux ruraux pauvres",
         'results' => "",
-        'img' => ""
+        'img' => "https://images.pexels.com/photos/7014337/pexels-photo-7014337.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     ],
     [
         'date' => "Juin - Septembre 2024",
@@ -53,7 +53,7 @@ $projects = [
         'goal' => "",
         'how-we-do' => "Organisation des missions humanitaires dans les milieux ruraux pauvres",
         'results' => "",
-        'img' => ""
+        'img' => "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     ],
     [
         'date' => "Depuis 2024",
@@ -65,7 +65,7 @@ $projects = [
         'goal' => "Contribuer à l'amélioration du cadre de vie de la population",
         'how-we-do' => "En collaboration avec l'ONG ENGPRO spécialisée dans la pré-collecte et la valorisation des déchets ménagers.",
         'results' => "",
-        'img' => ""
+        'img' => "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     ],
     [
         'date' => "Dés 2024",
@@ -77,7 +77,7 @@ $projects = [
         'goal' => "Contribuer au projet de reboisement du gouvernement togolais (Atteindre 1 milliard d'arbres d'ici 2030), à la lutte contre la faim et à la protection de l'environnement.",
         'how-we-do' => "Des arbres fruitiers seront plantés ...",
         'results' => "",
-        'img' => ""
+        'img' => "https://images.pexels.com/photos/8837496/pexels-photo-8837496.jpeg"
     ]
 ];
 
@@ -194,7 +194,7 @@ $partners = [
                     <div class="col-12 col-lg-6 image-text__textWrapper">
                         <div class="pre-title">Association ELS - Togo</div>
                         <div class="title">Nous aidons à développer l'éducation, les loisirs et la santé.</div>
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                        <p>Nous pensons que chacun a le droit d'être éduqué, soigné et protégé. Nous apportons notre pierre pour que chacun puisse vivre dans un environnement sain.</p>
                         <button class="button">Je veux m'engager</button>
                     </div>
                     <div class="col-12 col-lg-6 ps-lg-5 image-text__imageWrapper">
@@ -280,7 +280,8 @@ $partners = [
             <div class="image-text__textWrapper">
                 <div class="pre-title">Nos projets</div>
                 <div class="title">Découvrez nos projets.</div>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                <p>Nos projets incarnent la force et la diversité de nos convictions. Nous nous engageons avec les populations locales afin d'avancer ensemble. 
+                    Nous mettons un point d'honneur à la coopération et l'autonomisation.</p>
             </div>
   </div>
     <div class="swiper-container">
@@ -290,7 +291,10 @@ $partners = [
             if(!empty($projects)) {
                 $i = 1;
                 foreach($projects as $project) { ?> 
-                <div class="swiper-slide swiper-slide--num<?php echo strval($i) ?>">
+                <div 
+                    class="swiper-slide"
+                    data-imageid="<?php echo $project['img'] ?>"
+                    >
                 <span><?php echo $project['date']; ?></span>
                 <div class="swiper__inner-btn">
                     <button 
@@ -300,11 +304,11 @@ $partners = [
                     data-slideid="slide-btn-<?php echo strval($i) ?>" 
                     class="button button--secondary button--radius-light modal-open-btn">
                     En savoir +
-                </button>
+                    </button>
                 </div>
                 <div class="slide-content">
-                    <h3><?php echo $project['title']; ?></h3>
-                    <p><?php echo $project['place']; ?></p>
+                    <h3 class="els-title"><?php echo $project['title']; ?></h3>
+                    <p class="els-text els-text--white"><?php echo $project['place']; ?></p>
                 </div>
                 </div> 
                 <?php $i++; } ?> 
@@ -325,7 +329,7 @@ $partners = [
                 </div>
                 <div class="row mainRow">
                     <?php foreach ($partners as $partner) { ?> 
-                    <div class="col-12 col-md-4 col-xl-2">
+                    <div class="col-sm-6 col-md-4 col-xl-2">
                         <img src="<?php echo $partner['img']['src'] ?? ""; ?>" alt="$partner['img']['alt'] ?? "";"/>
                     </div>
                     <?php } ?>
@@ -351,7 +355,7 @@ $partners = [
             <div class="content">
               <img src="<?php echo $member['img']['src'] ?? '' ?>" alt="<?php echo $member['img']['alt'] ?? '' ?>">
               <strong><?php echo $member['firstname'] ?? "" ?></strong>
-              <i><?php echo $member['name'] ?? "" ?></i>
+              <p><?php echo $member['name'] ?? "" ?></p>
               <p><?php echo $member['email'] ?? "" ?></p>
             </div>
             <div class="box-footer">
@@ -389,40 +393,46 @@ $partners = [
                 <div class="container__inner">
                     <div class="row upperRow">
                         <div class="col-12">
-                            <div class="pre-title-lg pre-title--centered">Nos Avantages</div>
-                            <h2 class="title-lg title-lg--centered">Une expertise de la toile confectionnée <br /> jusqu’à l’assemblage <span class="text-nowrap">du produit fini</span></h2>
+                            <div class="pre-title-lg pre-title--centered">Nos Atouts</div>
+                            <h2 class="title-lg title-lg--centered">Nos atouts sont nombreux</h2>
                         </div>
                     </div>
                     <div class="row mainRow">
                         <div class="box-asset col-12 col-md-6 col-xl-4">
-                            <i class="box-asset__icon iconSrp-lightbulb"></i>
+                            <i class="box-asset__icon icon-home"></i>
                             <h3 class="box-asset__title">Innovant</h3>
-                            <p class="box-asset__text">Avec nos produits, la connectivité et la domotique sont à votre portée</p>
+                            <p class="box-asset__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quidem corporis, 
+                                provident dolore cumque porro nostrum</p>
                         </div>
                         <div class="box-asset col-12 col-md-6 col-xl-4">
-                            <i class="box-asset__icon iconSrp-lightbulb"></i>
+                            <i class="box-asset__icon icon-home"></i>
                             <h3 class="box-asset__title">Innovant</h3>
-                            <p class="box-asset__text">Avec nos produits, la connectivité et la domotique sont à votre portée</p>
+                            <p class="box-asset__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quidem corporis, 
+                                provident dolore cumque porro nostrum</p>
                         </div>
                         <div class="box-asset col-12 col-md-6 col-xl-4">
-                            <i class="box-asset__icon iconSrp-lightbulb"></i>
+                            <i class="box-asset__icon icon-home"></i>
                             <h3 class="box-asset__title">Innovant</h3>
-                            <p class="box-asset__text">Avec nos produits, la connectivité et la domotique sont à votre portée</p>
+                            <p class="box-asset__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quidem corporis, 
+                                provident dolore cumque porro nostrum</p>
                         </div>
                         <div class="box-asset col-12 col-md-6 col-xl-4">
-                            <i class="box-asset__icon iconSrp-lightbulb"></i>
+                            <i class="box-asset__icon icon-home"></i>
                             <h3 class="box-asset__title">Innovant</h3>
-                            <p class="box-asset__text">Avec nos produits, la connectivité et la domotique sont à votre portée</p>
+                            <p class="box-asset__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quidem corporis, 
+                                provident dolore cumque porro nostrum</p>
                         </div>
                         <div class="box-asset col-12 col-md-6 col-xl-4">
-                            <i class="box-asset__icon iconSrp-lightbulb"></i>
+                            <i class="box-asset__icon icon-home"></i>
                             <h3 class="box-asset__title">Innovant</h3>
-                            <p class="box-asset__text">Avec nos produits, la connectivité et la domotique sont à votre portée</p>
+                            <p class="box-asset__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quidem corporis, 
+                                provident dolore cumque porro nostrum</p>
                         </div>
                         <div class="box-asset col-12 col-md-6 col-xl-4">
-                            <i class="box-asset__icon iconSrp-lightbulb"></i>
+                            <i class="box-asset__icon icon-home"></i>
                             <h3 class="box-asset__title">Innovant</h3>
-                            <p class="box-asset__text">Avec nos produits, la connectivité et la domotique sont à votre portée</p>
+                            <p class="box-asset__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quidem corporis, 
+                                provident dolore cumque porro nostrum</p>
                         </div>
                     </div>
                 </div>

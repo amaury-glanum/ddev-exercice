@@ -6,29 +6,45 @@
   --scrollbarsize: 17px;
   --screen-size: calc(100vw - var(--scrollbarsize, 0px));
   --header-height: 70px;
-  --footer-height: 70px;
-  --footer-padding: 5px 15px;
   --header-padding: 5px 15px;
   --header-logo-padding: 5px 0;
 
-  --section-padding-y: 40px;
+  // Sections
+  --section-padding-top: 40px;
+  --section-padding-bottom: 40px;
+  --section-margin-top: 0;
+  --section-margin-bottom: 0;
+
+  // titles
+  --pre-title-size: 30px;
+  --title-xl-size: 40px;
+  --title-lg-size: 35px;
+  --text-xs-size: 14px;
+  --text-size: 18px;
+  --text-xl-size: 20px;
+  --font-list-size: 18px;
 
   //--custom-vw: 100vw;
 
+  @include media-breakpoint-up(md) {
+    --title-xl-size: 40px;
+    --title-lg-size: 35px;
+  }
+
   @include media-breakpoint-up(lg) {
     --header-height: 90px;
-    --footer-height: 90px;
     --header-padding: 10px;
-    --footer-padding: 15px;
     --header-logo-padding: 0;
+    --title-xl-size: 35px;
+    --title-lg-size: 30px;
   }
 
   @include media-breakpoint-up(xl) {
     --header-height: 110px;
-    --footer-height: 110px;
-    --footer-padding: 15px;
     --header-padding: 15px;
     --header-logo-padding: 0;
+    --title-xl-size: 40px;
+    --title-lg-size: 35px;
   }
 
   @each $state-color, $value in $state-colors {
@@ -46,16 +62,6 @@
   @each $spacing, $value in $spacings {
     --spacing-#{$spacing}: #{$value};
   }
-
-  //@each $font-title, $font-info in $fonts {
-  //  $font-name: map-get($font-info, 'name');
-  //  $font-serif: map-get($font-info, 'serif');
-  //  @if $font-serif {
-  //    --font-#{$font-title}: #{$font-name}, #{$font-serif};
-  //  } @else {
-  //    --font-#{$font-title}: #{$font-name};
-  //  }
-  //}
 
   @each $size, $value in $font-sizes {
     --font-level-#{$size}: #{$value};

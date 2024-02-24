@@ -11,12 +11,6 @@
 
 .projects-section {
   background: $horizon;
-    
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
 }
 
 .projects-section-inner {
@@ -28,11 +22,11 @@
   background: transparent;
   overflow: hidden;
 
-  @include mQ(960px) {
+  @include media-breakpoint-up(lg) {
     display: flex;
     padding-inline: 0;
   }
-
+  
   .content {
     width: 100%;
     color: $black;
@@ -40,7 +34,7 @@
     z-index: 2;
     margin-bottom: 3em;
 
-    @include mQ(960px) {
+    @include media-breakpoint-up(lg) {
       width: 40%;
       margin-bottom: 0;
     }
@@ -68,7 +62,11 @@
   right: 0px;
   margin: 0 auto;
 
-  @include mQ(960px) {
+  @include media-breakpoint-up(sm) {
+    width: 75%;
+  }
+
+  @include media-breakpoint-up(lg) {
     width: 100%;
     right: -60px;
   }
@@ -91,10 +89,20 @@
   text-align: center;
   opacity: 0.4;
   transition: opacity 0.4s ease-in;
-
+  $base-url: "/assets/img/buildings/building-1.jpg";
+  background: linear-gradient(to bottom, #2c536400, #203a4303, #0f2027cc), url("#{$base-url}") no-repeat 50% 50% / cover; 
+  
+ 
   .swiper__inner-btn {
-    opacity: 0;
+    display: none;
     pointer-events: none;
+  }
+
+  &:hover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   span {
@@ -111,69 +119,26 @@
     color: #fAFAFA;
   }
 
-  h3 {
-    color: #FAFAFA;
-    font-size: 12px;
-    line-height: 1.4;
-    margin-bottom: 0.625rem;
-    letter-spacing: 0.8px;
-    position: relative;
-    word-wrap: none;
-
-    @include mQ(800px) {
-      font-size: 1.8rem;
-    }
-  }
-
-  p {
-    color: #fAFAFA;
-    line-height: 1.6;
-    font-size: 0.8rem;
-  }
-
   .slide-content {
-    border-radius: 0 0 10px 10px;
-    background-color: $primary-05;
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-  }
+    min-height: 35%;
+    padding: 10px 0;
+    border-radius: 0 0 10px 10px;
+    background-color: $primary-08;
+  
 
-  &--num1 {
-    background: #0f2027;
-    background: linear-gradient(to bottom, #2c536400, #203a4303, #0f2027cc),
-      url("/assets/img/ecole/AMORY\ 11.jpg")
-        no-repeat 50% 50% / cover;
+    h3, p {
+      padding-left: 2px;
+      padding-right: 2px;
+      text-overflow:ellipsis;
+      color: $white;
+    }
   }
-
-  &--num2 {
-    background: linear-gradient(to bottom, #2c536400, #203a4303, #0f2027cc),
-      url("/assets/img/ecole/AMORY\ 11.jpg")
-        no-repeat 50% 50% / cover;
-  }
-
-  &--num3 {
-    background: url("/assets/img/ecole/AMORY\ 7.jpg")
-      no-repeat 50% 50% / cover;
-  }
-
-  &--num4 {
-    background: url("/assets/img/ecole/AMORY\ 8.jpg")
-      no-repeat 50% 50% / cover;
-  }
-
-  &--num5 {
-    background: url("/assets/img/ecole/AMORY\ 9.jpg")
-      no-repeat 50% 50% / cover;
-  }
-
-  &--num6 {
-    background: linear-gradient(to bottom, #2c536400, #203a4303, #0f2027cc),
-      url("/assets/img/ecole/AMORY\ 10.jpg")
-        no-repeat 50% 50% / cover;
-  }
+  
 }
 
 .swiper-slide-active {
@@ -181,14 +146,23 @@
   opacity: 1;
 
   .swiper__inner-btn {
-    pointer-events: auto;
-    opacity: 1;
+    z-index: 1999;
+    pointer-events: none;
+    opacity: 0;
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: opacity 0.35s ease-in-out;
+  }
+
+  &:hover {
+    .swiper__inner-btn  {
+      opacity: 1;
+      pointer-events: auto
+    }
   }
 }
 
@@ -206,7 +180,7 @@
     background: $primary;
 
     &-active {
-      background: #fff;
+      background: $primary;
     }
   }
 }
