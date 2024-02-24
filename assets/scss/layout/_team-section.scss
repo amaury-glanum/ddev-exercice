@@ -19,21 +19,25 @@
     } 
     
     
-    .box{
+    .box {
         position: relative;
-        min-width: 250px;
-        min-height: 350px;
+        width: 350px;
+        height: 350px;
         background-color: #fff;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         padding: 20px;
-        margin: 20px;
         position: relative;
         border-radius: 10px;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
         transition: background-color 0.3s ease-in;
+
+        @include media-breakpoint-down(sm) {
+            width: 100%;
+            flex: 1;
+        }
 
         &:hover {
             background-color: $primary;
@@ -87,7 +91,7 @@
 
     .content p{
         font-size: 0.9rem;
-        color: #7a7a7a;
+        color: $primary;
         margin: 4px 0px 10px 0px;
     }
   

@@ -7261,7 +7261,6 @@ body.menu-opened .mainHeader .burger-menu .line3 {
 }
 
 .value-cards {
-  margin-top: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -7279,7 +7278,6 @@ body.menu-opened .mainHeader .burger-menu .line3 {
 }
 @media (min-width: 768px) {
   .value-cards {
-    margin-top: 150px;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
@@ -7392,8 +7390,8 @@ body.menu-opened .mainHeader .burger-menu .line3 {
 }
 .team-section .box {
   position: relative;
-  min-width: 250px;
-  min-height: 350px;
+  width: 350px;
+  height: 350px;
   background-color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7409,13 +7407,20 @@ body.menu-opened .mainHeader .burger-menu .line3 {
       -ms-flex-align: center;
           align-items: center;
   padding: 20px;
-  margin: 20px;
   position: relative;
   border-radius: 10px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
           box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   -webkit-transition: background-color 0.3s ease-in;
   transition: background-color 0.3s ease-in;
+}
+@media (max-width: 575.98px) {
+  .team-section .box {
+    width: 100%;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
 }
 .team-section .box:hover {
   background-color: #004aad;
@@ -7472,7 +7477,7 @@ body.menu-opened .mainHeader .burger-menu .line3 {
 }
 .team-section .content p {
   font-size: 0.9rem;
-  color: #7a7a7a;
+  color: #004aad;
   margin: 4px 0px 10px 0px;
 }
 .team-section .box-footer {
@@ -7484,11 +7489,6 @@ body.menu-opened .mainHeader .burger-menu .line3 {
 
 .projects-section {
   background: hsl(215, 51%, 80%);
-}
-.projects-section ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
 }
 
 .projects-section-inner {
@@ -7504,7 +7504,7 @@ body.menu-opened .mainHeader .burger-menu .line3 {
   background: transparent;
   overflow: hidden;
 }
-@media screen and (min-width: 960px) {
+@media (min-width: 992px) {
   .projects-section-inner {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -7519,7 +7519,7 @@ body.menu-opened .mainHeader .burger-menu .line3 {
   z-index: 2;
   margin-bottom: 3em;
 }
-@media screen and (min-width: 960px) {
+@media (min-width: 992px) {
   .projects-section-inner .content {
     width: 40%;
     margin-bottom: 0;
@@ -7545,7 +7545,12 @@ body.menu-opened .mainHeader .burger-menu .line3 {
   right: 0px;
   margin: 0 auto;
 }
-@media screen and (min-width: 960px) {
+@media (min-width: 576px) {
+  .swiper-container {
+    width: 75%;
+  }
+}
+@media (min-width: 992px) {
   .swiper-container {
     width: 100%;
     right: -60px;
@@ -7578,10 +7583,28 @@ body.menu-opened .mainHeader .burger-menu .line3 {
   opacity: 0.4;
   -webkit-transition: opacity 0.4s ease-in;
   transition: opacity 0.4s ease-in;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(44, 83, 100, 0)), color-stop(rgba(32, 58, 67, 0.0117647059)), to(rgba(15, 32, 39, 0.8))), url("/assets/img/buildings/building-1.jpg") no-repeat 50% 50%/cover;
+  background: -webkit-linear-gradient(top, rgba(44, 83, 100, 0), rgba(32, 58, 67, 0.0117647059), rgba(15, 32, 39, 0.8)), url("/assets/img/buildings/building-1.jpg") no-repeat 50% 50%/cover;
+  background: linear-gradient(to bottom, rgba(44, 83, 100, 0), rgba(32, 58, 67, 0.0117647059), rgba(15, 32, 39, 0.8)), url("/assets/img/buildings/building-1.jpg") no-repeat 50% 50%/cover;
 }
 .swiper-slide .swiper__inner-btn {
-  opacity: 0;
+  display: none;
   pointer-events: none;
+}
+.swiper-slide:hover {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .swiper-slide span {
   display: inline-block;
@@ -7596,28 +7619,7 @@ body.menu-opened .mainHeader .burger-menu .line3 {
   left: 0;
   color: #fAFAFA;
 }
-.swiper-slide h3 {
-  color: #FAFAFA;
-  font-size: 12px;
-  line-height: 1.4;
-  margin-bottom: 0.625rem;
-  letter-spacing: 0.8px;
-  position: relative;
-  word-wrap: none;
-}
-@media screen and (min-width: 800px) {
-  .swiper-slide h3 {
-    font-size: 1.8rem;
-  }
-}
-.swiper-slide p {
-  color: #fAFAFA;
-  line-height: 1.6;
-  font-size: 0.8rem;
-}
 .swiper-slide .slide-content {
-  border-radius: 0 0 10px 10px;
-  background-color: rgba(0, 74, 173, 0.5);
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -7625,31 +7627,16 @@ body.menu-opened .mainHeader .burger-menu .line3 {
       -ms-transform: translateX(-50%);
           transform: translateX(-50%);
   width: 100%;
+  min-height: 35%;
+  padding: 10px 0;
+  border-radius: 0 0 10px 10px;
+  background-color: rgba(0, 74, 173, 0.8);
 }
-.swiper-slide--num1 {
-  background: #0f2027;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(44, 83, 100, 0)), color-stop(rgba(32, 58, 67, 0.0117647059)), to(rgba(15, 32, 39, 0.8))), url("/assets/img/ecole/AMORY 11.jpg") no-repeat 50% 50%/cover;
-  background: -webkit-linear-gradient(top, rgba(44, 83, 100, 0), rgba(32, 58, 67, 0.0117647059), rgba(15, 32, 39, 0.8)), url("/assets/img/ecole/AMORY 11.jpg") no-repeat 50% 50%/cover;
-  background: linear-gradient(to bottom, rgba(44, 83, 100, 0), rgba(32, 58, 67, 0.0117647059), rgba(15, 32, 39, 0.8)), url("/assets/img/ecole/AMORY 11.jpg") no-repeat 50% 50%/cover;
-}
-.swiper-slide--num2 {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(44, 83, 100, 0)), color-stop(rgba(32, 58, 67, 0.0117647059)), to(rgba(15, 32, 39, 0.8))), url("/assets/img/ecole/AMORY 11.jpg") no-repeat 50% 50%/cover;
-  background: -webkit-linear-gradient(top, rgba(44, 83, 100, 0), rgba(32, 58, 67, 0.0117647059), rgba(15, 32, 39, 0.8)), url("/assets/img/ecole/AMORY 11.jpg") no-repeat 50% 50%/cover;
-  background: linear-gradient(to bottom, rgba(44, 83, 100, 0), rgba(32, 58, 67, 0.0117647059), rgba(15, 32, 39, 0.8)), url("/assets/img/ecole/AMORY 11.jpg") no-repeat 50% 50%/cover;
-}
-.swiper-slide--num3 {
-  background: url("/assets/img/ecole/AMORY 7.jpg") no-repeat 50% 50%/cover;
-}
-.swiper-slide--num4 {
-  background: url("/assets/img/ecole/AMORY 8.jpg") no-repeat 50% 50%/cover;
-}
-.swiper-slide--num5 {
-  background: url("/assets/img/ecole/AMORY 9.jpg") no-repeat 50% 50%/cover;
-}
-.swiper-slide--num6 {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(44, 83, 100, 0)), color-stop(rgba(32, 58, 67, 0.0117647059)), to(rgba(15, 32, 39, 0.8))), url("/assets/img/ecole/AMORY 10.jpg") no-repeat 50% 50%/cover;
-  background: -webkit-linear-gradient(top, rgba(44, 83, 100, 0), rgba(32, 58, 67, 0.0117647059), rgba(15, 32, 39, 0.8)), url("/assets/img/ecole/AMORY 10.jpg") no-repeat 50% 50%/cover;
-  background: linear-gradient(to bottom, rgba(44, 83, 100, 0), rgba(32, 58, 67, 0.0117647059), rgba(15, 32, 39, 0.8)), url("/assets/img/ecole/AMORY 10.jpg") no-repeat 50% 50%/cover;
+.swiper-slide .slide-content h3, .swiper-slide .slide-content p {
+  padding-left: 2px;
+  padding-right: 2px;
+  text-overflow: ellipsis;
+  color: #fff;
 }
 
 .swiper-slide-active {
@@ -7657,8 +7644,9 @@ body.menu-opened .mainHeader .burger-menu .line3 {
   opacity: 1;
 }
 .swiper-slide-active .swiper__inner-btn {
-  pointer-events: auto;
-  opacity: 1;
+  z-index: 1999;
+  pointer-events: none;
+  opacity: 0;
   height: 100%;
   width: 100%;
   display: -webkit-box;
@@ -7674,6 +7662,12 @@ body.menu-opened .mainHeader .burger-menu .line3 {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.35s ease-in-out;
+}
+.swiper-slide-active:hover .swiper__inner-btn {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .swiper-pagination {
@@ -7690,7 +7684,7 @@ body.menu-opened .mainHeader .burger-menu .line3 {
   background: #004aad;
 }
 .swiper-pagination-bullet-active {
-  background: #fff;
+  background: #004aad;
 }
 
 .button {
@@ -7832,20 +7826,10 @@ body.menu-opened .mainHeader .burger-menu .line3 {
             flex-direction: row;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
   }
-}
-.text-cards-horizon__cardsWrapper .box {
-  cursor: pointer;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  margin: 0;
 }
 
 .modal {
@@ -8106,7 +8090,7 @@ body.menu-opened .mainHeader .burger-menu .line3 {
   row-gap: 30px;
 }
 .items-rows .mainRow div {
-  max-width: 250px;
+  max-width: 150px;
 }
 .items-rows .mainRow div img {
   margin: 0 auto;

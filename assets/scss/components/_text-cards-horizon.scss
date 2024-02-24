@@ -6,7 +6,6 @@
     }
 
     &__textWrapper {
-        
         .title {
           @include media-breakpoint-up(lg) {
             padding-right: 20%;
@@ -23,26 +22,15 @@
       }
     
       &__cardsWrapper {
-        
         display: flex;
         flex-direction: column;
         row-gap: 20px;
         column-gap: 10px;
-
+   
         @include media-breakpoint-up(md) {
             flex-direction: row;
             flex-wrap: wrap;
-            justify-content: space-between;
             align-items: center;
         }
-
-        .box {
-            cursor: pointer;
-            flex: 1;
-            margin: 0;
-        }
-
-      }
-
-    
+      }   
 }

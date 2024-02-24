@@ -10,7 +10,6 @@
 }
 
 .value-cards {
-    margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,7 +17,6 @@
     row-gap: 20px;
     
     @include media-breakpoint-up(md) {
-        margin-top: 150px;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;

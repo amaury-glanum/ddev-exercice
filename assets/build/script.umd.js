@@ -246,7 +246,7 @@ var getSwiperJs = function getSwiperJs() {
   var swiper = new Swiper(".swiper", {
     effect: "coverflow",
     grabCursor: true,
-    spaceBetween: 30,
+    spaceBetween: 20,
     centeredSlides: false,
     coverflowEffect: {
       rotate: 0,
@@ -271,17 +271,23 @@ var getSwiperJs = function getSwiperJs() {
       thresholdDelta: 70
     },
     breakpoints: {
-      460: {
-        slidesPerView: 3
+      576: {
+        slidesPerView: 1
       },
       768: {
+        slidesPerView: 1
+      },
+      992: {
+        slidesPerView: 2
+      },
+      1200: {
+        slidesPerView: 2
+      },
+      1440: {
         slidesPerView: 3
       },
-      1024: {
+      1700: {
         slidesPerView: 3
-      },
-      1600: {
-        slidesPerView: 3.6
       }
     }
   });
@@ -315,6 +321,12 @@ gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.registerPlugin(gsap_ScrollTrigger__WEBPAC
 
 
 window.addEventListener('DOMContentLoaded', function (event) {
+  var swiperSlides = document.querySelectorAll('.swiper-slide');
+  swiperSlides.forEach(function (slide) {
+    console.log('slide', slide);
+    var imageId = slide.getAttribute('data-imageid');
+    slide.style.background = "linear-gradient(to bottom, #2c536400, #203a4303, #0f2027cc), url('" + imageId + "') no-repeat 50% 50% / cover";
+  });
   (0,_components_swiper__WEBPACK_IMPORTED_MODULE_2__.getSwiperJs)();
   (0,_components_modal__WEBPACK_IMPORTED_MODULE_3__.modalToggle)();
   (0,_components_scroll__WEBPACK_IMPORTED_MODULE_6__.scrollToId)();

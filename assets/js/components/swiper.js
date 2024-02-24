@@ -3,7 +3,7 @@ export const getSwiperJs = () => {
     var swiper = new Swiper(".swiper", {
         effect: "coverflow",
         grabCursor: true,
-        spaceBetween: 30,
+        spaceBetween: 20,
         centeredSlides: false,
         coverflowEffect: {
           rotate: 0,
@@ -27,18 +27,25 @@ export const getSwiperJs = () => {
         mousewheel: {
           thresholdDelta: 70
         },
+
         breakpoints: {
-          460: {
-            slidesPerView: 3
+          576: {
+            slidesPerView: 1
           },
           768: {
+            slidesPerView: 1
+          },
+          992: {
+            slidesPerView: 2
+          },
+          1200: {
+            slidesPerView: 2
+          },
+          1440 : {
             slidesPerView: 3
           },
-          1024: {
+          1700: {
             slidesPerView: 3
-          },
-          1600: {
-            slidesPerView: 3.6
           }
         }
       });
