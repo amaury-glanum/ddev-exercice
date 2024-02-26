@@ -55,3 +55,39 @@
   }
 }
 
+.scroll-top-button {
+  --size: 60px;
+
+  position: fixed;
+  z-index: 9999;
+  right: 20px;
+  bottom: 20px;
+  width: var(--size);
+  height: var(--size);
+  transition: opacity 0.3s ease-in;
+  border: 2px solid $primary;
+  border-radius: calc(var(--size) / 2);
+  opacity: 0;
+  background: $btn-color;
+  color: $primary;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $primary-darken;
+  }
+
+  svg {
+    width: 30px;
+    height: 30px;
+
+    @media (min-width: 900px) {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  @media (min-width: 900px) {
+    width: 40px;
+    height: 40px;
+  }
+}

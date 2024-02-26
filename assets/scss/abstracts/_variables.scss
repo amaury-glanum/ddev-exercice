@@ -137,3 +137,35 @@ $container-max-widths: (
   xxl: 1320px,
   fhd: 1440px
 );
+
+$z-index-max: 3;
+$z-index-high: 2;
+$z-index-medium: 1;
+$z-index-normal: 0;
+$z-index-less: -1;
+$z-index-max-less: -2;
+
+$contact-us-br: 30px 0 0 30px;
+
+// radius
+$border-radius-sm: 5px;
+$border-radius-md: 10px;
+$border-radius-xl: 20px;
+
+
+//general colors
+$dci-neutral-bg: #ffffff;
+$dci-dark-blue: #142cac;
+$dci-dark-black: #000000;
+$dci-medium-grey: #cccccc;
+$dci-beige: #f4ece4;
+
+// text colors
+$dci-title-blue: $dci-dark-blue;
+$text-dark-color: $dci-dark-black;
+$text-light-color: $dci-neutral-bg;
+
+// btn colors
+$btn-color: $dci-dark-blue;
+$btn-color-hover: #227ed4;
+$bg-color: $dci-neutral-bg;
