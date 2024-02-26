@@ -173,7 +173,7 @@ $partners = [
                             </ul>
                         </div>
                         <div class="col-auto ms-lg-5">
-                            <button class="button button--secondary">Nous contacter</button>
+                            <a href="#contact" class="button button--secondary">Nous contacter</a>
                         </div>
                     </div>
                 </nav>
@@ -201,7 +201,7 @@ $partners = [
                     <div class="pre-title">Association ELS - Togo</div>
                     <div class="title">Nous aidons à développer l'éducation, les loisirs et la santé.</div>
                     <p class="els-text-lg">Nous pensons que chacun a le droit d'être éduqué, soigné et protégé. Nous apportons notre pierre pour que chacun puisse vivre dans un environnement sain.</p>
-                    <button class="button">Je veux m'engager</button>
+                    <a href="#contact" class="button">Je veux m'engager</a>
                 </div>
                 <div class="col-12 col-lg-6 ps-lg-5 image-text__imageWrapper">
                     <img src="assets/img/livre-ecole.jpg" alt="école" />
@@ -256,6 +256,7 @@ $partners = [
 </div>
     </section>
 
+<?php /*
 <!--<section id="nos-partenaires" class="items-rows">-->
 <!--            <div class="container">-->
 <!--                <div class="row">-->
@@ -272,7 +273,7 @@ $partners = [
 <!--                </div>-->
 <!--            </div>-->
 <!--        </section>-->
-
+*/ ?>
 <section id="mission" class="mission-section">
     <div class="container">
         <div class="row">
