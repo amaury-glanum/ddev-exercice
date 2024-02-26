@@ -32,55 +32,6 @@ a {
   }
 }
 
-.els-text-link {
-  margin: 0;
-  transition: color 200ms ease-in-out;
-  color: $gray-700;
-  font-size: 15px;
-  font-weight: $fw-light;
-
-  @include on-event {
-    color: $black;
-    text-decoration: none;
-  }
-}
-
-.els-text-xs {
-  font-family: $font-montserrat;
-  color: $black;
-  font-size: 16px;
-  font-weight: $fw-light;
-  line-height: 1.22;
-
-  @include media-breakpoint-only(md) {
-    font-size: 16px;
-  } 
-
-  &--light {
-    color: $white;
-  }
-
-  &--blue {
-    color: $primary;
-  }
-}
-
-p {
-  color: $black;
-  font-size: 18px;
-  font-weight: $fw-light;
-  line-height: 1.22;
-
-  @include media-breakpoint-only(md) {
-    font-size: 20px;
-  }
-}
-
-.title {
-  font-family: $font-title;
-  font-size: 35px;
-}
-
 .pre-title {
   position: relative;
   margin-bottom: 20px;
@@ -93,39 +44,39 @@ p {
   &::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -10px;
     left: 0;
-    width: 96px;
-    height: 1px;
-    background-color: $black;
+    width: 75px;
+    height: 5px;
+    border-radius: 100px;
+    background-color: $primary-08;
   }
-}
 
-.pre-title--light {
-  position: relative;
-  margin-bottom: 20px;
-  padding-bottom: 6px;
-  color: $white;
-  font-family: $font-pretitle;
-  font-size: 30px;
-  line-height: 1.2;
+  &--light {
+    color: $white;
 
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 96px;
-    height: 1px;
-    background-color: $white;
+
+    &::after {
+      content: '';
+      background-color: $white;
+    }
   }
-}
 
-.text-light-lg {
-  color: $white;
-  font-family: $font-text;
-  font-size: 18px;
-  line-height: 1.5;
+  &--no-line {
+    &::after {
+      content: none;
+      background-color: transparent;
+    }
+  }
+
+  &--centered {
+    text-align: center;
+    &::after {
+      content: '';
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
 }
 
 .title {
@@ -147,56 +98,73 @@ p {
     font-size: 35px;
   }
 
-  .title-color {
-    color: $primary;
+  &--light {
+    color: $white;
   }
+
+  &--secondary {
+    color: $secondary;
+  }
+}
+
+
+p {
+  color: $black;
+  font-size: 18px;
+  font-weight: $fw-light;
+  line-height: 1.22;
+
+  @include media-breakpoint-only(md) {
+    font-size: 20px;
+  }
+}
+
+.els-text {
+  font-family: $font-montserrat;
+  color: $black;
+  font-size: 16px;
+  font-weight: $fw-light;
 
   &--light {
     color: $white;
   }
-}
 
-.els-pre-title {
-  position: relative;
-  margin-bottom: 20px;
-  padding-bottom: 2px;
-  color: $black;
-  font-family: $font-pretitle;
-  font-size: 30px;
-  line-height: 1.2;
+  &--blue {
+    color: $primary;
+  }
 
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 96px;
-    height: 1px;
-    background-color: $black;
+  &--centered {
+    text-align: center;
   }
 }
 
-.els-title {
-  color: $black;
-  font-family: $font-title;
-  font-size: 30px;
-  font-weight: $fw-bold;
-  line-height: 1.2;
+.els-text-xs {
+  @extend .els-text;
+  font-size: 16px;
+  line-height: 1.22;
 
-  @include media-breakpoint-up(md) {
-    font-size: 35px;
+  @include media-breakpoint-only(md) {
+    font-size: 16px;
   }
+}
 
-  @include media-breakpoint-up(lg) {
-    font-size: 30px;
-  }
+.els-text-lg {
+  @extend  .els-text;
+  font-size: 18px;
+  line-height: 1.5;
+}
 
-  @include media-breakpoint-up(xl) {
-    font-size: 35px;
-  }
 
-  &__secondary {
-   color: $secondary;
+.els-text-link {
+  margin: 0;
+  transition: color 200ms ease-in-out;
+  color: $gray-700;
+  font-size: 15px;
+  font-weight: $fw-light;
+
+  @include on-event {
+    color: $black;
+    text-decoration: none;
   }
 }
 
@@ -221,7 +189,7 @@ ul.els-list {
       background-color: $primary;
       border-radius: 100px;
     }
-    
+
   }
 
   &--light {

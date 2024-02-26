@@ -1,4 +1,4 @@
-<?php 
+<?php
 $members = [
     [
         'name' => 'Kpeglo Bessou',
@@ -187,41 +187,94 @@ $partners = [
     </header>
 
 
-    <main id="homepage" class="page-home">
-        <section id="hero" class="image-text">
-            <div class="container">
-                <div class="row mainRow">
-                    <div class="col-12 col-lg-6 image-text__textWrapper">
-                        <div class="pre-title">Association ELS - Togo</div>
-                        <div class="title">Nous aidons à développer l'éducation, les loisirs et la santé.</div>
-                        <p>Nous pensons que chacun a le droit d'être éduqué, soigné et protégé. Nous apportons notre pierre pour que chacun puisse vivre dans un environnement sain.</p>
-                        <button class="button">Je veux m'engager</button>
-                    </div>
-                    <div class="col-12 col-lg-6 ps-lg-5 image-text__imageWrapper">
-                        <img src="assets/img/livre-ecole.jpg" alt="école" />
-                    </div>
+<main id="homepage" class="page-home">
+    <section id="hero" class="image-text">
+        <div class="container">
+            <div class="row mainRow">
+                <div class="col-12 col-lg-6 image-text__textWrapper">
+                    <div class="pre-title">Association ELS - Togo</div>
+                    <div class="title">Nous aidons à développer l'éducation, les loisirs et la santé.</div>
+                    <p class="els-text-lg">Nous pensons que chacun a le droit d'être éduqué, soigné et protégé. Nous apportons notre pierre pour que chacun puisse vivre dans un environnement sain.</p>
+                    <button class="button">Je veux m'engager</button>
+                </div>
+                <div class="col-12 col-lg-6 ps-lg-5 image-text__imageWrapper">
+                    <img src="assets/img/livre-ecole.jpg" alt="école" />
                 </div>
             </div>
-        </section>
-        <section id="mission" class="mission-section">
+        </div>
+    </section>
+
+    <section id="nos-projets" class="projects-section">
+        <div class="projects-section-inner container">
+        <div class="content">
+            <div class="image-text__textWrapper">
+                <div class="pre-title">Nos projets</div>
+                <div class="title">Découvrez nos projets.</div>
+                <p>Nos projets incarnent la force et la diversité de nos convictions. Nous nous engageons avec les populations locales afin d'avancer ensemble.
+                    Nous mettons un point d'honneur à la coopération et l'autonomisation.</p>
+            </div>
+        </div>
+        <div class="swiper-container">
+        <div class="swiper">
+        <div class="swiper-wrapper">
+            <?php
+            if(!empty($projects)) {
+                $i = 1;
+                foreach($projects as $project) { ?>
+                <div
+                    class="swiper-slide"
+                    data-imageid="<?php echo $project['img'] ?>"
+                    >
+                <span><?php echo $project['date']; ?></span>
+                <div class="swiper__inner-btn">
+                    <button
+                    data-typebtn="project-btn"
+                    data-title="<?php echo $project['title'] ?>"
+                    data-description="<?php echo $project['description'] ?>"
+                    data-slideid="slide-btn-<?php echo strval($i) ?>"
+                    class="button button--secondary button--radius-light modal-open-btn">
+                    En savoir +
+                    </button>
+                </div>
+                <div class="slide-content">
+                    <h3 class="els-title"><?php echo $project['title']; ?></h3>
+                    <p class="els-text els-text--white"><?php echo $project['place']; ?></p>
+                </div>
+                </div>
+                <?php $i++; } ?>
+            <?php } ?>
+        </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+    </section>
+
+<!--<section id="nos-partenaires" class="items-rows">-->
+<!--            <div class="container">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-12">-->
+<!--                        <div class="pre-title">Nos partenaires</div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="row mainRow">-->
+<!--                    --><?php //foreach ($partners as $partner) { ?>
+<!--                    <div class="col-sm-6 col-md-4 col-xl-2">-->
+<!--                        <img src="--><?php //echo $partner['img']['src'] ?? ""; ?><!--" alt="$partner['img']['alt'] ?? "";"/>-->
+<!--                    </div>-->
+<!--                    --><?php //} ?>
+<!--                </div>-->
+<!--            </div>-->
+<!--        </section>-->
+
+<section id="mission" class="mission-section">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h2 class="pre-title--light">Notre Mission</h2>
-                <p class="text-light-lg">Nous contribuons à l'amélioration du cadre de vie des personnes. Pour ce faire nous promouvons une éducation de qualité et inclusive.</p>
-                <p class="text-light-lg">Nos champs d'action:</p>
-                <ul class="els-list els-list--light">
-                    <li class="els-text-xs els-text-xs--light">Sauver des vies</li>
-                    <li class="els-text-xs els-text-xs--light">Protéger l'environnement</li>
-                    <li class="els-text-xs els-text-xs--light">Lutter contre la faim</li>
-                    <li class="els-text-xs--light">Offrir des moments de divertissements à tous</li>
-                </ul>
+                <h2 class="pre-title pre-title--light pre-title--centered">Notre Mission & nos valeurs</h2>
+                <p class="my-5 els-text-lg els-text--light els-text--centered">Nous contribuons à l'amélioration du cadre de vie des personnes. <br/> Pour ce faire nous promouvons une éducation de qualité et inclusive.</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 text-center">
-                <h2 class="pre-title--light">Nos valeurs</h2>
-            </div>
         <div class="row value-cards">
             <!-- Carte 1 -->
             <div class="col-md-4">
@@ -231,19 +284,19 @@ $partners = [
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Dignité</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p class="card-text">Nous respectons chaque personne et groupe que nous aidons. Nous préférons ainsi accompagner plutôt qu'assister au nom de la dignité.</p>
                     </div>
                 </div>
             </div>
             <!-- Carte 2 -->
             <div class="col-md-4">
                 <div class="card">
-                <div class="card-image">
+                    <div class="card-image">
                         <img src="/assets/img/icons/5236.jpg" alt="mains assemblant un puzzle" />
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Amour</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p class="card-text">Nos engagements se font grâce à la formidable force que nous donne l'amour.</p>
                     </div>
                 </div>
             </div>
@@ -255,7 +308,7 @@ $partners = [
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Franchise</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p class="card-text">Nous valorisons l'authenticité et l'intégrité. Nous mettons un point d'honneur à être transparent avec nos bénévoles, nos donateurs et nos parties prenantes.</p>
                     </div>
                 </div>
             </div>
@@ -267,89 +320,27 @@ $partners = [
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Partage</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p class="card-text">Chaque mission est l'occasion de partager des choses ou des mots avec autrui peu importe d'où il vient. Ce partage s'incarne dans l'échange, la rencontre, le don.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </section>
-<section id="nos-projets" class="projects-section">
-<div class="projects-section-inner container">
-  <div class="content">
-            <div class="image-text__textWrapper">
-                <div class="pre-title">Nos projets</div>
-                <div class="title">Découvrez nos projets.</div>
-                <p>Nos projets incarnent la force et la diversité de nos convictions. Nous nous engageons avec les populations locales afin d'avancer ensemble. 
-                    Nous mettons un point d'honneur à la coopération et l'autonomisation.</p>
-            </div>
-  </div>
-    <div class="swiper-container">
-        <div class="swiper">
-        <div class="swiper-wrapper">
-            <?php 
-            if(!empty($projects)) {
-                $i = 1;
-                foreach($projects as $project) { ?> 
-                <div 
-                    class="swiper-slide"
-                    data-imageid="<?php echo $project['img'] ?>"
-                    >
-                <span><?php echo $project['date']; ?></span>
-                <div class="swiper__inner-btn">
-                    <button 
-                    data-typebtn="project-btn" 
-                    data-title="<?php echo $project['title'] ?>" 
-                    data-description="<?php echo $project['description'] ?>"
-                    data-slideid="slide-btn-<?php echo strval($i) ?>" 
-                    class="button button--secondary button--radius-light modal-open-btn">
-                    En savoir +
-                    </button>
-                </div>
-                <div class="slide-content">
-                    <h3 class="els-title"><?php echo $project['title']; ?></h3>
-                    <p class="els-text els-text--white"><?php echo $project['place']; ?></p>
-                </div>
-                </div> 
-                <?php $i++; } ?> 
-            <?php } ?> 
-        </div>
-        </div>
-        <div class="swiper-pagination"></div>
-    </div>
-</div>
 
-
-<section id="nos-partenaires" class="items-rows">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="pre-title">Nos partenaires</div>
-                    </div>
-                </div>
-                <div class="row mainRow">
-                    <?php foreach ($partners as $partner) { ?> 
-                    <div class="col-sm-6 col-md-4 col-xl-2">
-                        <img src="<?php echo $partner['img']['src'] ?? ""; ?>" alt="$partner['img']['alt'] ?? "";"/>
-                    </div>
-                    <?php } ?>
-                </div>
-            </div>
-        </section>
 
 <section id="qui-sommes-nous" class="text-cards-horizon team-section">
   <div class="container">
       <div class="row mainRow">
           <div class="col-12 text-cards-horizon__textWrapper">
-              <div class="pre-title">Notre équipe</div>
-              <div class="title">Une équipe engagée pour rendre le monde meilleur</div>
-              <p>Depuis 2010, nous nous sommes engagées ensemble et avons bâti pierre par pierre cette association. Découvrez le parcours des membres fondateurs.</p>
+              <div class="pre-title pre-title--centered">Notre équipe</div>
+              <div class="title title--centered">Une équipe engagée pour rendre le monde meilleur</div>
+              <p class="els-text-lg els-text-centered">Depuis 2010, nous nous sommes engagées ensemble et avons bâti pierre par pierre cette association. Découvrez le parcours des membres fondateurs.</p>
           </div>
           <div class="col-12 text-cards-horizon__cardsWrapper">
-        <?php 
+        <?php
         if(!empty($members))
         foreach($members as $member) { ?>
-          <div data-typebtn="team-btn" class="box modal-open-btn" 
+          <div data-typebtn="team-btn" class="box modal-open-btn"
                 data-title="<?php echo $member['name'] . $member['firstname'] ?>">
             <div class="top-bar"></div>
             <div class="content">
@@ -368,77 +359,79 @@ $partners = [
   </div>
 </section>
 
-<section id="nos-avantages" class="nos-avantages boxed section--centered">
-    <div class="container">
+<?php /*
+<!---->
+<!--<section id="nos-valeurs" class="nos-avantages boxed section--centered">-->
+<!--    <div class="container">-->
+<!---->
+<!--        <div class="boxedWrapper">-->
+<!--            <div class="els-pre-title">Nos valeurs</div>-->
+<!---->
+<!--            <div class="row mainRow">-->
+<!--            --><?php //foreach($items as $item) { ?>
+<!--                <div class="col-12 col-md-6 col-xl-4">-->
+<!--                    <div class="item__icon"><img src="./assets/img/icons/handshake.png" alt="handshake by @lakonicon" /></div>-->
+<!--                    <div class="item__title">--><?php //echo $item['title']; ?><!--</div>-->
+<!--                    <p class="item__text">--><?php //echo $item['description']; ?><!--</p>-->
+<!--                </div>-->
+<!--            --><?php //} ?>
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 
-        <div class="boxedWrapper">
-            <div class="els-pre-title">Nos valeurs</div>
-            <div class="els-title">Découvrez nos valeurs</div>
+<!--<section id="nos-avantages">-->
+<!--            <div class="container">-->
+<!--                <div class="container__inner">-->
+<!--                    <div class="row upperRow">-->
+<!--                        <div class="col-12">-->
+<!--                            <div class="pre-title-lg pre-title--centered">Nos Atouts</div>-->
+<!--                            <h2 class="title-lg title-lg--centered">Nos atouts sont nombreux</h2>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row mainRow">-->
+<!--                        <div class="box-asset col-12 col-md-6 col-xl-4">-->
+<!--                            <i class="box-asset__icon icon-home"></i>-->
+<!--                            <h3 class="box-asset__title">Innovant</h3>-->
+<!--                            <p class="box-asset__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quidem corporis,-->
+<!--                                provident dolore cumque porro nostrum</p>-->
+<!--                        </div>-->
+<!--                        <div class="box-asset col-12 col-md-6 col-xl-4">-->
+<!--                            <i class="box-asset__icon icon-home"></i>-->
+<!--                            <h3 class="box-asset__title">Innovant</h3>-->
+<!--                            <p class="box-asset__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quidem corporis,-->
+<!--                                provident dolore cumque porro nostrum</p>-->
+<!--                        </div>-->
+<!--                        <div class="box-asset col-12 col-md-6 col-xl-4">-->
+<!--                            <i class="box-asset__icon icon-home"></i>-->
+<!--                            <h3 class="box-asset__title">Innovant</h3>-->
+<!--                            <p class="box-asset__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quidem corporis,-->
+<!--                                provident dolore cumque porro nostrum</p>-->
+<!--                        </div>-->
+<!--                        <div class="box-asset col-12 col-md-6 col-xl-4">-->
+<!--                            <i class="box-asset__icon icon-home"></i>-->
+<!--                            <h3 class="box-asset__title">Innovant</h3>-->
+<!--                            <p class="box-asset__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quidem corporis,-->
+<!--                                provident dolore cumque porro nostrum</p>-->
+<!--                        </div>-->
+<!--                        <div class="box-asset col-12 col-md-6 col-xl-4">-->
+<!--                            <i class="box-asset__icon icon-home"></i>-->
+<!--                            <h3 class="box-asset__title">Innovant</h3>-->
+<!--                            <p class="box-asset__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quidem corporis,-->
+<!--                                provident dolore cumque porro nostrum</p>-->
+<!--                        </div>-->
+<!--                        <div class="box-asset col-12 col-md-6 col-xl-4">-->
+<!--                            <i class="box-asset__icon icon-home"></i>-->
+<!--                            <h3 class="box-asset__title">Innovant</h3>-->
+<!--                            <p class="box-asset__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quidem corporis,-->
+<!--                                provident dolore cumque porro nostrum</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </section>-->
 
-            <div class="row mainRow">
-            <?php foreach($items as $item) { ?>
-                <div class="col-12 col-md-6 col-xl-4">
-                    <div class="item__icon"><img src="./assets/img/icons/handshake.png" alt="handshake by @lakonicon" /></div>
-                    <div class="item__title"><?php echo $item['title']; ?></div>
-                    <p class="item__text"><?php echo $item['description']; ?></p>
-                </div>
-            <?php } ?>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="nos-avantages">
-            <div class="container">
-                <div class="container__inner">
-                    <div class="row upperRow">
-                        <div class="col-12">
-                            <div class="pre-title-lg pre-title--centered">Nos Atouts</div>
-                            <h2 class="title-lg title-lg--centered">Nos atouts sont nombreux</h2>
-                        </div>
-                    </div>
-                    <div class="row mainRow">
-                        <div class="box-asset col-12 col-md-6 col-xl-4">
-                            <i class="box-asset__icon icon-home"></i>
-                            <h3 class="box-asset__title">Innovant</h3>
-                            <p class="box-asset__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quidem corporis, 
-                                provident dolore cumque porro nostrum</p>
-                        </div>
-                        <div class="box-asset col-12 col-md-6 col-xl-4">
-                            <i class="box-asset__icon icon-home"></i>
-                            <h3 class="box-asset__title">Innovant</h3>
-                            <p class="box-asset__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quidem corporis, 
-                                provident dolore cumque porro nostrum</p>
-                        </div>
-                        <div class="box-asset col-12 col-md-6 col-xl-4">
-                            <i class="box-asset__icon icon-home"></i>
-                            <h3 class="box-asset__title">Innovant</h3>
-                            <p class="box-asset__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quidem corporis, 
-                                provident dolore cumque porro nostrum</p>
-                        </div>
-                        <div class="box-asset col-12 col-md-6 col-xl-4">
-                            <i class="box-asset__icon icon-home"></i>
-                            <h3 class="box-asset__title">Innovant</h3>
-                            <p class="box-asset__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quidem corporis, 
-                                provident dolore cumque porro nostrum</p>
-                        </div>
-                        <div class="box-asset col-12 col-md-6 col-xl-4">
-                            <i class="box-asset__icon icon-home"></i>
-                            <h3 class="box-asset__title">Innovant</h3>
-                            <p class="box-asset__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quidem corporis, 
-                                provident dolore cumque porro nostrum</p>
-                        </div>
-                        <div class="box-asset col-12 col-md-6 col-xl-4">
-                            <i class="box-asset__icon icon-home"></i>
-                            <h3 class="box-asset__title">Innovant</h3>
-                            <p class="box-asset__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quidem corporis, 
-                                provident dolore cumque porro nostrum</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+ */ ?>
 
 </main>
     <!-- end homepage -->
@@ -479,15 +472,15 @@ $partners = [
                 </button>
             </header>
             <section class="modal-container-body">
-                <h2 class="title modal-body-title">Exemple de titre</h2>
+                <h2 class="title modal-body-title"></h2>
 
                 <div class="modal-paragraph-wrapper">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates molestias voluptatibus incidunt praesentium dolor repudiandae cum omnis fuga, veniam quia, consequatur possimus quidem nesciunt? Inventore earum et quisquam explicabo culpa!</p>
+                    <p></p>
                 </div>
-                 
+
             </section>
             <footer class="modal-container-footer">
-      
+
             </footer>
         </article>
     </div>

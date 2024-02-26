@@ -1,5 +1,5 @@
 .team-section {
-
+    background-color: $horizon;
     .h1-text{
         font-size: 1.3rem;
         margin: 40px 0;
@@ -9,16 +9,16 @@
         align-items: center;
         justify-content: center;
     }
-        
+
     .container{
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
-    } 
-    
-    
+    }
+
+
     .box {
         position: relative;
         width: 350px;
@@ -29,7 +29,6 @@
         justify-content: center;
         align-items: center;
         padding: 20px;
-        position: relative;
         border-radius: 10px;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
         transition: background-color 0.3s ease-in;
@@ -41,7 +40,7 @@
 
         &:hover {
             background-color: $primary;
-            
+
             h1, p, strong {
                 color: $white;
             }
@@ -51,8 +50,8 @@
             }
         }
     }
-    
-    
+
+
     .top-bar{
         width: 50%;
         height: 4px;
@@ -63,7 +62,7 @@
         transform: translateX(-50%);
         border-radius: 0px 0px 10px 10px;
     }
-    
+
     .content img{
         width: 90px;
         height: 90px;
@@ -94,12 +93,12 @@
         color: $primary;
         margin: 4px 0px 10px 0px;
     }
-  
+
     .box-footer {
         margin-top: 5px;
-        
+
         p {
             text-align: center;
         }
-    }    
+    }
 }
