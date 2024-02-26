@@ -2,7 +2,7 @@
 // This file contains all styles related to the footer of the site/application.
 // -----------------------------------------------------------------------------
 .els-footer {
-  background-color: $secondary;
+  background-color: $tertiary;
   padding: 10px;
   color: $white;
   font-size: 14px;
@@ -36,10 +36,9 @@
 
   a {
     color: $white;
-  
+
     @include on-event {
       color: $white;
     }
   }
 }
-  

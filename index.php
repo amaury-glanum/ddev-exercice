@@ -149,6 +149,12 @@ $partners = [
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="assets/build/style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
 </head>
 <body>
     <header class="mainHeader">
@@ -433,6 +439,38 @@ $partners = [
 
  */ ?>
 
+    <section id="contact" class="main__section main__contact-section">
+        <div class="container">
+            <div class="row mb-5 col-12">
+                <h2 class="pre-title pre-title--centered">Nous&nbsp;contacter</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div id="map"></div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="contact-container row justify-content-center">
+                        <div class="contact-container__email">
+                            <div class="">
+                                <span class="pb-3 contact-address els-text els-text-lg">Basé à Tsévié, à 35km de Lomé.</span>
+                                <span class="pb-3 contact-schedules els-text els-text-lg">Horaires d’ouverture : <br /> lun-jeu de 9-12h et de 14-17h. Ven- de 9-12h</span>
+                                <span class="pb-3 contact-tel els-text els-text-lg">(+228) 93 58 04 18</span>
+                            </div>
+                            <div class="contact-email-text els-text els-text-lg">
+                                <a
+                                    class="contact-email__link"
+                                    href="#"
+                                    data-email="ZWxzdG9nbzJAZ21haWwuY29t">
+                                    [email-hidden]
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
     <!-- end homepage -->
 
@@ -490,5 +528,25 @@ $partners = [
     <script src="assets/lib/jquery/jquery-3.7.1.min.js"></script>
     <script src="assets/build/script.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const emaildecode = (e) => {
+            let email = atob(e.dataset.email);
+            e.href = 'mailto:'+email;
+            e.innerHTML = email;
+        }
+        const emailtag = document.querySelector('.contact-email__link');
+        let observer = new IntersectionObserver((entries) => {
+            entries.map((entry) => {
+                if (entry.isIntersecting) {
+                    let script = document.createElement('script');
+                    script.onload = function () {
+                        emaildecode(entry.target)
+                    };
+                    script.src = 'decode-email.js';
+                    document.head.appendChild(script);
+                }
+            });
+        }).observe(emailtag);
+    </script>
 </body>
 </html>
