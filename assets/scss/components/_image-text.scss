@@ -49,6 +49,7 @@
   }
 
   &__textWrapper {
+    padding: 20px;
     .title {
       @include media-breakpoint-up(lg) {
         padding-right: 13%;

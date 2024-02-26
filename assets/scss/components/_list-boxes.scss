@@ -5,22 +5,22 @@
       padding: 50px 50px 75px 50px;
       background-color: $gray-100;
     }
-  
+
     .upperRow > div {
       display: flex;
       flex-direction: column;
       row-gap: 20px;
     }
-  
+
     .mainRow {
       margin-top: 60px;
       row-gap: 30px;
-  
+
       .box-asset {
         display: flex;
         flex-direction: column;
         row-gap: 14px;
-  
+
         &__icon {
           display: flex;
           position: relative;
@@ -29,7 +29,7 @@
           justify-content: center;
           color: $white;
           font-size: 45px;
-  
+
           &::before {
             display: flex;
             align-items: center;
@@ -40,7 +40,7 @@
             background-color: $primary;
           }
         }
-  
+
         &__title {
           margin: 0;
           font-family: $font-text;
@@ -49,7 +49,7 @@
           line-height: 1.2;
           text-align: center;
         }
-  
+
         &__text {
           margin-top: 0;
           font-family: $font-text;
@@ -61,4 +61,3 @@
       }
     }
   }
-  

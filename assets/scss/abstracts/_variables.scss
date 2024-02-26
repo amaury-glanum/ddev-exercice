@@ -61,8 +61,14 @@ $primary-08: rgb(0, 74, 173, 0.8);
 
 $secondary: #0036a3;
 $secondary-darken: darken(#0036a3, 4%);
+$secondary-08: rgba(0, 54, 163, 0.8);
+
+$tertiary: #00AD9C;
+$tertiary-darken: darken($tertiary, 4%);
+$tertiary-08: rgba(0, 173, 156, 0.8);
 
 $horizon: hsl(215, 51%, 80%);
+$horizon-darken: darken($horizon, 4%);
 
 $gray-50: #fbfbfb; // custom ok
 $gray-100: #f6f6f6; // custom ok
@@ -82,12 +88,14 @@ $black: #262c28;
 $colors: (
   'primary': $primary,
   'primary-darken': $primary-darken,
+  'primary-08': $primary-08,
   'secondary': $secondary,
   'secondary-darken': $secondary-darken,
-  // "third": $third,
-  // "third-darken": $third-darken,
-  // "fourth": $fourth,
-  // "fourth-darken": $fourth-darken,
+  'secondary-08': $secondary-08,
+  'tertiary': $tertiary,
+  'tertiary-darken': $tertiary-darken,
+  'tertiary-08': $tertiary-08,
+
   'gray-100': $gray-100,
   'gray-200': $gray-200,
   'gray-300': $gray-300,

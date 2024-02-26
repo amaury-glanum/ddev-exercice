@@ -10,13 +10,13 @@
 
 
 .projects-section {
-  background: $horizon;
+  background: $tertiary;
 }
 
 .projects-section-inner {
   position: relative;
   column-gap: 3rem;
-  padding-block: min(20vh, 3rem);
+  padding-block: min(30vh, 3rem);
   padding-inline: 2.3em;
   justify-content: center;
   background: transparent;
@@ -26,32 +26,24 @@
     display: flex;
     padding-inline: 0;
   }
-  
+
   .content {
     width: 100%;
     color: $black;
     position: relative;
-    z-index: 2;
+    z-index: 3;
     margin-bottom: 3em;
 
     @include media-breakpoint-up(lg) {
       width: 40%;
       margin-bottom: 0;
     }
-  }
 
-  h2 {
-    letter-spacing: 0.8px;
-    font-weight: 700;
-    font-size: 2.8rem;
-    line-height: 1.2;
-  }
-
-  p {
-    font-size: 1rem;
-    line-height: 1.8;
-    margin-inline: auto;
-    margin-top: 10px;
+    .image-text__textWrapper {
+      position: relative;
+      background-color: $white;
+      border-radius: 10px;
+    }
   }
 }
 
@@ -90,9 +82,9 @@
   opacity: 0.4;
   transition: opacity 0.4s ease-in;
   $base-url: "/assets/img/buildings/building-1.jpg";
-  background: linear-gradient(to bottom, #2c536400, #203a4303, #0f2027cc), url("#{$base-url}") no-repeat 50% 50% / cover; 
-  
- 
+  background: linear-gradient(to bottom, #2c536400, #203a4303, #0f2027cc), url("#{$base-url}") no-repeat 50% 50% / cover;
+
+
   .swiper__inner-btn {
     display: none;
     pointer-events: none;
@@ -129,7 +121,7 @@
     padding: 10px 0;
     border-radius: 0 0 10px 10px;
     background-color: $primary-08;
-  
+
 
     h3, p {
       padding-left: 2px;
@@ -138,7 +130,7 @@
       color: $white;
     }
   }
-  
+
 }
 
 .swiper-slide-active {
