@@ -1,13 +1,13 @@
 import {$} from "../common/variables";
 
-export const generateHtml = (parentNodeAnchor = "", textNode, html = "p") => {
+export const generateHtml = (parentNodeAnchor = "", textNode, htmlTag = "p") => {
   const modalBodyTextWrapper = document.querySelector(`${parentNodeAnchor}`);
   console.log('we enter generatehtml', modalBodyTextWrapper)
   // Check if the parentNode exists before manipulating the DOM
   if (modalBodyTextWrapper) {
     console.log("we enter modalBodyTextWrapper")
 
-    const node = document.createElement(`${html}`);
+    const node = document.createElement(`${htmlTag}`);
     console.log('the current node', node)
     const textnode = document.createTextNode(textNode); // Use item instead of dataDescription
     console.log('node is ==> ', textNode)
@@ -18,7 +18,7 @@ export const generateHtml = (parentNodeAnchor = "", textNode, html = "p") => {
   }
 }
 
-export function fetchData(dataSource = "", parentNodeAnchor = "", html, keys= {}) {
+export function fetchData(htmlId, dataSource = "", parentNodeAnchor = "", htmlTag, keys= {}) {
 
   const parentNode = document.querySelector(`${parentNodeAnchor}`)
 
@@ -34,15 +34,18 @@ export function fetchData(dataSource = "", parentNodeAnchor = "", html, keys= {}
         return response.json();
       })
       .then(data => {
+
+        const item = data.find((element) => element.id === htmlId)
+        console.log("item", item)
         $(parentNode).empty();
-        // Iterate over the object JSON clients via data.
-        data.forEach((item, index) => {
-          console.log("item", item)
-          keys.forEach((key, index) => {
+        keys.forEach((key, index) => {
             console.log("key", key)
-            generateHtml(parentNodeAnchor, item[key], html);
+            if(key !== 'id') {
+              generateHtml(parentNodeAnchor, item[key], htmlTag);
+            }
+
           })
-        });
+
       })
       .catch(err => {
         console.log('Error in fetch request', err);

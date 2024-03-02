@@ -26,9 +26,8 @@ export const modalToggle = () => {
         //     modalBodyTextWrapper.appendChild(node);
         // }
 
-
-      const keys = ['date', 'title','description']
-      fetchData('/assets/data/project.json', '.modal-paragraph-wrapper', 'p', keys)
+      const keys = ['id', 'description', 'goal']
+      fetchData(event.target.dataset.id, '/assets/data/project.json', '.modal-paragraph-wrapper', 'p', keys)
 
     }
 

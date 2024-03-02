@@ -21,6 +21,7 @@ function convertArrayToJson($array, $jsonFile)
 
 $projects = [
     [
+        'id' => 'project-1',
         'date' => "Avril 2024",
         'place' => "Tsévié, Togo",
         'category' => "Santé",
@@ -35,6 +36,7 @@ $projects = [
         'banner' => ''
     ],
     [
+        'id' => 'project-2',
         'date' => "Juin - Septembre 2024",
         'place' => "Tsévié, Togo",
         'category' => "Volontariat",
@@ -49,6 +51,7 @@ $projects = [
         'banner' => ''
     ],
     [
+        'id' => 'project-3',
         'date' => "Depuis 2024",
         'place' => "Commune Moyen Mono 1, Togo",
         'category' => "Santé et environnement",
@@ -63,6 +66,7 @@ $projects = [
         'banner'=> ""
     ],
     [
+        'id' => 'project-4',
         'date' => "Dés 2024",
         'place' => "Tsévié, Togo",
         'category' => "Environnement",

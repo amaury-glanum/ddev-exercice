@@ -68,13 +68,13 @@ __webpack_require__.r(__webpack_exports__);
 var generateHtml = function generateHtml() {
   var parentNodeAnchor = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
   var textNode = arguments.length > 1 ? arguments[1] : undefined;
-  var html = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "p";
+  var htmlTag = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "p";
   var modalBodyTextWrapper = document.querySelector("".concat(parentNodeAnchor));
   console.log('we enter generatehtml', modalBodyTextWrapper);
   // Check if the parentNode exists before manipulating the DOM
   if (modalBodyTextWrapper) {
     console.log("we enter modalBodyTextWrapper");
-    var node = document.createElement("".concat(html));
+    var node = document.createElement("".concat(htmlTag));
     console.log('the current node', node);
     var textnode = document.createTextNode(textNode); // Use item instead of dataDescription
     console.log('node is ==> ', textNode);
@@ -83,11 +83,11 @@ var generateHtml = function generateHtml() {
     console.log("generate html ok");
   }
 };
-function fetchData() {
-  var dataSource = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-  var parentNodeAnchor = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
-  var html = arguments.length > 2 ? arguments[2] : undefined;
-  var keys = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+function fetchData(htmlId) {
+  var dataSource = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+  var parentNodeAnchor = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
+  var htmlTag = arguments.length > 3 ? arguments[3] : undefined;
+  var keys = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
   var parentNode = document.querySelector("".concat(parentNodeAnchor));
   try {
     fetch("".concat(dataSource), {
@@ -101,14 +101,16 @@ function fetchData() {
       }
       return response.json();
     }).then(function (data) {
+      var item = data.find(function (element) {
+        return element.id === htmlId;
+      });
+      console.log("item", item);
       (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)(parentNode).empty();
-      // Iterate over the object JSON clients via data.
-      data.forEach(function (item, index) {
-        console.log("item", item);
-        keys.forEach(function (key, index) {
-          console.log("key", key);
-          generateHtml(parentNodeAnchor, item[key], html);
-        });
+      keys.forEach(function (key, index) {
+        console.log("key", key);
+        if (key !== 'id') {
+          generateHtml(parentNodeAnchor, item[key], htmlTag);
+        }
       });
     })["catch"](function (err) {
       console.log('Error in fetch request', err);
@@ -261,8 +263,8 @@ var modalToggle = function modalToggle() {
     //     modalBodyTextWrapper.appendChild(node);
     // }
 
-    var keys = ['date', 'title', 'description'];
-    (0,_fetchData__WEBPACK_IMPORTED_MODULE_1__.fetchData)('/assets/data/project.json', '.modal-paragraph-wrapper', 'p', keys);
+    var keys = ['id', 'description', 'goal'];
+    (0,_fetchData__WEBPACK_IMPORTED_MODULE_1__.fetchData)(event.target.dataset.id, '/assets/data/project.json', '.modal-paragraph-wrapper', 'p', keys);
   };
   var openModal = function openModal(e) {
     document.querySelector('.modal').classList.toggle('modal-opened');
