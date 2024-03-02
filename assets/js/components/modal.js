@@ -8,7 +8,6 @@ export const modalToggle = () => {
 
     const displayProjectTitle = (event) => {
         const dataBtn = event.target.dataset.title;
-        const dataDescription = event.target.dataset.description;
 
         $(modalBodyTextWrapper).empty()
         modalHeaderTitle.textContent = ""
@@ -18,16 +17,8 @@ export const modalToggle = () => {
             modalHeaderTitle.textContent = `${dataBtn}`
         }
 
-        // if(dataDescription) {
-        //     modalBodyTitle.textContent = `${dataDescription}`
-        //     const node = document.createElement("p");
-        //     const textnode = document.createTextNode(dataDescription);
-        //     node.appendChild(textnode);
-        //     modalBodyTextWrapper.appendChild(node);
-        // }
-
       const keys = ['id', 'description', 'goal']
-      fetchData(event.target.dataset.id, '/assets/data/project.json', '.modal-paragraph-wrapper', 'p', keys)
+      fetchData(event.target.dataset.id, '/assets/data/projects.json', '.modal-paragraph-wrapper', 'p', keys)
 
     }
 

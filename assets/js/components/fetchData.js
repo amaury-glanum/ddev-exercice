@@ -38,13 +38,18 @@ export function fetchData(htmlId, dataSource = "", parentNodeAnchor = "", htmlTa
         const item = data.find((element) => element.id === htmlId)
         console.log("item", item)
         $(parentNode).empty();
-        keys.forEach((key, index) => {
+        if(item) {
+          keys.forEach((key, index) => {
             console.log("key", key)
             if(key !== 'id') {
               generateHtml(parentNodeAnchor, item[key], htmlTag);
             }
 
           })
+        } else {
+          console.log("there is no id to this project data, provide an id.")
+        }
+
 
       })
       .catch(err => {

@@ -19,9 +19,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     var imageId = slide.getAttribute('data-imageid');
     slide.style.background = "linear-gradient(to bottom, #2c536400, #203a4303, #0f2027cc), url('" + imageId + "') no-repeat 50% 50% / cover";
   });
-  // setInterval(() => {
-  //
-  // }, 8000)
 
   getSwiperJs()
   modalToggle()
@@ -30,4 +27,5 @@ window.addEventListener('DOMContentLoaded', (event) => {
   putScrollbarSizeInCSSVariables()
   menuBurger()
   displayLeafletMap()
+
 })

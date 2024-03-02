@@ -106,12 +106,16 @@ function fetchData(htmlId) {
       });
       console.log("item", item);
       (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)(parentNode).empty();
-      keys.forEach(function (key, index) {
-        console.log("key", key);
-        if (key !== 'id') {
-          generateHtml(parentNodeAnchor, item[key], htmlTag);
-        }
-      });
+      if (item) {
+        keys.forEach(function (key, index) {
+          console.log("key", key);
+          if (key !== 'id') {
+            generateHtml(parentNodeAnchor, item[key], htmlTag);
+          }
+        });
+      } else {
+        console.log("there is no id to this project data, provide an id.");
+      }
     })["catch"](function (err) {
       console.log('Error in fetch request', err);
     });
@@ -163,7 +167,7 @@ gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.registerPlugin(gsap_ScrollTrigger__WEBPAC
 var links = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.utils.toArray('.menu__nav-item a');
 var gsapHeaderLinksOnScroll = function gsapHeaderLinksOnScroll() {
   links.forEach(function (a) {
-    var element = document.querySelector(a.getAttribute('href'));
+    var element = document.querySelector(a.dataset.hash);
     gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__.ScrollTrigger.create({
       trigger: element,
       start: 'top center',
@@ -247,24 +251,14 @@ var modalToggle = function modalToggle() {
   var modalBodyTitle = document.querySelector('.modal-body-title');
   var displayProjectTitle = function displayProjectTitle(event) {
     var dataBtn = event.target.dataset.title;
-    var dataDescription = event.target.dataset.description;
     (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)(modalBodyTextWrapper).empty();
     modalHeaderTitle.textContent = "";
     modalBodyTitle.textContent = "";
     if (dataBtn) {
       modalHeaderTitle.textContent = "".concat(dataBtn);
     }
-
-    // if(dataDescription) {
-    //     modalBodyTitle.textContent = `${dataDescription}`
-    //     const node = document.createElement("p");
-    //     const textnode = document.createTextNode(dataDescription);
-    //     node.appendChild(textnode);
-    //     modalBodyTextWrapper.appendChild(node);
-    // }
-
     var keys = ['id', 'description', 'goal'];
-    (0,_fetchData__WEBPACK_IMPORTED_MODULE_1__.fetchData)(event.target.dataset.id, '/assets/data/project.json', '.modal-paragraph-wrapper', 'p', keys);
+    (0,_fetchData__WEBPACK_IMPORTED_MODULE_1__.fetchData)(event.target.dataset.id, '/assets/data/projects.json', '.modal-paragraph-wrapper', 'p', keys);
   };
   var openModal = function openModal(e) {
     document.querySelector('.modal').classList.toggle('modal-opened');
@@ -427,10 +421,6 @@ window.addEventListener('DOMContentLoaded', function (event) {
     var imageId = slide.getAttribute('data-imageid');
     slide.style.background = "linear-gradient(to bottom, #2c536400, #203a4303, #0f2027cc), url('" + imageId + "') no-repeat 50% 50% / cover";
   });
-  // setInterval(() => {
-  //
-  // }, 8000)
-
   (0,_components_swiper__WEBPACK_IMPORTED_MODULE_2__.getSwiperJs)();
   (0,_components_modal__WEBPACK_IMPORTED_MODULE_3__.modalToggle)();
   (0,_components_scroll__WEBPACK_IMPORTED_MODULE_6__.scrollToId)();

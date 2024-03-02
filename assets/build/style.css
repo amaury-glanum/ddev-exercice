@@ -7136,6 +7136,11 @@ body.menu-opened .mainHeader .burger-menu .line3 {
   stroke-dashoffset: -134;
 }
 
+.active-header-link {
+  text-decoration: underline;
+  color: #00AD9C;
+}
+
 .els-footer {
   background-color: #00AD9C;
   padding: 10px;
@@ -7261,14 +7266,18 @@ body.menu-opened .mainHeader .burger-menu .line3 {
         -ms-flex-pack: center;
             justify-content: center;
     position: relative;
-    row-gap: 0px;
+    row-gap: 30px;
   }
 }
 .value-cards > div {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
   height: 400px;
+}
+@media (min-width: 1200px) {
+  .value-cards > div {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
 }
 .value-cards .card {
   margin: 20px auto;
