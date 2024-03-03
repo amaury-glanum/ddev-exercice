@@ -46,7 +46,7 @@ async function createProject() {
 
     // Fetch API Request
     try {
-    const siteUrl = 'http://local.els-togo.com'
+    const siteUrl = 'https://els-togo.onrender.com'
     const response = await fetch(`${siteUrl}/create-project`, {
     method: 'POST',
     headers: {
