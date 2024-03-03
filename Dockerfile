@@ -28,6 +28,6 @@ EXPOSE 80
 
 # Define environment variable
 ENV URL "http://local.els-togo.com"
-
+ENV ELS_SITE_URL "http://local.els-togo.com"
 # Run apache when the container launches
 CMD ["apache2-foreground"]
