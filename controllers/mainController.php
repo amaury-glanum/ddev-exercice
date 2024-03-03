@@ -143,6 +143,48 @@ class MainController
         }
     }
 
+    public function deleteProject() {
+        $filePath = $_SERVER['DOCUMENT_ROOT'] . '/assets/data/projects.json';
+        $jsonProjects = file_get_contents($filePath);
+
+        // Decode JSON data to an array
+        $projects = json_decode($jsonProjects, true);
+
+        // Identify the project to delete based on its id (replace 123 with the actual id)
+
+        // Search for the project with the specified id
+        try {
+            $projectIdToDelete = htmlspecialchars($_GET['project-id']);
+            $keyToDelete = array_search($projectIdToDelete, array_column($projects, 'id'));
+        } catch(Exception $e) {
+            throw new Exception("Erreur lors de la recherche de clé", $e->getMessage());
+        }
+
+
+        // Check if the project was found
+        if ($keyToDelete !== false) {
+            // Remove the project from the array
+            unset($projects[$keyToDelete]);
+
+            // Reindex the array to fix the keys
+            $projects = array_values($projects);
+
+            // Encode the modified array back to JSON
+            $jsonProjects = json_encode($projects, JSON_PRETTY_PRINT);
+
+            // Write the updated JSON data back to the file
+            file_put_contents($filePath, $jsonProjects);
+
+            echo 'Project deleted successfully!';
+            header("Location: /els-cooking?success=projet supprimé avec succés");
+            exit();
+        } else {
+            echo 'Project not found or already deleted.';
+            header("Location: /els-cooking?error=projet non trouvé ou déjà supprimé");
+            exit();
+        }
+    }
+
 
     public function pageError(array $pageData)
     {

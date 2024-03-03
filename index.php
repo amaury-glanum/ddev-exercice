@@ -53,6 +53,9 @@ try {
         case 'upload':
             $mainController->uploadImage();
             break;
+        case 'delete-project':
+            $mainController->deleteProject();
+            break;
         default:
             throw new Exception("La page n'existe pas");
     }
