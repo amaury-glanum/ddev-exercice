@@ -27,4 +27,5 @@ window.addEventListener('DOMContentLoaded', (event) => {
   putScrollbarSizeInCSSVariables()
   menuBurger()
   displayLeafletMap()
+
 })

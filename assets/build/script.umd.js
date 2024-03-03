@@ -52,6 +52,81 @@ var $ = jQuery.noConflict();
 
 /***/ }),
 
+/***/ "./assets/js/components/fetchData.js":
+/*!*******************************************!*\
+  !*** ./assets/js/components/fetchData.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   fetchData: () => (/* binding */ fetchData),
+/* harmony export */   generateHtml: () => (/* binding */ generateHtml)
+/* harmony export */ });
+/* harmony import */ var _common_variables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common/variables */ "./assets/js/common/variables.js");
+
+var generateHtml = function generateHtml() {
+  var parentNodeAnchor = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+  var textNode = arguments.length > 1 ? arguments[1] : undefined;
+  var htmlTag = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "p";
+  var modalBodyTextWrapper = document.querySelector("".concat(parentNodeAnchor));
+  console.log('we enter generatehtml', modalBodyTextWrapper);
+  // Check if the parentNode exists before manipulating the DOM
+  if (modalBodyTextWrapper) {
+    console.log("we enter modalBodyTextWrapper");
+    var node = document.createElement("".concat(htmlTag));
+    console.log('the current node', node);
+    var textnode = document.createTextNode(textNode); // Use item instead of dataDescription
+    console.log('node is ==> ', textNode);
+    node.appendChild(textnode);
+    modalBodyTextWrapper.appendChild(node);
+    console.log("generate html ok");
+  }
+};
+function fetchData(htmlId) {
+  var dataSource = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+  var parentNodeAnchor = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
+  var htmlTag = arguments.length > 3 ? arguments[3] : undefined;
+  var keys = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
+  var parentNode = document.querySelector("".concat(parentNodeAnchor));
+  try {
+    fetch("".concat(dataSource), {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json;charset=UTF-8"
+      }
+    }).then(function (response) {
+      if (!response.ok) {
+        throw new Error('La réponse du réseau n\'est pas ok');
+      }
+      return response.json();
+    }).then(function (data) {
+      var item = data.find(function (element) {
+        return element.id === htmlId;
+      });
+      console.log("item", item);
+      (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)(parentNode).empty();
+      if (item) {
+        keys.forEach(function (key, index) {
+          console.log("key", key);
+          if (key !== 'id') {
+            generateHtml(parentNodeAnchor, item[key], htmlTag);
+          }
+        });
+      } else {
+        console.log("there is no id to this project data, provide an id.");
+      }
+    })["catch"](function (err) {
+      console.log('Error in fetch request', err);
+    });
+  } catch (err) {
+    console.log('Error in fetch request', err);
+  }
+}
+;
+
+/***/ }),
+
 /***/ "./assets/js/components/gsapAnimScroll.js":
 /*!************************************************!*\
   !*** ./assets/js/components/gsapAnimScroll.js ***!
@@ -92,7 +167,7 @@ gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.registerPlugin(gsap_ScrollTrigger__WEBPAC
 var links = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.utils.toArray('.menu__nav-item a');
 var gsapHeaderLinksOnScroll = function gsapHeaderLinksOnScroll() {
   links.forEach(function (a) {
-    var element = document.querySelector(a.getAttribute('href'));
+    var element = document.querySelector(a.dataset.hash);
     gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__.ScrollTrigger.create({
       trigger: element,
       start: 'top center',
@@ -167,6 +242,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   modalToggle: () => (/* binding */ modalToggle)
 /* harmony export */ });
 /* harmony import */ var _common_variables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common/variables */ "./assets/js/common/variables.js");
+/* harmony import */ var _fetchData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./fetchData */ "./assets/js/components/fetchData.js");
+
 
 var modalToggle = function modalToggle() {
   var modalHeaderTitle = document.querySelector('.modal-container-title h1');
@@ -174,20 +251,14 @@ var modalToggle = function modalToggle() {
   var modalBodyTitle = document.querySelector('.modal-body-title');
   var displayProjectTitle = function displayProjectTitle(event) {
     var dataBtn = event.target.dataset.title;
-    var dataDescription = event.target.dataset.description;
     (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)(modalBodyTextWrapper).empty();
     modalHeaderTitle.textContent = "";
     modalBodyTitle.textContent = "";
     if (dataBtn) {
       modalHeaderTitle.textContent = "".concat(dataBtn);
     }
-    if (dataDescription) {
-      modalBodyTitle.textContent = "".concat(dataDescription);
-      var node = document.createElement("p");
-      var textnode = document.createTextNode(dataDescription);
-      node.appendChild(textnode);
-      modalBodyTextWrapper.appendChild(node);
-    }
+    var keys = ['id', 'description', 'goal'];
+    (0,_fetchData__WEBPACK_IMPORTED_MODULE_1__.fetchData)(event.target.dataset.id, '/assets/data/projects.json', '.modal-paragraph-wrapper', 'p', keys);
   };
   var openModal = function openModal(e) {
     document.querySelector('.modal').classList.toggle('modal-opened');

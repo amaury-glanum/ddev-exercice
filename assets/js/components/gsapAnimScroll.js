@@ -24,7 +24,7 @@ const links = gsap.utils.toArray('.menu__nav-item a')
 
 export const gsapHeaderLinksOnScroll = () => {
   links.forEach((a) => {
-    const element = document.querySelector(a.getAttribute('href'))
+    const element = document.querySelector(a.dataset.hash)
     ScrollTrigger.create({
       trigger: element,
       start: 'top center',

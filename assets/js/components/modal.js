@@ -1,4 +1,5 @@
 import { $ } from '../common/variables';
+import { fetchData } from './fetchData';
 
 export const modalToggle = () => {
     const modalHeaderTitle = document.querySelector('.modal-container-title h1')
@@ -7,7 +8,6 @@ export const modalToggle = () => {
 
     const displayProjectTitle = (event) => {
         const dataBtn = event.target.dataset.title;
-        const dataDescription = event.target.dataset.description;
 
         $(modalBodyTextWrapper).empty()
         modalHeaderTitle.textContent = ""
@@ -17,15 +17,9 @@ export const modalToggle = () => {
             modalHeaderTitle.textContent = `${dataBtn}`
         }
 
-        if(dataDescription) {
-            modalBodyTitle.textContent = `${dataDescription}`
-            const node = document.createElement("p");
-            const textnode = document.createTextNode(dataDescription);
-            node.appendChild(textnode);
-            modalBodyTextWrapper.appendChild(node);
-        }
-      
-       
+      const keys = ['id', 'description', 'goal']
+      fetchData(event.target.dataset.id, '/assets/data/projects.json', '.modal-paragraph-wrapper', 'p', keys)
+
     }
 
     const openModal = (e) => {
@@ -50,5 +44,5 @@ export const modalToggle = () => {
     document.querySelectorAll('.modal-close-btn, .modal-open-btn').forEach(function (element) {
         element.removeEventListener('click', openModal);
         element.addEventListener('click', openModal);
-    });  
+    });
 };

@@ -54,6 +54,7 @@
   "author": "",
   "license": "(╯°□°）╯︵ ┻━┻",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "gsap": "^3.12.5"
   }
 }

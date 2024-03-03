@@ -18,7 +18,7 @@ const chore = process.env.npm_config_chore
  | Assets destination path
  |
  */
-const url = process.env.URL
+const url = process.env.ELS_SITE_URL
 const assetsPath = "./assets"
 const distPath = isProduction && state === "build" ? `${assetsPath}/build` : `${assetsPath}/build`
 
