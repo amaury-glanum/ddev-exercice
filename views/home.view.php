@@ -143,7 +143,7 @@ $partners = [
             </div>
         </div>
     </section>
-
+    <?php if(!empty($data['projects'])) { ?>
     <section id="nos-projets" class="projects-section">
         <div class="projects-section-inner container">
             <div class="content">
@@ -158,7 +158,6 @@ $partners = [
                 <div class="swiper">
                     <div class="swiper-wrapper">
                         <?php
-                        if(!empty($data['projects'])) {
                             $i = 1;
                             foreach($data['projects'] as $project) { ?>
                                 <div
@@ -186,13 +185,13 @@ $partners = [
                                     </div>
                                 </div>
                                 <?php $i++; } ?>
-                        <?php } ?>
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
         </div>
     </section>
+    <?php } ?>
 
     <?php /*
 <!--<section id="nos-partenaires" class="items-rows">-->
