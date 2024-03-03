@@ -189,7 +189,6 @@ class MainController
             // Write the updated JSON data back to the file
             file_put_contents($filePath, $jsonProjects);
 
-            echo 'Project deleted successfully!';
             header("Location: /els-cooking?success=projet supprimé avec succés");
             exit();
         } else {
