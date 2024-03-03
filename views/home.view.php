@@ -41,7 +41,7 @@ $projects = [
         'place' => "Tsévié, Togo",
         'category' => "Santé",
         'title' => "Création d'un centre optique",
-        'img' => "https://images.pexels.com/photos/7014337/pexels-photo-7014337.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        'project-img' => "https://images.pexels.com/photos/7014337/pexels-photo-7014337.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 
     ],
     [
@@ -50,7 +50,7 @@ $projects = [
         'place' => "Tsévié, Togo",
         'category' => "Volontariat",
         'title' => "Camp Chantier",
-        'img' => "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        'project-img' => "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     ],
     [
         'id' => 'project-3',
@@ -58,7 +58,7 @@ $projects = [
         'place' => "Commune Moyen Mono 1, Togo",
         'category' => "Santé et environnement",
         'title' => "Collecte des ordures ménagères",
-        'img' => "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        'project-img' => "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 
     ],
     [
@@ -158,12 +158,12 @@ $partners = [
                 <div class="swiper">
                     <div class="swiper-wrapper">
                         <?php
-                        if(!empty($projects)) {
+                        if(!empty($data['projects'])) {
                             $i = 1;
-                            foreach($projects as $project) { ?>
+                            foreach($data['projects'] as $project) { ?>
                                 <div
                                     class="swiper-slide"
-                                    data-imageid="<?php echo $project['img'] ?>"
+                                    data-imageid="<?php echo $project['project-img'] ?>"
                                 >
                                     <span><?php echo $project['date']; ?></span>
                                     <div class="swiper__inner-btn">

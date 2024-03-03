@@ -29,6 +29,70 @@ class MainController
         $this->generatePage($data_page);
     }
 
+    public function getJsonProjectData() {
+        $filePath = $_SERVER['DOCUMENT_ROOT'] . '/assets/data/projects.json';
+
+        // todo: Ensure the path is a real path, not a symbolic link
+
+        // Read existing projects data from the file if it exists
+        if (file_exists($filePath)) {
+            $jsonProjects = file_get_contents($filePath);
+
+            // Decode the existing JSON data to an array
+            $projects = json_decode($jsonProjects, true);
+
+        } else {
+            exit('Le fichier de projet est nécessaire mais manquant');
+        }
+
+        return $projects;
+    }
+
+    public function uploadImage()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Specify the directory where you want to store the uploaded images
+            $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
+
+            // Check if the directory exists, create it if not
+            if (!file_exists($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+
+            // Check if a file was uploaded
+            if (isset($_FILES['image']) && isset($_POST['project'])) {
+                $uploadedFile = $_FILES['image'];
+                $selectedProjectSlug = $_POST['project'];
+
+                // Get the file extension
+                $fileExtension = pathinfo($uploadedFile['name'], PATHINFO_EXTENSION);
+
+                // Generate a unique filename based on the selected project's slug
+                $newFilename = $selectedProjectSlug . '.' . $fileExtension;
+
+                // Specify the path where the file will be saved
+                $destination = $uploadDir . $newFilename;
+
+                // Move the uploaded file to the destination folder
+                if (move_uploaded_file($uploadedFile['tmp_name'], $destination)) {
+                    // Success: Redirect with success message
+                    header("Location: /els-cooking?success=File uploaded successfully!");
+                    exit();
+                } else {
+                    // Error: Redirect with error message
+                    header("Location: /els-cooking?error=Error uploading file!");
+                    exit();
+                }
+            } else {
+                // No file selected or project not specified: Redirect with error message
+                header("Location: /els-cooking?error=No file selected or project not specified!");
+                exit();
+            }
+        } else {
+            header('/error');
+        }
+    }
+
     public function setJsonProjectFile() {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -61,7 +125,8 @@ class MainController
                 'description' => htmlspecialchars($formData['description']),
                 'goal' => htmlspecialchars($formData['goal']),
                 'how-we-do' => htmlspecialchars($formData['how-we-do']),
-                'results' => htmlspecialchars($formData['results'])
+                'results' => htmlspecialchars($formData['results']),
+                'project-img' => $_SERVER['DOCUMENT_ROOT']  . '/uploads/' . $nextProjectId
             ];
 
             // Add the new project data to the existing array
@@ -74,7 +139,7 @@ class MainController
             file_put_contents($filePath, $jsonProjects);
 
             // Optionally, you can redirect the user or display a success message
-            echo 'Form submitted successfully!' . $filePath;
+            header('/els-cooking');
         }
     }
 
