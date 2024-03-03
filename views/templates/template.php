@@ -9,8 +9,8 @@ die();
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=yes" />
-    <meta name="description" content="<?= $page_description; ?>">
-    <title><?= $page_title ?></title>
+    <meta name="description" content="<?= $page_description ?? "" ?>">
+    <title><?= $page_title ?? "" ?></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -25,9 +25,9 @@ die();
             crossorigin=""></script>
 </head>
 
-<?php require_once(__DIR__ . './partials/header.php'); ?>
+<?php require_once(__DIR__ . '/partials/header.php'); ?>
 <?= $page_content ?? "" ?>
-<?php require_once(__DIR__ . './partials/header.php'); ?>
+<?php require_once(__DIR__ . '/partials/footer.php'); ?>
 
 <script src="assets/lib/jquery/jquery-3.7.1.min.js"></script>
 <script src="assets/build/script.umd.js"></script>
