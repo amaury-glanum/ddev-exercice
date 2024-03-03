@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once(dirname(__FILE__) . '/controllers/MainController.php');
+require_once(dirname(__FILE__) . '/controllers/mainController.php');
 
 $mainController = new MainController();
 
