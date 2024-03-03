@@ -13,6 +13,13 @@ COPY . /var/www/html/
 ADD /conf/els-togo.conf /etc/apache2/sites-available/
 RUN ln -s /etc/apache2/sites-available/els-togo.conf /etc/apache2/sites-enabled/
 
+# Adjust directory permissions (e.g., read, write, execute for everyone)
+chmod -R 777 /var/www/html/assets/data/
+
+# Adjust file permissions (e.g., read, write for everyone)
+chmod 666 /var/www/html/assets/data/projects.json
+
+
 # Node.js 18
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get install -y nodejs
