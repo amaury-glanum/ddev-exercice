@@ -153,12 +153,26 @@ class MainController
         // Identify the project to delete based on its id (replace 123 with the actual id)
 
         // Search for the project with the specified id
-        try {
-            $projectIdToDelete = htmlspecialchars($_GET['project-id']);
-            $keyToDelete = array_search($projectIdToDelete, array_column($projects, 'id'));
-        } catch(Exception $e) {
-            throw new Exception("Erreur lors de la recherche de clé", $e->getMessage());
+        $projectId = $_GET['project-id'] ?? null;
+
+        // Check if the project ID is set and not empty
+        if ($projectId !== null && $projectId !== '') {
+            // Use htmlspecialchars() only if the value is not null
+            $safeProjectId = htmlspecialchars($projectId, ENT_QUOTES, 'UTF-8');
+            try {
+                $projectIdToDelete =  $safeProjectId;
+                $keyToDelete = array_search($projectIdToDelete, array_column($projects, 'id'));
+            } catch(Exception $e) {
+                throw new Exception("Erreur lors de la recherche de clé", $e->getMessage());
+            }
+
+        } else {
+            // Handle the case when project ID is not set
+            echo 'Project ID is missing or empty.';
+            header('Location: /els-cooking?error=id non-trouvé');
+            exit();
         }
+
 
 
         // Check if the project was found

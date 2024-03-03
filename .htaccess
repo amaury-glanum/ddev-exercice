@@ -3,7 +3,7 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 # Nécessaire afin d'utiliser le router
-RewriteRule ^(.*)$ index.php?page=$1
+RewriteRule ^(.*)$ index.php?page=$1 [QSA]
 
 AuthType Basic
 AuthName "Accès protégé"
