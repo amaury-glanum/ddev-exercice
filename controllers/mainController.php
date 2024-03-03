@@ -29,6 +29,60 @@ class MainController
         $this->generatePage($data_page);
     }
 
+    public function getJsonProjectData() {
+        $filePath = $_SERVER['DOCUMENT_ROOT'] . '/assets/data/projects.json';
+
+        // todo: Ensure the path is a real path, not a symbolic link
+
+        // Read existing projects data from the file if it exists
+        if (file_exists($filePath)) {
+            $jsonProjects = file_get_contents($filePath);
+
+            // Decode the existing JSON data to an array
+            $projects = json_decode($jsonProjects, true);
+
+        } else {
+            exit('Le fichier de projet est nécessaire mais manquant');
+        }
+
+        return $projects;
+    }
+
+    public function uploadImage() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Specify the directory where you want to store the uploaded images
+            $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
+
+            // Check if the directory exists, create it if not
+            if (!file_exists($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+
+            // Check if a file was uploaded
+            if (isset($_FILES['image'])) {
+                $uploadedFile = $_FILES['image'];
+
+                // Get the file extension
+                $fileExtension = pathinfo($uploadedFile['name'], PATHINFO_EXTENSION);
+
+                // Generate a unique filename (you can use other methods)
+                $newFilename = 'image_' . uniqid() . '.' . $fileExtension;
+
+                // Specify the path where the file will be saved
+                $destination = $uploadDir . $newFilename;
+
+                // Move the uploaded file to the destination folder
+                if (move_uploaded_file($uploadedFile['tmp_name'], $destination)) {
+                    echo 'File uploaded successfully!';
+                } else {
+                    echo 'Error uploading file!';
+                }
+            } else {
+                echo 'No file selected!';
+            }
+        }
+    }
+
     public function setJsonProjectFile() {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -61,7 +115,8 @@ class MainController
                 'description' => htmlspecialchars($formData['description']),
                 'goal' => htmlspecialchars($formData['goal']),
                 'how-we-do' => htmlspecialchars($formData['how-we-do']),
-                'results' => htmlspecialchars($formData['results'])
+                'results' => htmlspecialchars($formData['results']),
+                'project-img' => 'assets/img/projects/' . $nextProjectId
             ];
 
             // Add the new project data to the existing array

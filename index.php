@@ -14,6 +14,7 @@ try {
 
     switch ($page) {
         case '':
+            $projects = $mainController->getJsonProjectData();
             $pageData = [
                 "page_css_id" => 'page-home',
                 "meta" => [
@@ -22,13 +23,15 @@ try {
                 ],
                 "view" => 'views/home.view.php',
                 "template" => "views/templates/template.php",
-                "data" => []
+                "data" => [
+                    'projects' => $projects
+                ]
             ];
 
             $mainController->setPageData($pageData);
             break;
         case 'els-cooking':
-
+            $_SESSION['csrf_token'] = $mainController->generateCsrfToken();
             $pageData = [
                 "page_css_id" => 'page-cook',
                 "meta" => [
@@ -37,13 +40,18 @@ try {
                 ],
                 "view" => 'views/cooksite/projects.view.php',
                 "template" => "views/templates/template.php",
-                "data" => []
+                "data" => [
+                    'crsf_token' => $_SESSION['csrf_token']
+                ]
             ];
-            $_SESSION['csrf_token'] = $mainController->generateCsrfToken();
+
             $mainController->setPageData($pageData);
             break;
         case 'create-project':
             $mainController->setJsonProjectFile();
+            break;
+        case 'upload':
+            $mainController->uploadImage();
             break;
         default:
             throw new Exception("La page n'existe pas");
