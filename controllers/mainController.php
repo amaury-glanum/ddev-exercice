@@ -48,7 +48,8 @@ class MainController
         return $projects;
     }
 
-    public function uploadImage() {
+    public function uploadImage()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Specify the directory where you want to store the uploaded images
             $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
@@ -59,27 +60,36 @@ class MainController
             }
 
             // Check if a file was uploaded
-            if (isset($_FILES['image'])) {
+            if (isset($_FILES['image']) && isset($_POST['project'])) {
                 $uploadedFile = $_FILES['image'];
+                $selectedProjectSlug = $_POST['project'];
 
                 // Get the file extension
                 $fileExtension = pathinfo($uploadedFile['name'], PATHINFO_EXTENSION);
 
-                // Generate a unique filename (you can use other methods)
-                $newFilename = 'image_' . uniqid() . '.' . $fileExtension;
+                // Generate a unique filename based on the selected project's slug
+                $newFilename = $selectedProjectSlug . '.' . $fileExtension;
 
                 // Specify the path where the file will be saved
                 $destination = $uploadDir . $newFilename;
 
                 // Move the uploaded file to the destination folder
                 if (move_uploaded_file($uploadedFile['tmp_name'], $destination)) {
-                    echo 'File uploaded successfully!';
+                    // Success: Redirect with success message
+                    header("Location: /els-cooking?success=File uploaded successfully!");
+                    exit();
                 } else {
-                    echo 'Error uploading file!';
+                    // Error: Redirect with error message
+                    header("Location: /els-cooking?error=Error uploading file!");
+                    exit();
                 }
             } else {
-                echo 'No file selected!';
+                // No file selected or project not specified: Redirect with error message
+                header("Location: /els-cooking?error=No file selected or project not specified!");
+                exit();
             }
+        } else {
+            header('/error');
         }
     }
 
@@ -116,7 +126,7 @@ class MainController
                 'goal' => htmlspecialchars($formData['goal']),
                 'how-we-do' => htmlspecialchars($formData['how-we-do']),
                 'results' => htmlspecialchars($formData['results']),
-                'project-img' => 'assets/img/projects/' . $nextProjectId
+                'project-img' => $_SERVER['DOCUMENT_ROOT']  . '/uploads/' . $nextProjectId
             ];
 
             // Add the new project data to the existing array
@@ -129,7 +139,7 @@ class MainController
             file_put_contents($filePath, $jsonProjects);
 
             // Optionally, you can redirect the user or display a success message
-            echo 'Form submitted successfully!' . $filePath;
+            header('/els-cooking');
         }
     }
 

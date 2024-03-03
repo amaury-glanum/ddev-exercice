@@ -91,8 +91,27 @@ if($_SESSION['csrf_token'] !== $data['crsf_token']) {
 
         <button type="button" class="button js-project-submission" onclick="createProject()">Créer un projet</button>
     </form>
+<!---->
+<!--    <form action="/upload" method="post" enctype="multipart/form-data">-->
+<!--        <label for="image">Choose Image:</label>-->
+<!--        <input type="file" name="image" id="image" accept="image/jpeg, image/webp" required>-->
+<!--        <button type="submit">Upload</button>-->
+<!--    </form>-->
 
     <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="project">Choose Project:</label>
+        <select name="project" id="project" required>
+            <!-- Populate the dropdown with projects from projects.json -->
+            <?php
+            $projectsJson = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/assets/data/projects.json');
+            $projects = json_decode($projectsJson, true);
+
+            foreach ($projects as $project) {
+                echo '<option value="' . $project['id'] . '">' . $project['id'] . ' : ' . $project['title']. '</option>';
+            }
+            ?>
+        </select>
+
         <label for="image">Choose Image:</label>
         <input type="file" name="image" id="image" accept="image/jpeg, image/webp" required>
         <button type="submit">Upload</button>
