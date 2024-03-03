@@ -7,6 +7,10 @@ if($_SESSION['csrf_token'] !== $data['crsf_token']) {
     header('HTTP/1.0 403 Forbidden', TRUE, 403);
     exit();
 }
+
+$projectsJson = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/assets/data/projects.json');
+$projects = json_decode($projectsJson, true);
+$uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
 ?>
 <style>
     /* styles.css */
@@ -59,29 +63,26 @@ if($_SESSION['csrf_token'] !== $data['crsf_token']) {
 
         <input type="hidden" name="csrf_token" value="<?php echo $data['crsf_token'] ?>">
 
-        <label for="id">Identifiant unique du projet:</label>
-        <input type="text" name="id" id="id" class="input-field" required><br>
-
-        <label for="date">Date:</label>
-        <input type="text" name="date" id="date" class="input-field"><br>
+        <label for="date">Date du projet:</label>
+        <input type="text" name="date" id="date" class="input-field" required><br>
 
         <label for="place">Lieu:</label>
-        <input type="text" name="place" id="place" class="input-field" ><br>
+        <input type="text" name="place" id="place" class="input-field" required><br>
 
         <label for="category">Categorie de projet:</label>
         <input type="text" name="category" id="category" class="input-field"><br>
 
         <label for="title">Nom du projet:</label>
-        <input type="text" name="title" id="title" class="input-field" ><br>
+        <input type="text" name="title" id="title" class="input-field" required><br>
 
         <label for="accroche">Phrase d'accroche:</label>
         <input type="text" name="accroche" id="accroche" class="input-field"><br>
 
         <label for="description">Description du projet:</label>
-        <textarea name="description" id="description" class="textarea-field"></textarea><br>
+        <textarea name="description" id="description" class="textarea-field" rows="12" cols="12"></textarea><br>
 
-        <label for="goal">Objectifs du projet:</label>
-        <textarea name="goal" id="goal" class="textarea-field" rows="12" cols="12"></textarea><br>
+        <label for="goal">Objectif du projet:</label>
+        <input type="text" name="goal" id="goal"><br>
 
         <label for="how-we-do">Comment s'est passé le projet:</label>
         <textarea name="how-we-do" id="how-we-do" class="textarea-field" rows="12" cols="12" ></textarea><br>
@@ -91,20 +92,13 @@ if($_SESSION['csrf_token'] !== $data['crsf_token']) {
 
         <button type="button" class="button js-project-submission" onclick="createProject()">Créer un projet</button>
     </form>
-<!---->
-<!--    <form action="/upload" method="post" enctype="multipart/form-data">-->
-<!--        <label for="image">Choose Image:</label>-->
-<!--        <input type="file" name="image" id="image" accept="image/jpeg, image/webp" required>-->
-<!--        <button type="submit">Upload</button>-->
-<!--    </form>-->
 
     <form action="/upload" method="post" enctype="multipart/form-data">
         <label for="project">Choose Project:</label>
         <select name="project" id="project" required>
             <!-- Populate the dropdown with projects from projects.json -->
             <?php
-            $projectsJson = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/assets/data/projects.json');
-            $projects = json_decode($projectsJson, true);
+
 
             foreach ($projects as $project) {
                 echo '<option value="' . $project['id'] . '">' . $project['id'] . ' : ' . $project['title']. '</option>';
@@ -116,4 +110,20 @@ if($_SESSION['csrf_token'] !== $data['crsf_token']) {
         <input type="file" name="image" id="image" accept="image/jpeg, image/webp" required>
         <button type="submit">Upload</button>
     </form>
+
+    <div class="container">
+        <h2> Liste des projets créés: </h2>
+        <ul>
+            <?php
+            foreach ($projects as $project) {
+                echo '<li>' . $project['id'] . ' : ' . $project['title'] . ' <a href="/delete-project?project-id=' . $project['id'] . '">Supprimer</a></li>';
+            }
+            ?>
+        </ul>
+        <h2> Vos images de projets: </h2>
+            <?php
+               foreach ($projects as $project) { ?>
+                <img src="<?php echo $project['project-img'] ?? "" ?>" alt="" height="100" width="100">
+            <?php } ?>
+    </div>
 </main>
