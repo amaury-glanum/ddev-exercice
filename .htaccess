@@ -7,7 +7,7 @@ RewriteRule ^(.*)$ index.php?page=$1
 
 AuthType Basic
 AuthName "Accès protégé"
-AuthUserFile /var/www/html/.htpasswd
+AuthUserFile C:\laragon\www\elsTogo/.htpasswd
+#AuthUserFile /var/www/html/.htpasswd
 require valid-user
 
-#AuthUserFile C:\laragon\www\elsTogo/.htpasswd
