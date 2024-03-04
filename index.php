@@ -33,7 +33,7 @@ try {
             break;
         case 'legal':
             $pageData = [
-                "page_css_id" => 'page-home',
+                "page_css_id" => 'page-legal',
                 "meta" => [
                     "page_title" => 'Mentions légales - Association ELS-Togo',
                     "page_description" => 'Mentions légales du site web de els-Togo',
@@ -46,7 +46,7 @@ try {
             break;
         case 'credit':
             $pageData = [
-                "page_css_id" => 'page-home',
+                "page_css_id" => 'page-credit',
                 "meta" => [
                     "page_title" => 'Crédits - Association ELS-Togo',
                     "page_description" => 'Crédits du site web de els-Togo',
