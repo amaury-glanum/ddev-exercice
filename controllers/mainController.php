@@ -18,13 +18,13 @@ class MainController
     public function setPageData(array $pageData): void
     {
         $data_page = [
-            "page_css_id" => $pageData["page_css_id"],
-            "page_description" => $pageData["meta"]["page_description"],
-            "page_title" => $pageData["meta"]["page_title"],
+            "page_css_id" => $pageData["page_css_id"] ?? "",
+            "page_description" => $pageData["meta"]["page_description"] ?? "",
+            "page_title" => $pageData["meta"]["page_title"] ?? "",
             "view" => $pageData['view'],
             "template" => $pageData['template'],
-            "data" => $pageData['data'],
-            "siteUrl" => $pageData['url']
+            "data" => $pageData['data'] ?? [],
+            "siteUrl" => $pageData['siteUrl'] ?? "https://els-togo.onrender.com/"
         ];
 
         $this->generatePage($data_page);
