@@ -12,9 +12,9 @@
                 <div class="row nav-and-cta g-lg-0">
                     <div class="col-auto me-lg-3">
                         <ul class="header-menu">
-                            <li class="menu__nav-item"><a data-hash="#mission" href="http://local.els-togo.com/#mission">Notre mission</a></li>
-                            <li class="menu__nav-item"><a data-hash="#qui-sommes-nous" href="http://local.els-togo.com/#qui-sommes-nous">Qui sommes-nous ?</a></li>
-                            <li class="menu__nav-item"><a data-hash="#nos-projets" href="http://local.els-togo.com/#nos-projets">Nos projets</a></li>
+                            <li class="menu__nav-item"><a data-hash="#mission" href="<?php echo $siteUrl ?>/#mission">Notre mission</a></li>
+                            <li class="menu__nav-item"><a data-hash="#qui-sommes-nous" href="<?php echo $siteUrl ?>/#qui-sommes-nous">Qui sommes-nous ?</a></li>
+                            <li class="menu__nav-item"><a data-hash="#nos-projets" href="<?php echo $siteUrl ?>/#nos-projets">Nos projets</a></li>
                         </ul>
                     </div>
                     <div class="col-auto ms-lg-5">

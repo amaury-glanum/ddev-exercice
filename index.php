@@ -23,6 +23,7 @@ try {
                 ],
                 "view" => 'views/home.view.php',
                 "template" => "views/templates/template.php",
+                "siteUrl" => $_ENV["ELS_SITE_URL"],
                 "data" => [
                     'projects' => $projects
                 ]
@@ -40,6 +41,7 @@ try {
                 ],
                 "view" => 'views/cooksite/projects.view.php',
                 "template" => "views/templates/template.php",
+                "siteUrl" => $_ENV["ELS_SITE_URL"],
                 "data" => [
                     'crsf_token' => $_SESSION['csrf_token']
                 ]
@@ -68,7 +70,8 @@ try {
             "page_description" => 'Els-Togo - erreur 404',
         ],
         "view" => 'views/error.view.php',
-        "template" => "views/templates/template.php"
+        "template" => "views/templates/template.php",
+        "siteUrl" => $_ENV["ELS_SITE_URL"]
     ];
     $mainController->pageError($pageData);
 }

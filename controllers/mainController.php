@@ -23,7 +23,8 @@ class MainController
             "page_title" => $pageData["meta"]["page_title"],
             "view" => $pageData['view'],
             "template" => $pageData['template'],
-            "data" => $pageData['data']
+            "data" => $pageData['data'],
+            "siteUrl" => $pageData['url']
         ];
 
         $this->generatePage($data_page);
