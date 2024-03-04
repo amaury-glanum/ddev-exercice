@@ -12,8 +12,9 @@
             </div>
             <div class="col-12 col-md-6">
                 <ul class="footer-list">
-                    <li class="text--light text-xs modal-open-btn">Mentions légales</li>
-                    <li class="text--light text-xs modal-open-btn">Politique de confidentialité</li>
+                    <li class="text--light text-xs modal-open-btn"><a href="/legal">Mentions légales</a></li>
+                    <li class="text--light text-xs modal-open-btn"><a href="/confidentiality">Politique de confidentialité</a></li>
+                    <li class="text--light text-xs modal-open-btn"><a href="/credits">Crédits</a></li>
                 </ul>
             </div>
         </div>

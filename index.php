@@ -31,6 +31,32 @@ try {
 
             $mainController->setPageData($pageData);
             break;
+        case 'legal':
+            $pageData = [
+                "page_css_id" => 'page-home',
+                "meta" => [
+                    "page_title" => 'Mentions légales - Association ELS-Togo',
+                    "page_description" => 'Mentions légales du site web de els-Togo',
+                ],
+                "view" => 'views/legal.view.php',
+                "template" => "views/templates/template.php",
+                "siteUrl" => $_ENV["ELS_SITE_URL"]
+            ];
+            $mainController->setPageData($pageData);
+            break;
+        case 'credit':
+            $pageData = [
+                "page_css_id" => 'page-home',
+                "meta" => [
+                    "page_title" => 'Crédits - Association ELS-Togo',
+                    "page_description" => 'Crédits du site web de els-Togo',
+                ],
+                "view" => 'views/credit.view.php',
+                "template" => "views/templates/template.php",
+                "siteUrl" => $_ENV["ELS_SITE_URL"]
+            ];
+            $mainController->setPageData($pageData);
+            break;
         case 'els-cooking':
             $_SESSION['csrf_token'] = $mainController->generateCsrfToken();
             $pageData = [
