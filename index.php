@@ -44,7 +44,7 @@ try {
             ];
             $mainController->setPageData($pageData);
             break;
-        case 'credit':
+        case 'credits':
             $pageData = [
                 "page_css_id" => 'page-credit',
                 "meta" => [
