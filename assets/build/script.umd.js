@@ -335,6 +335,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getSwiperJs: () => (/* binding */ getSwiperJs)
 /* harmony export */ });
 var getSwiperJs = function getSwiperJs() {
+  var elsProjectSlides = document.querySelectorAll('.els-swiper-projects .swiper-slide');
+  var slideNumber = elsProjectSlides.length;
   var swiper = new Swiper(".swiper", {
     effect: "coverflow",
     grabCursor: true,
@@ -370,16 +372,16 @@ var getSwiperJs = function getSwiperJs() {
         slidesPerView: 1
       },
       992: {
-        slidesPerView: 2
+        slidesPerView: slideNumber > 3 ? 2 : 1
       },
       1200: {
-        slidesPerView: 2
+        slidesPerView: slideNumber > 3 ? 2 : 1
       },
       1440: {
-        slidesPerView: 3
+        slidesPerView: slideNumber > 3 ? 3 : 1
       },
       1700: {
-        slidesPerView: 3
+        slidesPerView: slideNumber > 3 ? 3 : 1
       }
     }
   });

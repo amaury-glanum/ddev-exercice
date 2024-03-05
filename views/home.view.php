@@ -154,7 +154,7 @@ $partners = [
                         Nous mettons un point d'honneur à la coopération et l'autonomisation.</p>
                 </div>
             </div>
-            <div class="swiper-container">
+            <div class="swiper-container els-swiper-projects">
                 <div class="swiper">
                     <div class="swiper-wrapper">
                         <?php

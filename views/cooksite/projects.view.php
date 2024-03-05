@@ -8,6 +8,19 @@ if($_SESSION['csrf_token'] !== $data['crsf_token']) {
     exit();
 }
 
+if(isset($_GET['success'])) {
+    if($_GET['success'] === 'projet-nouveau' || $_GET['success'] === 'image-nouvelle' || $_GET['success'] === 'suppression-projet') {
+//        echo '<script type="text/JavaScript">
+//            setTimeout(() => {
+//                location.reload();
+//            }, 10);
+//
+//
+//           </script>';
+    }
+}
+
+
 $projectsJson = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/assets/data/projects.json');
 $projects = json_decode($projectsJson, true);
 $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
@@ -56,6 +69,78 @@ $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
         background-color: #45a049;
     }
 
+    .els-form form {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .els-form label {
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    .els-form select,
+    .els-form input[type="file"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 16px;
+        box-sizing: border-box;
+    }
+
+    .els-form button {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .els-form button:hover {
+        background-color: #45a049;
+    }
+
+    /* Container Styles */
+    .els-form .containerForm {
+        max-width: 800px;
+        margin: 20px auto;
+    }
+
+    .els-form h2 {
+        color: #333;
+    }
+
+    .els-form ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .els-form li {
+        margin-bottom: 10px;
+    }
+
+    .els-form a {
+        color: #4caf50;
+        text-decoration: none;
+    }
+
+    .els-form a:hover {
+        text-decoration: underline;
+    }
+
+    .els-form img {
+        margin-right: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+    }
+
 </style>
 
 <main id="cooking-page" class="<?php echo $page_css_id ?>">
@@ -93,8 +178,10 @@ $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
         <button type="button" class="button js-project-submission" onclick="createProject()">Créer un projet</button>
     </form>
 
+    <section class="els-form">
+        <p class="pre-title--centered"> Une fois le projet créé, il faut lui allouer une image pour sa slide ici. </p>
     <form action="/upload" method="post" enctype="multipart/form-data">
-        <label for="project">Choose Project:</label>
+        <label for="project">Choisir un Project:</label>
         <select name="project" id="project" required>
             <!-- Populate the dropdown with projects from projects.json -->
             <?php
@@ -106,24 +193,37 @@ $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
             ?>
         </select>
 
-        <label for="image">Choose Image:</label>
+        <label for="image">Choisir une image pour le projet choisi:</label>
         <input type="file" name="image" id="image" accept="image/jpeg, image/webp" required>
         <button type="submit">Upload</button>
     </form>
 
-    <div class="container">
-        <h2> Liste des projets créés: </h2>
-        <ul>
-            <?php
-            foreach ($projects as $project) {
-                echo '<li>' . $project['id'] . ' : ' . $project['title'] . ' <a href="/delete-project?project-id=' . $project['id'] . '">Supprimer</a></li>';
-            }
-            ?>
-        </ul>
-        <h2> Vos images de projets: </h2>
-            <?php
-               foreach ($projects as $project) { ?>
-                <img src="<?php echo $project['project-img'] ?? "" ?>" alt="" height="100" width="100">
+    <div class="containerForm container">
+
+        <div class="row">
+            <?php if(!empty($_GET["success"])) { ?>
+            <p class="els-text-lg els-text--centered els-text--blue"><?php echo $_GET['success'] === "image-nouvelle" ? "Nouvelle image créé" : "" ?></p>
+            <p class="els-text-lg els-text--centered els-text--blue"><?php echo $_GET['success'] === "projet-nouveau" ? "Nouveau projet créé" : "" ?></p>
             <?php } ?>
+            <?php if(!empty($_GET["error"])) { ?>
+            <p class="els-text-lg els-text--centered" style="color:red"><?php echo $_GET['error'] ?></p>
+            <?php } ?>
+        </div>
+        <div class="row">
+            <h3 class="els-text-lg"> Liste des projets créés: </h3>
+            <ul>
+                <?php
+                foreach ($projects as $project) {
+                    echo '<li>' . $project['id'] . ' : ' . $project['title'] . ' <a href="/delete-project?project-id=' . $project['id'] . '">Supprimer</a></li>';
+                }
+                ?>
+            </ul>
+            <h3 class="els-text-lg"> Vos images de projets: </h3>
+                <?php
+                   foreach ($projects as $project) { ?>
+                    <img src="<?php echo $project['project-img'] ?? "" ?>" alt="" height="100" width="100">
+                <?php } ?>
+        </div>
     </div>
+    </section>
 </main>
