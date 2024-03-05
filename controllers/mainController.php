@@ -53,7 +53,7 @@ class MainController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Specify the directory where you want to store the uploaded images
-            $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
+            $uploadDir = $_ENV["ELS_SITE_URL"] . '/uploads/';
 
             // Check if the directory exists, create it if not
             if (!file_exists($uploadDir)) {
@@ -78,7 +78,7 @@ class MainController
                 if (move_uploaded_file($uploadedFile['tmp_name'], $destination)) {
                     // Success: Redirect with success messageS
 
-                    echo '<script type="text/JavaScript"> window.location.replace("/els-cooking?success=image-nouvelle"); </script>';
+                    header("Location: /els-cooking?error=image-nouvelle");
                     exit;
                 } else {
                     // Error: Redirect with error message
@@ -99,10 +99,13 @@ class MainController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+            $baseUrl = $_ENV['ELS_SITE_URL'];
+            $imageUrl = $baseUrl . '/uploads/project-1.jpg';
+
             // Read JSON data from the request body
             $jsonInput = file_get_contents('php://input');
             $formData = json_decode($jsonInput, true);
-            $filePath = $_SERVER['DOCUMENT_ROOT'] . '/assets/data/projects.json';
+            $filePath = $baseUrl . '/assets/data/projects.json';
 
             // todo: Ensure the path is a real path, not a symbolic link
 
@@ -153,8 +156,8 @@ class MainController
 
             // Optionally, you can redirect the user or display a success message
 
-            echo '<script type="text/JavaScript"> window.location.replace("/els-cooking?success=projet-nouveau"); </script>';
-            exit;
+            header("Location: /els-cooking?success=projet-nouveau");
+            exit();
         }
     }
 
