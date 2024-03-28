@@ -28,4 +28,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
   menuBurger()
   displayLeafletMap()
 
+
+
 })
