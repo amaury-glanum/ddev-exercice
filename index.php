@@ -23,7 +23,7 @@ try {
                 ],
                 "view" => 'views/home.view.php',
                 "template" => "views/templates/template.php",
-                "siteUrl" => $_ENV["ELS_SITE_URL"],
+                "siteUrl" => $_ENV["ELS_SITE_URL"] ?? "",
                 "data" => [
                     'projects' => $projects
                 ]
@@ -40,7 +40,7 @@ try {
                 ],
                 "view" => 'views/legal.view.php',
                 "template" => "views/templates/template.php",
-                "siteUrl" => $_ENV["ELS_SITE_URL"]
+                "siteUrl" => $_ENV["ELS_SITE_URL"] ?? ""
             ];
             $mainController->setPageData($pageData);
             break;
@@ -53,7 +53,7 @@ try {
                 ],
                 "view" => 'views/credit.view.php',
                 "template" => "views/templates/template.php",
-                "siteUrl" => $_ENV["ELS_SITE_URL"]
+                "siteUrl" => $_ENV["ELS_SITE_URL"] ?? ""
             ];
             $mainController->setPageData($pageData);
             break;
@@ -67,7 +67,7 @@ try {
                 ],
                 "view" => 'views/cooksite/projects.view.php',
                 "template" => "views/templates/template.php",
-                "siteUrl" => $_ENV["ELS_SITE_URL"],
+                "siteUrl" => $_ENV["ELS_SITE_URL"] ?? "",
                 "data" => [
                     'crsf_token' => $_SESSION['csrf_token']
                 ]
@@ -97,7 +97,7 @@ try {
         ],
         "view" => 'views/error.view.php',
         "template" => "views/templates/template.php",
-        "siteUrl" => $_ENV["ELS_SITE_URL"]
+        "siteUrl" => $_ENV["ELS_SITE_URL"] ?? ""
     ];
     $mainController->pageError($pageData);
 }
