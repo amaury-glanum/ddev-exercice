@@ -7,28 +7,28 @@ $members = [
     [
         'name' => 'Kpeglo Bessou',
         'firstname' => 'Kokou Jacques',
-        'img' => ['src'=>'./assets/img/persons/persons.svg', 'alt'=>"personne"],
+        'img' => ['src'=>'./assets/img/persons/persons-man.jpg', 'alt'=>"personne"],
         'email' => 'email@mail.com',
         'role' => 'Président du Conseil d\'Administration'
     ],
     [
         'name' => 'Azanli',
         'firstname' => 'Koffi Djifa',
-        'img' => ['src'=>'./assets/img/persons/persons.svg', 'alt'=>"personne"],
+        'img' => ['src'=>'./assets/img/persons/persons-man.jpg', 'alt'=>"personne"],
         'email' => 'email@mail.com',
         'role' => 'Directeur exécutif'
     ],
     [
         'name' => 'Dewa Kassa',
         'firstname' => 'Kodjo Akonta Florent',
-        'img' => ['src'=>'./assets/img/persons/persons.svg', 'alt'=>"personne"],
+        'img' => ['src'=>'./assets/img/persons/persons-man.jpg', 'alt'=>"personne"],
         'email' => 'email@mail.com',
         'role' => 'Responsable planification et suivi'
     ],
     [
         'name' => 'Tate',
         'firstname' => 'Yawo Akponi',
-        'img' => ['src'=>'./assets/img/persons/persons.svg', 'alt'=>"personne"],
+        'img' => ['src'=>'./assets/img/persons/persons-man.jpg', 'alt'=>"personne"],
         'email' => 'email@mail.com',
         'role' => 'Coordonnateur de l\'association'
     ],
@@ -290,7 +290,7 @@ $partners = [
                                  data-title="<?php echo $member['name'] . $member['firstname'] ?>">
                                 <div class="top-bar"></div>
                                 <div class="content">
-                                    <img src="<?php echo $member['img']['src'] ?? '' ?>" alt="<?php echo $member['img']['alt'] ?? '' ?>">
+                                    <img src="<?php echo $member['img']['src'] ?? '/assets/img/persons/persons-man.jpg' ?>" alt="<?php echo $member['img']['alt'] ?? '' ?>">
                                     <strong><?php echo $member['firstname'] ?? "" ?></strong>
                                     <p><?php echo $member['name'] ?? "" ?></p>
                                     <p><?php echo $member['email'] ?? "" ?></p>
