@@ -124,6 +124,8 @@ $partners = [
         'partner-name' => 'partner'
     ],
 ];
+//
+//var_dump('DATA', $data);
 
 ?>
 
@@ -162,7 +164,7 @@ $partners = [
                             foreach($data['projects'] as $project) { ?>
                                 <div
                                     class="swiper-slide"
-                                    data-imageid="<?php echo $project['project-img'] ?>"
+                                    data-imageid="<?php echo $project['project-img'] ?? "./assets/img/projects/placeholder/placeholder-project.jpg" ?>"
                                 >
                                     <span><?php echo $project['date']; ?></span>
                                     <div class="swiper__inner-btn">

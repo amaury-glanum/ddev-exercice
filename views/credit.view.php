@@ -5,3 +5,4 @@
 <!-- Persons -->
 <a href="https://fr.freepik.com/search?format=search&freeSvg=free&last_filter=freeSvg&last_value=free&query=person&type=icon">Icône de UIcons</a>
 <a href="https://fr.freepik.com/icone/utilisateur_3917711#fromView=search&page=1&position=52&uuid=44b56f94-79f0-48c2-9fed-3fe8f55c6976">Icône de UIcons</a>
+<a href="https://fr.freepik.com/vecteurs-libre/personnes-etreignant-design-plat_8706671.htm#fromView=search&page=1&position=0&uuid=8fa5bdf9-8767-4d87-9988-288eec69b2eb">Projet Image par défaut: Image de freepik</a>

@@ -24,7 +24,7 @@ class MainController
             "view" => $pageData['view'],
             "template" => $pageData['template'],
             "data" => $pageData['data'] ?? [],
-            "siteUrl" => $pageData['siteUrl'] ?? "https://els-togo.onrender.com/"
+            "siteUrl" => $pageData['siteUrl'] ?? ""
         ];
 
         $this->generatePage($data_page);
