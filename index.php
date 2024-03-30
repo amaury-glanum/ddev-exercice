@@ -1,5 +1,7 @@
 <?php
 session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 require_once(dirname(__FILE__) . '/controllers/projectsControllers/createProject.php');
 require_once(dirname(__FILE__) . '/controllers/projectsControllers/deleteProject.php');
 require_once(dirname(__FILE__) . '/controllers/projectsControllers/uploadProjectImages.php');
@@ -50,6 +52,32 @@ try {
                 "view" => 'views/legal.view.php',
                 "template" => "views/templates/template.php",
                 "siteUrl" => $siteUrl
+            ];
+            $mainController->setPageData($pageData);
+            break;
+        case 'project':
+            $projects = $createProject->getJsonProjectData();
+            $projectId = 'project-'.$_GET['project-page-id'];
+            $activeProject = null;
+            foreach ($projects as $project) {
+                if ($project['id'] === $projectId) {
+                    $activeProject = $project;
+                    break;
+                }
+            }
+            $pageData = [
+                "page_css_id" => 'page-project-'.$projectId,
+                "meta" => [
+                    "page_title" => 'Association ELS-Togo',
+                    "page_description" => 'Site web de els-Togo',
+                ],
+                "view" => 'views/single/project.view.php',
+                "template" => "views/templates/template.php",
+                "siteUrl" => $siteUrl,
+                "data" => [
+                    'projects' => $projects,
+                    'project' => $activeProject
+                ]
             ];
             $mainController->setPageData($pageData);
             break;

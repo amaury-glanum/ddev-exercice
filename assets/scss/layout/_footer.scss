@@ -12,8 +12,14 @@
   }
 
   .mainRow {
-    justify-content: space-between;
     row-gap: 20px;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    @include media-breakpoint-up(lg) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
 
   .footer-list {
@@ -29,7 +35,7 @@
       flex-direction: row;
     }
 
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(lg) {
       justify-content: flex-end;
     }
   }

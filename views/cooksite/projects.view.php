@@ -1,28 +1,12 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
-header('HTTP/1.0 403 Forbidden', TRUE, 403);
-die();
+    header('HTTP/1.0 403 Forbidden', TRUE, 403);
+    exit();
 };
 if($_SESSION['csrf_token'] !== $data['crsf_token']) {
     header('HTTP/1.0 403 Forbidden', TRUE, 403);
     exit();
 }
-
-if(isset($_GET['success'])) {
-    if($_GET['success'] === 'projet-nouveau' || $_GET['success'] === 'image-nouvelle' || $_GET['success'] === 'suppression-projet') {
-//        echo '<script type="text/JavaScript">
-//            setTimeout(() => {
-//                location.reload();
-//            }, 10);
-//
-//
-//           </script>';
-    }
-}
-
-
-//$projectsJson = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/assets/data/project.json');
-//$projects = json_decode($projectsJson, true);
 $projects = $data['projects'];
 $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
 ?>
@@ -133,38 +117,40 @@ $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
         text-decoration: underline;
     }
 
-    .els-image-form img {
-        width: 100%;
-        object-fit: contain;
-        margin-right: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        padding: 5px;
-    }
-
     /* project list */
     .els-projects-list {
         padding: 20px;
         background: #fff;
     }
 
-    .els-cooking-img-wrapper {
+    /* images list */
+    .els-cooking-img-list-wrapper {
         background: #fff;
         margin-bottom: 150px;
     }
 
-    .els-cooking-img-wrapper .img-wrapper {
-        margin: 10px;
+    .els-cooking-img-list-wrapper .images-list {
+        margin-top: 20px;
+        row-gap: 40px;
+    }
+
+    .els-cooking-img-list-wrapper .img-wrapper {
+        background: #fff;
+        margin: 0;
         padding: 10px;
-        border: 1px solid #000b21;
+        border: 1px solid #0036a3;
         border-radius: 10px;
+    }
+
+    .els-cooking-img-list-wrapper .img-wrapper img {
+        width: 100%;
+        border-radius: 10px;
+        object-fit: contain;
     }
 
 </style>
 
 <main id="cooking-page" class="<?php echo $page_css_id ?>">
-
     <section class="container project-form__wrapper">
         <div class="row project-form__title-wrapper">
             <div class="col-12">
@@ -173,7 +159,7 @@ $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
         </div>
         <div class="row">
             <div class="col-12">
-                <form id="projectForm" method="post">
+                <form id="projectForm" method="post" action="">
 
                     <input type="hidden" name="csrf_token" value="<?php echo $data['crsf_token'] ?>">
 
@@ -204,7 +190,7 @@ $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
                     <label for="results">Resultats:</label>
                     <textarea name="results" id="results" class="textarea-field"  rows="8" cols="12"></textarea><br>
 
-                    <button type="button" class="button js-project-submission" onclick="createProject()">Créer un projet</button>
+                    <button type="submit" class="button js-project-submission" onclick="createProject()">Créer un projet</button>
                 </form>
             </div>
         </div>
@@ -276,13 +262,13 @@ $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
           </div>
         </div>
     </section>
-    <section class="els-cooking-img-wrapper container">
+    <section class="els-cooking-img-list-wrapper container">
         <div class="row">
             <div class="col-12">
                 <h3 class="els-text-lg els-text--bold"> Vos images : </h3>
             </div>
         </div>
-        <div class="row">
+        <div class="row images-list">
             <?php
             $imgCleanPath = "";
             foreach ($projects as $project) {
@@ -293,10 +279,14 @@ $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
                     $imgCleanPath = str_replace('\\', '/', str_replace($document_root, '', $dirname . '/' . $filename));
                 }
                 ?>
-                <div class="col-auto img-wrapper">
-                    <img src="<?php echo $imgCleanPath ?? "" ?>" alt="" height="100" width="100">
+                <div class="col-auto">
+                    <div>
+                        <p class="els-text-xs els-text--bold els-text--centered"><?php echo $project['title'] ?></p>
+                    </div>
+                    <div class="img-wrapper">
+                        <img src="<?php echo $imgCleanPath ?? "" ?>" alt="" height="100" width="100">
+                    </div>
                 </div>
-
             <?php } ?>
         </div>
 

@@ -166,25 +166,28 @@ $partners = [
                                     class="swiper-slide"
                                     data-imageid="<?php echo $project['project-img'] ?? "./assets/img/projects/placeholder/placeholder-project.jpg" ?>"
                                 >
-                                    <span><?php echo $project['date']; ?></span>
-                                    <div class="swiper__inner-btn">
-                                        <button
-                                            data-typebtn="project-btn"
-                                            data-date="<?php echo $project['date'] ?>"
-                                            data-place="<?php echo $project['place'] ?>"
-                                            data-category="<?php echo $project['category'] ?>"
-                                            data-title="<?php echo $project['title'] ?>"
-                                            data-slideid="slide-btn-<?php echo strval($i) ?>"
-                                            data-id="<?php echo $project['id'] ?>"
-                                            class="button button--secondary button--radius-light modal-open-btn"
-                                        >
-                                            En savoir +
-                                        </button>
-                                    </div>
-                                    <div class="slide-content">
-                                        <h3 class="els-title"><?php echo $project['title']; ?></h3>
-                                        <p class="els-text els-text--white"><?php echo $project['place']; ?></p>
-                                    </div>
+                                        <span><?php echo $project['date']; ?></span>
+<!--                                        <div class="swiper__inner-btn">-->
+<!--                                            <button-->
+<!--                                                data-typebtn="project-btn"-->
+<!--                                                data-date="--><?php //echo $project['date'] ?><!--"-->
+<!--                                                data-place="--><?php //echo $project['place'] ?><!--"-->
+<!--                                                data-category="--><?php //echo $project['category'] ?><!--"-->
+<!--                                                data-title="--><?php //echo $project['title'] ?><!--"-->
+<!--                                                data-slideid="slide-btn---><?php //echo strval($i) ?><!--"-->
+<!--                                                data-id="--><?php //echo $project['id'] ?><!--"-->
+<!--                                                class="button button--secondary button--radius-light modal-open-btn">-->
+<!--                                                En savoir +-->
+<!--                                            </button>-->
+<!--                                        </div>-->
+                                        <div class="swiper__inner-btn">
+                                            <a class="button button--secondary button--radius-light" href="/project?project-page-id=<?php echo $project['id'][-1] ?>">En savoir + </a>
+                                        </div>
+                                        <div class="slide-content">
+                                            <h3 class="els-title"><?php echo $project['title']; ?></h3>
+                                            <p class="els-text els-text--white"><?php echo $project['place']; ?></p>
+                                        </div>
+
                                 </div>
                                 <?php $i++; } ?>
                     </div>
