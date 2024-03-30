@@ -18,8 +18,7 @@ RUN chmod -R 777 /var/www/html/assets/data/
 RUN chmod -R 777 /var/www/html/uploads/
 
 # Adjust file permissions (e.g., read, write for everyone)
-RUN chmod 666 /var/www/html/assets/data/projects.json
-
+RUN chmod 666 /var/www/html/assets/data/project.json
 
 # Node.js 18
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \

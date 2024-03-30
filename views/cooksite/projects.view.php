@@ -8,21 +8,6 @@ if($_SESSION['csrf_token'] !== $data['crsf_token']) {
     exit();
 }
 
-if(isset($_GET['success'])) {
-    if($_GET['success'] === 'projet-nouveau' || $_GET['success'] === 'image-nouvelle' || $_GET['success'] === 'suppression-projet') {
-//        echo '<script type="text/JavaScript">
-//            setTimeout(() => {
-//                location.reload();
-//            }, 10);
-//
-//
-//           </script>';
-    }
-}
-
-
-//$projectsJson = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/assets/data/project.json');
-//$projects = json_decode($projectsJson, true);
 $projects = $data['projects'];
 $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
 ?>
