@@ -136,6 +136,14 @@ p {
   &--centered {
     text-align: center;
   }
+
+  &--light {
+    font-weight: 300;
+  }
+
+  &--bold {
+    font-weight: bold;
+  }
 }
 
 .els-text-xs {
