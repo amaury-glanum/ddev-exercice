@@ -198,12 +198,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   displayLeafletMap: () => (/* binding */ displayLeafletMap)
 /* harmony export */ });
 var displayLeafletMap = function displayLeafletMap() {
-  var map = L.map('map').setView([6.26, 1.25], 10);
-  var marker = L.marker([6.42, 1.21]).addTo(map);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  }).addTo(map);
+  var mapParent = document.querySelector('.page-home');
+  if (mapParent) {
+    var map = L.map('map').setView([6.26, 1.25], 10);
+    var marker = L.marker([6.42, 1.21]).addTo(map);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+  }
 };
 
 /***/ }),
@@ -335,6 +338,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getSwiperJs: () => (/* binding */ getSwiperJs)
 /* harmony export */ });
 var getSwiperJs = function getSwiperJs() {
+  var elsProjectSlides = document.querySelectorAll('.els-swiper-projects .swiper-slide');
+  var slideNumber = elsProjectSlides.length;
   var swiper = new Swiper(".swiper", {
     effect: "coverflow",
     grabCursor: true,
@@ -370,16 +375,16 @@ var getSwiperJs = function getSwiperJs() {
         slidesPerView: 1
       },
       992: {
-        slidesPerView: 2
+        slidesPerView: slideNumber > 3 ? 2 : 1
       },
       1200: {
-        slidesPerView: 2
+        slidesPerView: slideNumber > 3 ? 2 : 1
       },
       1440: {
-        slidesPerView: 3
+        slidesPerView: slideNumber > 3 ? 3 : 1
       },
       1700: {
-        slidesPerView: 3
+        slidesPerView: slideNumber > 3 ? 3 : 1
       }
     }
   });

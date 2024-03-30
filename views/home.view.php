@@ -7,28 +7,28 @@ $members = [
     [
         'name' => 'Kpeglo Bessou',
         'firstname' => 'Kokou Jacques',
-        'img' => ['src'=>'./assets/img/persons/persons.svg', 'alt'=>"personne"],
+        'img' => ['src'=>'./assets/img/persons/persons-man.jpg', 'alt'=>"personne"],
         'email' => 'email@mail.com',
         'role' => 'Président du Conseil d\'Administration'
     ],
     [
         'name' => 'Azanli',
         'firstname' => 'Koffi Djifa',
-        'img' => ['src'=>'./assets/img/persons/persons.svg', 'alt'=>"personne"],
+        'img' => ['src'=>'./assets/img/persons/persons-man.jpg', 'alt'=>"personne"],
         'email' => 'email@mail.com',
         'role' => 'Directeur exécutif'
     ],
     [
         'name' => 'Dewa Kassa',
         'firstname' => 'Kodjo Akonta Florent',
-        'img' => ['src'=>'./assets/img/persons/persons.svg', 'alt'=>"personne"],
+        'img' => ['src'=>'./assets/img/persons/persons-man.jpg', 'alt'=>"personne"],
         'email' => 'email@mail.com',
         'role' => 'Responsable planification et suivi'
     ],
     [
         'name' => 'Tate',
         'firstname' => 'Yawo Akponi',
-        'img' => ['src'=>'./assets/img/persons/persons.svg', 'alt'=>"personne"],
+        'img' => ['src'=>'./assets/img/persons/persons-man.jpg', 'alt'=>"personne"],
         'email' => 'email@mail.com',
         'role' => 'Coordonnateur de l\'association'
     ],
@@ -124,6 +124,8 @@ $partners = [
         'partner-name' => 'partner'
     ],
 ];
+//
+//var_dump('DATA', $data);
 
 ?>
 
@@ -154,7 +156,7 @@ $partners = [
                         Nous mettons un point d'honneur à la coopération et l'autonomisation.</p>
                 </div>
             </div>
-            <div class="swiper-container">
+            <div class="swiper-container els-swiper-projects">
                 <div class="swiper">
                     <div class="swiper-wrapper">
                         <?php
@@ -162,7 +164,7 @@ $partners = [
                             foreach($data['projects'] as $project) { ?>
                                 <div
                                     class="swiper-slide"
-                                    data-imageid="<?php echo $project['project-img'] ?>"
+                                    data-imageid="<?php echo $project['project-img'] ?? "./assets/img/projects/placeholder/placeholder-project.jpg" ?>"
                                 >
                                     <span><?php echo $project['date']; ?></span>
                                     <div class="swiper__inner-btn">
@@ -288,7 +290,7 @@ $partners = [
                                  data-title="<?php echo $member['name'] . $member['firstname'] ?>">
                                 <div class="top-bar"></div>
                                 <div class="content">
-                                    <img src="<?php echo $member['img']['src'] ?? '' ?>" alt="<?php echo $member['img']['alt'] ?? '' ?>">
+                                    <img src="<?php echo $member['img']['src'] ?? '/assets/img/persons/persons-man.jpg' ?>" alt="<?php echo $member['img']['alt'] ?? '' ?>">
                                     <strong><?php echo $member['firstname'] ?? "" ?></strong>
                                     <p><?php echo $member['name'] ?? "" ?></p>
                                     <p><?php echo $member['email'] ?? "" ?></p>

@@ -34,7 +34,6 @@ die();
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
 async function createProject() {
-    console.log('clic sur fetch project')
     const formData = new FormData(document.getElementById('projectForm'));
     const jsonData = {};
 
@@ -46,7 +45,7 @@ async function createProject() {
 
     // Fetch API Request
     try {
-    const siteUrl = 'https://els-togo.onrender.com'
+    const siteUrl = 'http://local.els-togo.com'
     const response = await fetch(`${siteUrl}/create-project`, {
     method: 'POST',
     headers: {
@@ -60,7 +59,6 @@ async function createProject() {
     }
 
     const result = await response.text();
-    console.log(result); // Display the response from the server
 
     } catch (error) {
     console.error('Error during fetch:', error);

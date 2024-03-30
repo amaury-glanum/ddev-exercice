@@ -12,6 +12,8 @@ try {
         $page = $url[0];
     }
 
+    $siteUrl = $_ENV["ELS_SITE_URL"] ?? "http://local.els-togo.com";
+
     switch ($page) {
         case '':
             $projects = $mainController->getJsonProjectData();
@@ -23,7 +25,7 @@ try {
                 ],
                 "view" => 'views/home.view.php',
                 "template" => "views/templates/template.php",
-                "siteUrl" => $_ENV["ELS_SITE_URL"] ?? "",
+                "siteUrl" => $siteUrl,
                 "data" => [
                     'projects' => $projects
                 ]
@@ -40,11 +42,11 @@ try {
                 ],
                 "view" => 'views/legal.view.php',
                 "template" => "views/templates/template.php",
-                "siteUrl" => $_ENV["ELS_SITE_URL"] ?? ""
+                "siteUrl" => $siteUrl
             ];
             $mainController->setPageData($pageData);
             break;
-        case 'credit':
+        case 'credits':
             $pageData = [
                 "page_css_id" => 'page-credit',
                 "meta" => [
@@ -53,7 +55,7 @@ try {
                 ],
                 "view" => 'views/credit.view.php',
                 "template" => "views/templates/template.php",
-                "siteUrl" => $_ENV["ELS_SITE_URL"] ?? ""
+                "siteUrl" => $siteUrl
             ];
             $mainController->setPageData($pageData);
             break;
@@ -67,7 +69,7 @@ try {
                 ],
                 "view" => 'views/cooksite/projects.view.php',
                 "template" => "views/templates/template.php",
-                "siteUrl" => $_ENV["ELS_SITE_URL"] ?? "",
+                "siteUrl" => $siteUrl,
                 "data" => [
                     'crsf_token' => $_SESSION['csrf_token']
                 ]
@@ -97,7 +99,7 @@ try {
         ],
         "view" => 'views/error.view.php',
         "template" => "views/templates/template.php",
-        "siteUrl" => $_ENV["ELS_SITE_URL"] ?? ""
+        "siteUrl" => $siteUrl
     ];
     $mainController->pageError($pageData);
 }

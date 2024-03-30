@@ -6,7 +6,9 @@
     <div class="container">
         <div class="row align-items-center mainRow g-lg-0">
             <div class="col-auto logo">
-                <img src="../../../assets/img/logo-els.jpg" alt="Logo ELS-TOGO">
+                <a href="<?php echo $siteUrl ?>/#homepage" data-hash="#homepage">
+                    <img src="../../../assets/img/logo-els.jpg" alt="Logo ELS-TOGO">
+                </a>
             </div>
             <nav class="col nav">
                 <div class="row nav-and-cta g-lg-0">
@@ -18,7 +20,7 @@
                         </ul>
                     </div>
                     <div class="col-auto ms-lg-5">
-                        <a data-hash="#contact" href="#contact" class="button button--secondary">Nous contacter</a>
+                        <a data-hash="#contact" href="<?php echo $siteUrl ?>/#contact" class="button button--secondary">Nous contacter</a>
                     </div>
                 </div>
             </nav>

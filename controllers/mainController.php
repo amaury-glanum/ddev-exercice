@@ -24,14 +24,14 @@ class MainController
             "view" => $pageData['view'],
             "template" => $pageData['template'],
             "data" => $pageData['data'] ?? [],
-            "siteUrl" => $pageData['siteUrl'] ?? "https://els-togo.onrender.com/"
+            "siteUrl" => $pageData['siteUrl'] ?? ""
         ];
 
         $this->generatePage($data_page);
     }
 
     public function getJsonProjectData() {
-        $filePath = $_SERVER['DOCUMENT_ROOT'] . '/assets/data/projects.json';
+        $filePath = $_SERVER['DOCUMENT_ROOT'] . '/assets/data/project.json';
 
         // todo: Ensure the path is a real path, not a symbolic link
 
@@ -76,17 +76,18 @@ class MainController
 
                 // Move the uploaded file to the destination folder
                 if (move_uploaded_file($uploadedFile['tmp_name'], $destination)) {
-                    // Success: Redirect with success message
-                    header("Location: /els-cooking?success=File uploaded successfully!");
-                    exit();
+                    // Success: Redirect with success messageS
+
+                    header("Location: /els-cooking?success=Image téléchargé");
+                    exit;
                 } else {
                     // Error: Redirect with error message
-                    header("Location: /els-cooking?error=Error uploading file!");
+                    header("Location: /els-cooking?error=Le fichier n'a pas été téléchargé");
                     exit();
                 }
             } else {
                 // No file selected or project not specified: Redirect with error message
-                header("Location: /els-cooking?error=No file selected or project not specified!");
+                header("Location: /els-cooking?error=Pas de fichier sélectionné ou fichier non-trouvé");
                 exit();
             }
         } else {
@@ -101,8 +102,7 @@ class MainController
             // Read JSON data from the request body
             $jsonInput = file_get_contents('php://input');
             $formData = json_decode($jsonInput, true);
-            $filePath = $_SERVER['DOCUMENT_ROOT'] . '/assets/data/projects.json';
-
+            $filePath = $_SERVER['DOCUMENT_ROOT'] . '/assets/data/project.json';
             // todo: Ensure the path is a real path, not a symbolic link
 
             // Read existing projects data from the file if it exists
@@ -111,10 +111,29 @@ class MainController
 
                 // Decode the existing JSON data to an array
                 $projects = json_decode($jsonProjects, true);
-                $nextProjectId = 'project-' . (count($projects) + 1);
+                if(count($projects) !== null) {
+                    $nextProjectId = 'project-' . (count($projects) + 1);
+                } else {
+                    // Add a new project array to the Json that have no array
+                    $projectArray = [];
+                    $jsonProjectArray = json_encode($projectArray, JSON_PRETTY_PRINT);
+                    file_put_contents($filePath, $jsonProjectArray);
+                }
+
             } else {
                 die('project file need to be preexistant');
             }
+
+            if(isset($_FILES['project-img']['tmp_name'])) {
+                $contentType = mime_content_type($_FILES['project-img']['tmp_name']);
+                $allowedExtensions = [
+                    'image/jpeg' => 'jpg',
+                    'image/png' => 'png',
+                    'image/gif' => 'gif',
+                    'image/webp' => 'webp',
+                ];
+            }
+            $fileExtension = $allowedExtensions[$contentType ?? ""] ?? 'jpg';
 
             $projectData = [
                 'id' => htmlspecialchars($nextProjectId),
@@ -127,7 +146,7 @@ class MainController
                 'goal' => htmlspecialchars($formData['goal']),
                 'how-we-do' => htmlspecialchars($formData['how-we-do']),
                 'results' => htmlspecialchars($formData['results']),
-                'project-img' => $_SERVER['DOCUMENT_ROOT']  . '/uploads/' . $nextProjectId
+                'project-img' =>  '../uploads/' . $nextProjectId . '.' . $fileExtension
             ];
 
             // Add the new project data to the existing array
@@ -140,18 +159,18 @@ class MainController
             file_put_contents($filePath, $jsonProjects);
 
             // Optionally, you can redirect the user or display a success message
-            header('/els-cooking');
+            header("Location: /els-cooking?success=projet-nouveau");
+            exit();
         }
     }
 
     public function deleteProject() {
-        $filePath = $_SERVER['DOCUMENT_ROOT'] . '/assets/data/projects.json';
+
+        $filePath = $_SERVER['DOCUMENT_ROOT'] . '/assets/data/project.json';
         $jsonProjects = file_get_contents($filePath);
 
         // Decode JSON data to an array
         $projects = json_decode($jsonProjects, true);
-
-        // Identify the project to delete based on its id (replace 123 with the actual id)
 
         // Search for the project with the specified id
         $projectId = $_GET['project-id'] ?? null;
@@ -168,8 +187,6 @@ class MainController
             }
 
         } else {
-            // Handle the case when project ID is not set
-            echo 'Project ID is missing or empty.';
             header('Location: /els-cooking?error=id non-trouvé');
             exit();
         }
@@ -184,13 +201,18 @@ class MainController
             // Reindex the array to fix the keys
             $projects = array_values($projects);
 
+            $i = 1;
+            foreach ($projects as &$project) {
+                $project['id'] = 'project-'. $i;
+                $project['project-img'] = '../uploads/' . $project['id'] . '.jpg';
+                $i++;
+            }
             // Encode the modified array back to JSON
             $jsonProjects = json_encode($projects, JSON_PRETTY_PRINT);
 
             // Write the updated JSON data back to the file
             file_put_contents($filePath, $jsonProjects);
-
-            header("Location: /els-cooking?success=projet supprimé avec succés");
+            header("Location: /els-cooking?success=suppression-projet");
             exit();
         } else {
             echo 'Project not found or already deleted.';

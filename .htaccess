@@ -3,19 +3,19 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 # Nécessaire afin d'utiliser le router
-# RewriteRule ^(.*)$ index.php?page=$1 [QSA]
-RewriteRule ^([a-z0-9\-]+)$  index.php?page=$1 [NC,L]
+RewriteRule ^(.*)$ index.php?page=$1 [QSA]
+#RewriteRule ^([a-z0-9\-]+)$  index.php?page=$1 [NC,L]
 
 #AuthType Basic
 #AuthName "Accès protégé"
-#AuthUserFile C:\laragon\www\elsTogo/.htpasswd
+##AuthUserFile C:\laragon\www\elsTogo/.htpasswd
 #AuthUserFile /var/www/html/.htpasswd
 #require valid-user
-
+#
 #RewriteEngine On
 #RewriteCond %{ENV:HTTPS} !on
 #RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-#
+
 # PRODUCTION : redirection http vers https
 # RewriteEngine On
 # RewriteCond %{HTTPS} !=on
