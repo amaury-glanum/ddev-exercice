@@ -1,8 +1,17 @@
 <?php
 session_start();
-require_once(dirname(__FILE__) . '/controllers/mainController.php');
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+require_once(dirname(__FILE__) . '/controllers/projectsControllers/createProject.php');
+require_once(dirname(__FILE__) . '/controllers/projectsControllers/deleteProject.php');
+require_once(dirname(__FILE__) . '/controllers/projectsControllers/uploadProjectImages.php');
+require_once(dirname(__FILE__) . '/controllers/viewControllers/createPage.php');
 
-$mainController = new MainController();
+
+$mainController = new createPage();
+$createProject = new createProject();
+$uploadProjectImages = new uploadProjectImages();
+$deleteProject = new deleteProject();
 
 try {
     if (empty($_GET['page'])) {
@@ -16,7 +25,7 @@ try {
 
     switch ($page) {
         case '':
-            $projects = $mainController->getJsonProjectData();
+            $projects = $createProject->getJsonProjectData();
             $pageData = [
                 "page_css_id" => 'page-home',
                 "meta" => [
@@ -61,6 +70,7 @@ try {
             break;
         case 'els-cooking':
             $_SESSION['csrf_token'] = $mainController->generateCsrfToken();
+            $projects = $createProject->getJsonProjectData();
             $pageData = [
                 "page_css_id" => 'page-cook',
                 "meta" => [
@@ -71,20 +81,21 @@ try {
                 "template" => "views/templates/template.php",
                 "siteUrl" => $siteUrl,
                 "data" => [
-                    'crsf_token' => $_SESSION['csrf_token']
+                    'crsf_token' => $_SESSION['csrf_token'],
+                    'projects' => $projects
                 ]
             ];
 
             $mainController->setPageData($pageData);
             break;
         case 'create-project':
-            $mainController->setJsonProjectFile();
+            $createProject->setJsonProjectFile();
             break;
         case 'upload':
-            $mainController->uploadImage();
+            $uploadProjectImages->uploadImage();
             break;
         case 'delete-project':
-            $mainController->deleteProject();
+            $deleteProject->deleteProject();
             break;
         default:
             throw new Exception("La page n'existe pas");

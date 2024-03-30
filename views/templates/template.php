@@ -33,57 +33,62 @@ die();
 <script src="assets/build/script.umd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
+
 async function createProject() {
     const formData = new FormData(document.getElementById('projectForm'));
     const jsonData = {};
 
     formData.forEach(function(value, key){
-    jsonData[key] = value;
+        jsonData[key] = value;
     });
 
     const jsonString = JSON.stringify(jsonData);
 
     // Fetch API Request
     try {
-    const siteUrl = 'http://local.els-togo.com'
-    const response = await fetch(`${siteUrl}/create-project`, {
+    const response = await fetch(`${window.location.origin}/create-project`, {
     method: 'POST',
     headers: {
     'Content-Type': 'application/json',
     },
-    body: jsonString,
+        body: jsonString,
     });
 
     if (!response.ok) {
-    console.error('Network response was not ok');
+        console.error('Network response was not ok');
     }
 
     const result = await response.text();
+    console.log('create project fetch API result ', result)
 
     } catch (error) {
-    console.error('Error during fetch:', error);
+        console.error('Error during fetch:', error);
     }
 }
 </script>
 <script>
-    const emaildecode = (e) => {
-        let email = atob(e.dataset.email);
-        e.href = 'mailto:'+email;
-        e.innerHTML = email;
+    const contactForm = document.querySelector('.contact-container__email')
+    if(contactForm) {
+        const emaildecode = (e) => {
+            let email = atob(e.dataset.email);
+            e.href = 'mailto:'+email;
+            e.innerHTML = email;
+        }
+        const emailtag = document.querySelector('.contact-email__link');
+        let observer = new IntersectionObserver((entries) => {
+            entries.map((entry) => {
+                if (entry.isIntersecting) {
+                    let script = document.createElement('script');
+                    script.onload = function () {
+                        emaildecode(entry.target)
+                    };
+                    script.src = 'decode-email.js';
+                    document.head.appendChild(script);
+                }
+            });
+        }).observe(emailtag);
     }
-    const emailtag = document.querySelector('.contact-email__link');
-    let observer = new IntersectionObserver((entries) => {
-        entries.map((entry) => {
-            if (entry.isIntersecting) {
-                let script = document.createElement('script');
-                script.onload = function () {
-                    emaildecode(entry.target)
-                };
-                script.src = 'decode-email.js';
-                document.head.appendChild(script);
-            }
-        });
-    }).observe(emailtag);
+
 </script>
 </body>
 </html>
