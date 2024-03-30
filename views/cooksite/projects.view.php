@@ -21,8 +21,9 @@ if(isset($_GET['success'])) {
 }
 
 
-$projectsJson = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/assets/data/project.json');
-$projects = json_decode($projectsJson, true);
+//$projectsJson = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/assets/data/project.json');
+//$projects = json_decode($projectsJson, true);
+$projects = $data['projects'];
 $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
 ?>
 <style>
@@ -210,7 +211,8 @@ $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
     </section>
 
     <section class="els-image-form container">
-    <?php if(count($projects) !== null && count($projects) > 0) { ?>
+    <?php if(isset($projects)) {
+        if(count($projects) > 0) { ?>
         <div class="row">
             <div class="col-12">
                 <h3 class="els-text"> Une fois le projet créé, il faut lui allouer une image pour sa slide ici. </h3>
@@ -239,6 +241,7 @@ $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
         </div>
 
     <?php } ?>
+        <?php } ?>
     </section>
 
     <section class="els-projects-list container">
