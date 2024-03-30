@@ -5,12 +5,12 @@
 <footer class="els-footer">
     <div class="container">
         <div class="row mainRow">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-lg-6">
                 <div class="text--light text-xs">
                     <span>&copy;</span> 2024 Els-Togo
                 </div>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-lg-6">
                 <ul class="footer-list">
                     <li class="text--light text-xs modal-open-btn"><a href="/legal">Mentions légales</a></li>
                     <li class="text--light text-xs modal-open-btn"><a href="/confidentiality">Politique de confidentialité</a></li>

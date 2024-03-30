@@ -22,7 +22,7 @@ class createProject {
     }
 
     public function setJsonProjectFile() {
-
+        // createProject Js script function created the project json content before
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Read JSON data from the request body
