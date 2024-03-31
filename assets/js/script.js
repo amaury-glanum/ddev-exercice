@@ -1,3 +1,4 @@
+import {$} from './common/variables'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
@@ -10,25 +11,30 @@ import { scrollToId } from './components/scroll'
 import { gsapHeaderLinksOnScroll, gsapTitleAnim } from './components/gsapAnimScroll'
 import { displayLeafletMap } from './components/map';
 import { makeBgImageTranslate } from "./components/bgImageTranslate";
+import { showTabTarget } from "./components/showTabTarget";
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
-  var swiperSlides = document.querySelectorAll('.swiper-slide');
+  try {
+    let swiperSlides = document.querySelectorAll('.swiper-slide');
 
-  swiperSlides.forEach(function(slide) {
-    console.log('slide', slide)
-    var imageId = slide.getAttribute('data-imageid');
-    slide.style.background = "linear-gradient(to bottom, #2c536400, #203a4303, #0f2027cc), url('" + imageId + "') no-repeat 50% 50% / cover";
-  });
+    swiperSlides.forEach(function (slide) {
+      console.log('slide', slide)
+      let imageId = slide.getAttribute('data-imageid');
+      slide.style.background = "linear-gradient(to bottom, #2c536400, #203a4303, #0f2027cc), url('" + imageId + "') no-repeat 50% 50% / cover";
+    });
 
-  getSwiperJs()
-  modalToggle()
-  scrollToId()
-  gsapHeaderLinksOnScroll()
-  putScrollbarSizeInCSSVariables()
-  menuBurger()
-  displayLeafletMap()
-  makeBgImageTranslate()
-
+    showTabTarget();
+    getSwiperJs()
+    modalToggle()
+    scrollToId()
+    gsapHeaderLinksOnScroll()
+    putScrollbarSizeInCSSVariables()
+    menuBurger()
+    displayLeafletMap()
+    makeBgImageTranslate()
+  } catch(error) {
+    console.error(error)
+  }
 
 })
