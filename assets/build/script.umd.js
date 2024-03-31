@@ -368,6 +368,46 @@ var scrollToId = function scrollToId() {
 
 /***/ }),
 
+/***/ "./assets/js/components/showTabTarget.js":
+/*!***********************************************!*\
+  !*** ./assets/js/components/showTabTarget.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   showTabTarget: () => (/* binding */ showTabTarget)
+/* harmony export */ });
+var showTabTarget = function showTabTarget() {
+  var tabs = document.querySelectorAll('.project .js-tab-pill');
+  function showTabContent(event) {
+    var contents = document.querySelectorAll('.project .js-content__text');
+    var clickedTab = event.currentTarget;
+    var tabId = clickedTab.getAttribute('data-tab');
+    console.log('current', event.currentTarget);
+    tabs.forEach(function (tab) {
+      tab.classList.remove('active');
+    });
+    clickedTab.classList.add('active');
+    console.log('current after tab active');
+    contents.forEach(function (content) {
+      var contentId = content.getAttribute('data-content');
+      if (contentId === tabId) {
+        console.log('make content active');
+        content.classList.add('active');
+      } else {
+        content.classList.remove('active');
+      }
+    });
+  }
+  tabs.forEach(function (tab) {
+    console.log('click on tab', tab);
+    tab.addEventListener('click', showTabContent);
+  });
+};
+
+/***/ }),
+
 /***/ "./assets/js/components/swiper.js":
 /*!****************************************!*\
   !*** ./assets/js/components/swiper.js ***!
@@ -440,19 +480,22 @@ var getSwiperJs = function getSwiperJs() {
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
-/* harmony import */ var gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap/ScrollTrigger */ "./node_modules/gsap/ScrollTrigger.js");
-/* harmony import */ var _components_swiper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/swiper */ "./assets/js/components/swiper.js");
-/* harmony import */ var _components_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/modal */ "./assets/js/components/modal.js");
-/* harmony import */ var _common_functions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./common/functions */ "./assets/js/common/functions.js");
-/* harmony import */ var _components_menuBurger__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/menuBurger */ "./assets/js/components/menuBurger.js");
-/* harmony import */ var _components_scroll__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/scroll */ "./assets/js/components/scroll.js");
-/* harmony import */ var _components_gsapAnimScroll__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/gsapAnimScroll */ "./assets/js/components/gsapAnimScroll.js");
-/* harmony import */ var _components_map__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/map */ "./assets/js/components/map.js");
-/* harmony import */ var _components_bgImageTranslate__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/bgImageTranslate */ "./assets/js/components/bgImageTranslate.js");
+/* harmony import */ var _common_variables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common/variables */ "./assets/js/common/variables.js");
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! gsap/ScrollTrigger */ "./node_modules/gsap/ScrollTrigger.js");
+/* harmony import */ var _components_swiper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/swiper */ "./assets/js/components/swiper.js");
+/* harmony import */ var _components_modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/modal */ "./assets/js/components/modal.js");
+/* harmony import */ var _common_functions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./common/functions */ "./assets/js/common/functions.js");
+/* harmony import */ var _components_menuBurger__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/menuBurger */ "./assets/js/components/menuBurger.js");
+/* harmony import */ var _components_scroll__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/scroll */ "./assets/js/components/scroll.js");
+/* harmony import */ var _components_gsapAnimScroll__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/gsapAnimScroll */ "./assets/js/components/gsapAnimScroll.js");
+/* harmony import */ var _components_map__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/map */ "./assets/js/components/map.js");
+/* harmony import */ var _components_bgImageTranslate__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/bgImageTranslate */ "./assets/js/components/bgImageTranslate.js");
+/* harmony import */ var _components_showTabTarget__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/showTabTarget */ "./assets/js/components/showTabTarget.js");
 
 
-gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__.ScrollTrigger);
+
+gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_2__.ScrollTrigger);
 
 
 
@@ -462,21 +505,27 @@ gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.registerPlugin(gsap_ScrollTrigger__WEBPAC
 
 
 
+
 window.addEventListener('DOMContentLoaded', function (event) {
-  var swiperSlides = document.querySelectorAll('.swiper-slide');
-  swiperSlides.forEach(function (slide) {
-    console.log('slide', slide);
-    var imageId = slide.getAttribute('data-imageid');
-    slide.style.background = "linear-gradient(to bottom, #2c536400, #203a4303, #0f2027cc), url('" + imageId + "') no-repeat 50% 50% / cover";
-  });
-  (0,_components_swiper__WEBPACK_IMPORTED_MODULE_2__.getSwiperJs)();
-  (0,_components_modal__WEBPACK_IMPORTED_MODULE_3__.modalToggle)();
-  (0,_components_scroll__WEBPACK_IMPORTED_MODULE_6__.scrollToId)();
-  (0,_components_gsapAnimScroll__WEBPACK_IMPORTED_MODULE_7__.gsapHeaderLinksOnScroll)();
-  (0,_common_functions__WEBPACK_IMPORTED_MODULE_4__.putScrollbarSizeInCSSVariables)();
-  (0,_components_menuBurger__WEBPACK_IMPORTED_MODULE_5__.menuBurger)();
-  (0,_components_map__WEBPACK_IMPORTED_MODULE_8__.displayLeafletMap)();
-  (0,_components_bgImageTranslate__WEBPACK_IMPORTED_MODULE_9__.makeBgImageTranslate)();
+  try {
+    var swiperSlides = document.querySelectorAll('.swiper-slide');
+    swiperSlides.forEach(function (slide) {
+      console.log('slide', slide);
+      var imageId = slide.getAttribute('data-imageid');
+      slide.style.background = "linear-gradient(to bottom, #2c536400, #203a4303, #0f2027cc), url('" + imageId + "') no-repeat 50% 50% / cover";
+    });
+    (0,_components_showTabTarget__WEBPACK_IMPORTED_MODULE_11__.showTabTarget)();
+    (0,_components_swiper__WEBPACK_IMPORTED_MODULE_3__.getSwiperJs)();
+    (0,_components_modal__WEBPACK_IMPORTED_MODULE_4__.modalToggle)();
+    (0,_components_scroll__WEBPACK_IMPORTED_MODULE_7__.scrollToId)();
+    (0,_components_gsapAnimScroll__WEBPACK_IMPORTED_MODULE_8__.gsapHeaderLinksOnScroll)();
+    (0,_common_functions__WEBPACK_IMPORTED_MODULE_5__.putScrollbarSizeInCSSVariables)();
+    (0,_components_menuBurger__WEBPACK_IMPORTED_MODULE_6__.menuBurger)();
+    (0,_components_map__WEBPACK_IMPORTED_MODULE_9__.displayLeafletMap)();
+    (0,_components_bgImageTranslate__WEBPACK_IMPORTED_MODULE_10__.makeBgImageTranslate)();
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 /***/ }),

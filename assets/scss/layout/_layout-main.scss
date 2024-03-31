@@ -1,7 +1,7 @@
 .page-home {
     flex: 1;
     overflow: hidden;
-      
+
     section {
         padding-top: var(--section-padding-top);
         padding-bottom: var(--section-padding-bottom);
@@ -14,12 +14,14 @@
     }
 
     #nos-projets {
+      background: $tertiary;
         &:target {
             padding-top: calc(var(--header-height)*1.2);
         }
     }
 
     #qui-sommes-nous {
+      background-color: $horizon;
         &:target {
             padding-top: calc(var(--header-height)*1.2);
         }

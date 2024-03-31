@@ -79,7 +79,7 @@ try {
                 "siteUrl" => $siteUrl,
                 "data" => [
                     'projects' => $projects,
-                    'project' => $activeProject
+                    'activeProject' => $activeProject
                 ],
             ];
             $mainController->setPageData($pageData);

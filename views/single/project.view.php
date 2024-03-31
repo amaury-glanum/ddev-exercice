@@ -1,50 +1,94 @@
 <?php
 
-var_dump($_GET);
-echo '<br/>';
-echo '<br/>';
-var_dump($data['projects']);
-echo '<br/>';
-echo '<br/>';
-var_dump($data['project']);
+$project = [
+    'description' => "",
+    'goal' => "",
+    'result' => "",
+    'how-we-do' => ""
+];
+
+$projectElements = [
+    'title' =>"",
+    'date' => "",
+    'category' => ""
+];
+
+$translateKeys = [
+    'description' => 'description',
+    'goal' => 'Objectifs',
+    'result' => 'Nos résultats',
+    'how-we-do' => 'Démarche'
+];
+
+if(!empty($data['activeProject'])) {
+    foreach ($data['activeProject'] as $key => $value) {
+        if(array_key_exists($key, $project))  {
+            $project[$key] = $value;
+        }
+        if(array_key_exists($key, $projectElements))  {
+            $projectElements[$key] = $value;
+        }
+    };
+}
+echo '<pre>';
+var_dump($data['activeProject']);
+echo '</pre><br><br>';
+echo '<pre>';
+  var_dump($project);
+echo '</pre><br><br>';
+echo '<pre>';
+var_dump($projectElements);
+echo '</pre>';
 ?>
-<main id="homepage" class="<?php echo $page_css_id ?>">
+<main id="#main" class="project-page <?php echo $page_css_id ?>">
     <div class="container">
-        <div class="fond">
-            <span class="s1">blog</span>
-            <span class="s2">card</span>
-        </div>
-        <div class="card">
-            <div class="thumbnail">
-                <img class="left" src="https://cdn2.hubspot.net/hubfs/322787/Mychefcom/images/BLOG/Header-Blog/photo-culinaire-pexels.jpg" alt="Thumbnail">
+        <section class="row section-title">
+            <div class="col-12">
+                <h1 class="pre-title pre-title--centered"><?php echo $projectElements['title'] ?? "" ?></h1>
             </div>
-            <div class="right">
-                <h1>Why you Need More Magnesium in Your Daily Diet</h1>
-                <div class="author">
-                    <img src="https://randomuser.me/api/portraits/men/95.jpg" alt="Author">
-                    <h2>Igor MARTY</h2>
+        </section>
+        <section class="row section-project">
+            <div class="col-12 col-md-4 project__image">
+                <div class="img-wrapper">
+                    <img src="https://images.pexels.com/photos/547114/pexels-photo-547114.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""/>
                 </div>
-                <div class="separator"></div>
-                <p>Magnesium is one of the six essential macro-minerals that is required by the body for energy production and synthesis of protein and enzymes. It contributes to the development of bones and most importantly it is responsible for synthesis of your DNA and RNA. A new report that has appeared in the British Journal of Cancer, gives you another reason to add more magnesium to your diet...</p>
-                <h5>12</h5>
-                <h6>JANUARY</h6>
-                <ul>
-                    <li><i class="fa fa-eye fa-2x"></i></li>
-                    <li><i class="fa fa-heart-o fa-2x"></i></li>
-                    <li><i class="fa fa-envelope-o fa-2x"></i></li>
-                    <li><i class="fa fa-share-alt fa-2x"></i></li>
-                </ul>
+                <div class="subtext-wrapper">
+                    <span class="els-text-xs els-text--bold">
+                        <?php echo empty($projectElements['date']) ? "Avril 2024" : $projectElements['date']; ?>
+                    </span>
+                </div>
             </div>
-        </div>
-        <div class="fab">
-            <i class="fa fa-arrow-down fa-3x"></i>
-        </div>
-<!--        <h2>PROJECT PAGE</h2>-->
-<!--        --><?php
-//        if(!empty($data['project'])) {
-//            foreach($data['project'] as $key => $value) { ?>
-<!--                <div>--><?php //echo $key . $value ?><!--</div>-->
-<!--            --><?php //} ?>
-<!--        --><?php //} ?>
+            <div class="col-12 col-md-8 project__content">
+                <div class="content__tabs-wrapper">
+                    <nav>
+                        <?php if(!empty($project)) {
+                        $i = 1;
+                            foreach ($project as $key => $value) {
+                                if(!empty($value) && $key !== 'title') { ?>
+                                    <div data-tab="<?php echo $key ?>" class="tab-pill js-tab-pill <?php echo $i !== 1 ? '' : 'active' ?>">
+                                        <?php echo $translateKeys[$key] ?? $key ?>
+                                    </div>
+                                <?php $i++; } ?>
+                            <?php  } ?>
+                        <?php } ?>
+                    </nav>
+                </div>
+                <div class="content__text-wrapper">
+                    <?php if(!empty($project)) {
+                        $i = 1;
+                        foreach ($project as $key => $value) {
+                            if(!empty($value) && $key !== 'title') { ?>
+                                <div data-content="<?php echo $key ?>" class="content__text js-content__text <?php echo $i !== 1 ? '' : 'active' ?>">
+                                    <p class="els-text-lg"><?php echo $value ?></p>
+                                </div>
+                            <?php $i++; } ?>
+                       <?php  } ?>
+                    <?php } ?>
+                </div>
+
+            </div>
+        </section>
     </div>
 </main>
+
+

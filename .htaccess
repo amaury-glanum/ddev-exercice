@@ -5,10 +5,10 @@ RewriteCond %{REQUEST_FILENAME} !-d
 # Nécessaire afin d'utiliser le router
 RewriteRule ^(.*)$ index.php?page=$1 [QSA]
 #RewriteRule ^([a-z0-9\-]+)$  index.php?page=$1 [NC,L]
-
-AuthType Basic
-AuthName "Accès protégé"
-#AuthUserFile C:\laragon\www\elsTogo/.htpasswd
-AuthUserFile /var/www/html/.htpasswd
-require valid-user
-
+#
+#AuthType Basic
+#AuthName "Accès protégé"
+##AuthUserFile C:\laragon\www\elsTogo/.htpasswd
+#AuthUserFile /var/www/html/.htpasswd
+#require valid-user
+#

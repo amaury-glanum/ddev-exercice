@@ -23,6 +23,7 @@ die();
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
             crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
 </head>
 <body class="<?php echo $bodyId ?? "no-page" ?>">
 <?php require_once(__DIR__ . '/partials/header.php'); ?>
