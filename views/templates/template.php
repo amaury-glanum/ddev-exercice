@@ -24,7 +24,7 @@ die();
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
             crossorigin=""></script>
 </head>
-
+<body class="<?php echo $bodyId ?? "no-page" ?>">
 <?php require_once(__DIR__ . '/partials/header.php'); ?>
 <?= $page_content ?? "" ?>
 <?php require_once(__DIR__ . '/partials/footer.php'); ?>

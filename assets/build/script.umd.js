@@ -52,6 +52,47 @@ var $ = jQuery.noConflict();
 
 /***/ }),
 
+/***/ "./assets/js/components/bgImageTranslate.js":
+/*!**************************************************!*\
+  !*** ./assets/js/components/bgImageTranslate.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   makeBgImageTranslate: () => (/* binding */ makeBgImageTranslate)
+/* harmony export */ });
+/* harmony import */ var _common_variables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common/variables */ "./assets/js/common/variables.js");
+
+var makeBgImageTranslate = function makeBgImageTranslate() {
+  var translate;
+  var lFollowX = 0,
+    lFollowY = 0,
+    x = 0,
+    y = 0,
+    friction = 1 / 30;
+  function animate() {
+    x += (lFollowX - x) * friction;
+    y += (lFollowY - y) * friction;
+    translate = 'translate(' + x + 'px, ' + y + 'px) scale(1.1)';
+    (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)('.error-img').css({
+      '-webit-transform': translate,
+      '-moz-transform': translate,
+      'transform': translate
+    });
+    window.requestAnimationFrame(animate);
+  }
+  (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)(window).on('mousemove click', function (e) {
+    var lMouseX = Math.max(-100, Math.min(100, (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)(window).width() / 2 - e.clientX));
+    var lMouseY = Math.max(-100, Math.min(100, (0,_common_variables__WEBPACK_IMPORTED_MODULE_0__.$)(window).height() / 2 - e.clientY));
+    lFollowX = 20 * lMouseX / 100; // 100 : 12 = lMouxeX : lFollow
+    lFollowY = 10 * lMouseY / 100;
+  });
+  animate();
+};
+
+/***/ }),
+
 /***/ "./assets/js/components/fetchData.js":
 /*!*******************************************!*\
   !*** ./assets/js/components/fetchData.js ***!
@@ -408,6 +449,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_scroll__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/scroll */ "./assets/js/components/scroll.js");
 /* harmony import */ var _components_gsapAnimScroll__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/gsapAnimScroll */ "./assets/js/components/gsapAnimScroll.js");
 /* harmony import */ var _components_map__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/map */ "./assets/js/components/map.js");
+/* harmony import */ var _components_bgImageTranslate__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/bgImageTranslate */ "./assets/js/components/bgImageTranslate.js");
 
 
 gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__.ScrollTrigger);
@@ -416,6 +458,7 @@ gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.registerPlugin(gsap_ScrollTrigger__WEBPAC
 
 
 // import { scrollToAnchor } from './components/scrollToAnchor'
+
 
 
 
@@ -433,6 +476,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
   (0,_common_functions__WEBPACK_IMPORTED_MODULE_4__.putScrollbarSizeInCSSVariables)();
   (0,_components_menuBurger__WEBPACK_IMPORTED_MODULE_5__.menuBurger)();
   (0,_components_map__WEBPACK_IMPORTED_MODULE_8__.displayLeafletMap)();
+  (0,_components_bgImageTranslate__WEBPACK_IMPORTED_MODULE_9__.makeBgImageTranslate)();
 });
 
 /***/ }),

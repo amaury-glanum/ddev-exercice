@@ -226,7 +226,7 @@ $partners = [
             </div>
             <div class="row value-cards">
                 <!-- Carte 1 -->
-                <div class="col-md-4">
+                <div class="col-lg-4">
                     <div class="card">
                         <div class="card-image">
                             <img src="/assets/img/icons/5236.jpg" alt="personnes tenant des feuilles" />
@@ -238,7 +238,7 @@ $partners = [
                     </div>
                 </div>
                 <!-- Carte 2 -->
-                <div class="col-md-4">
+                <div class="col-lg-4">
                     <div class="card">
                         <div class="card-image">
                             <img src="/assets/img/icons/5236.jpg" alt="mains assemblant un puzzle" />
@@ -250,7 +250,7 @@ $partners = [
                     </div>
                 </div>
                 <!-- Carte 3 -->
-                <div class="col-md-4">
+                <div class="col-lg-4">
                     <div class="mb-5 card">
                         <div class="card-image">
                             <img src="/assets/img/icons/5236.jpg" alt="mains assemblant un puzzle" />
@@ -262,7 +262,7 @@ $partners = [
                     </div>
                 </div>
                 <!-- Carte 4 -->
-                <div class="col-md-4">
+                <div class="col-lg-4">
                     <div class="mb-5 card">
                         <div class="card-image">
                             <img src="/assets/img/icons/5236.jpg" alt="mains assemblant un puzzle" />
