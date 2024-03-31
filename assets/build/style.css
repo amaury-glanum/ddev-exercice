@@ -7259,6 +7259,14 @@ body.menu-opened .mainHeader .burger-menu .line3 {
     font-size: 40px;
   }
 }
+#hero .image-text__imageWrapper {
+  display: none;
+}
+@media (min-width: 576px) {
+  #hero .image-text__imageWrapper {
+    display: block;
+  }
+}
 
 .mission-section {
   background-color: #004aad;
@@ -8437,20 +8445,26 @@ body.menu-opened .mainHeader .burger-menu .line3 {
 }
 .project .project-page .container .section-title {
   padding-top: var(--header-height);
-  margin-bottom: 50px;
+  margin: 0 auto 50px auto;
 }
 .project .project-page .container .section-project {
+  max-width: 800px;
   min-height: 50vh;
   -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
           box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   outline: 1px solid #e5e5e5;
   border-radius: 10px;
-  margin: 0 10px 50px 10px;
+  margin: 0 auto 50px auto;
   padding-top: 70px;
   position: relative;
 }
+@media (min-width: 768px) {
+  .project .project-page .container .section-project {
+    border-radius: 10px;
+  }
+}
 .project .project-page .container .section-project .project__image {
-  border-radius: 0 0 0 10px;
+  border-radius: 0;
   background: #e5e5e5;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -8465,6 +8479,7 @@ body.menu-opened .mainHeader .burger-menu .line3 {
 }
 @media (min-width: 768px) {
   .project .project-page .container .section-project .project__image {
+    border-radius: 0 0 0 10px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -8498,14 +8513,16 @@ body.menu-opened .mainHeader .burger-menu .line3 {
   }
 }
 .project .project-page .container .section-project .project__content {
-  border-radius: 0 0 10px 0;
+  border-radius: 0 0 10px 10px;
   background: #e5e5e5;
 }
 .project .project-page .container .section-project .project__content .content__tabs-wrapper {
   padding: 20px 5px;
+  border-radius: 0 0 10px 10px;
 }
 @media (min-width: 768px) {
   .project .project-page .container .section-project .project__content .content__tabs-wrapper {
+    border-radius: 0 0 10px 0;
     padding: 0 5px;
     margin-top: -30px;
   }
