@@ -1,5 +1,8 @@
 <?php
-
+if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
+    header('HTTP/1.0 403 Forbidden', TRUE, 403);
+    die();
+}
 $project = [
     'description' => "",
     'goal' => "",
@@ -10,7 +13,8 @@ $project = [
 $projectElements = [
     'title' =>"",
     'date' => "",
-    'category' => ""
+    'category' => "",
+    'project-img' => ""
 ];
 
 $translateKeys = [
@@ -30,15 +34,9 @@ if(!empty($data['activeProject'])) {
         }
     };
 }
-echo '<pre>';
-var_dump($data['activeProject']);
-echo '</pre><br><br>';
-echo '<pre>';
-  var_dump($project);
-echo '</pre><br><br>';
-echo '<pre>';
-var_dump($projectElements);
-echo '</pre>';
+
+$utils = $data['displayProject']
+
 ?>
 <main id="#main" class="project-page <?php echo $page_css_id ?>">
     <div class="container">
@@ -50,11 +48,11 @@ echo '</pre>';
         <section class="row section-project">
             <div class="col-12 col-md-4 project__image">
                 <div class="img-wrapper">
-                    <img src="https://images.pexels.com/photos/547114/pexels-photo-547114.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""/>
+                    <img src="<?php echo $projectElements['project-img'] ?? "https://images.pexels.com/photos/547114/pexels-photo-547114.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ?>" alt=""/>
                 </div>
                 <div class="subtext-wrapper">
                     <span class="els-text-xs els-text--bold">
-                        <?php echo empty($projectElements['date']) ? "Avril 2024" : $projectElements['date']; ?>
+                        <?php echo empty($projectElements['date']) ? "" : $projectElements['date']; ?>
                     </span>
                 </div>
             </div>
@@ -79,7 +77,9 @@ echo '</pre>';
                         foreach ($project as $key => $value) {
                             if(!empty($value) && $key !== 'title') { ?>
                                 <div data-content="<?php echo $key ?>" class="content__text js-content__text <?php echo $i !== 1 ? '' : 'active' ?>">
-                                    <p class="els-text-lg"><?php echo $value ?></p>
+<!--                                    <p class="els-text-lg">--><?php //echo $value ?><!--</p>-->
+                                    <?php $newParagraphs = $utils->separateSentences($value, 6); ?>
+                                    <?php echo $newParagraphs ?>
                                 </div>
                             <?php $i++; } ?>
                        <?php  } ?>

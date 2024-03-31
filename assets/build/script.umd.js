@@ -380,20 +380,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var showTabTarget = function showTabTarget() {
   var tabs = document.querySelectorAll('.project .js-tab-pill');
-  function showTabContent(event) {
+  function showTabContent(clickedTab) {
     var contents = document.querySelectorAll('.project .js-content__text');
-    var clickedTab = event.currentTarget;
     var tabId = clickedTab.getAttribute('data-tab');
-    console.log('current', event.currentTarget);
     tabs.forEach(function (tab) {
       tab.classList.remove('active');
     });
     clickedTab.classList.add('active');
-    console.log('current after tab active');
     contents.forEach(function (content) {
       var contentId = content.getAttribute('data-content');
       if (contentId === tabId) {
-        console.log('make content active');
         content.classList.add('active');
       } else {
         content.classList.remove('active');
@@ -401,8 +397,20 @@ var showTabTarget = function showTabTarget() {
     });
   }
   tabs.forEach(function (tab) {
-    console.log('click on tab', tab);
-    tab.addEventListener('click', showTabContent);
+    tab.addEventListener('click', function () {
+      return showTabContent(tab);
+    });
+  });
+  document.addEventListener('keydown', function (event) {
+    var activeTab = document.querySelector('.project .js-tab-pill.active');
+    var index = Array.from(tabs).indexOf(activeTab);
+    if (event.key === 'ArrowRight') {
+      var nextTab = tabs[(index + 1) % tabs.length];
+      showTabContent(nextTab);
+    } else if (event.key === 'ArrowLeft') {
+      var prevTab = tabs[(index - 1 + tabs.length) % tabs.length];
+      showTabContent(prevTab);
+    }
   });
 };
 
