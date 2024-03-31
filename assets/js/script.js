@@ -9,6 +9,7 @@ import { menuBurger } from './components/menuBurger'
 import { scrollToId } from './components/scroll'
 import { gsapHeaderLinksOnScroll, gsapTitleAnim } from './components/gsapAnimScroll'
 import { displayLeafletMap } from './components/map';
+import { makeBgImageTranslate } from "./components/bgImageTranslate";
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
@@ -27,7 +28,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   putScrollbarSizeInCSSVariables()
   menuBurger()
   displayLeafletMap()
-
+  makeBgImageTranslate()
 
 
 })

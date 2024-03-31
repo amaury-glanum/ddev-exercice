@@ -288,6 +288,7 @@ $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
                         <img src="<?php echo $imgCleanPath ?? "" ?>" alt="" height="100" width="100">
                     </div>
                 </div>
+
             <?php } ?>
         </div>
 

@@ -39,7 +39,8 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  justify-content: space-between;
+  min-height: 100vh !important;
   padding-top: var(--header-height);
   overflow-x: hidden;
   background-color: $white;

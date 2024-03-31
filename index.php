@@ -27,6 +27,7 @@ try {
         case '':
             $projects = $createProject->getJsonProjectData();
             $pageData = [
+                "bodyId" => 'route-home',
                 "page_css_id" => 'page-home',
                 "meta" => [
                     "page_title" => 'Association ELS-Togo',
@@ -44,6 +45,7 @@ try {
             break;
         case 'legal':
             $pageData = [
+                "bodyId" => $page,
                 "page_css_id" => 'page-legal',
                 "meta" => [
                     "page_title" => 'Mentions légales - Association ELS-Togo',
@@ -55,8 +57,36 @@ try {
             ];
             $mainController->setPageData($pageData);
             break;
+        case 'project':
+            $projects = $createProject->getJsonProjectData();
+            $projectId = 'project-'.$_GET['project-page-id'];
+            $activeProject = null;
+            foreach ($projects as $project) {
+                if ($project['id'] === $projectId) {
+                    $activeProject = $project;
+                    break;
+                }
+            }
+            $pageData = [
+                "bodyId" => $page,
+                "page_css_id" => 'page-project-'.$projectId,
+                "meta" => [
+                    "page_title" => 'Association ELS-Togo',
+                    "page_description" => 'Site web de els-Togo',
+                ],
+                "view" => 'views/single/project.view.php',
+                "template" => "views/templates/template.php",
+                "siteUrl" => $siteUrl,
+                "data" => [
+                    'projects' => $projects,
+                    'project' => $activeProject
+                ],
+            ];
+            $mainController->setPageData($pageData);
+            break;
         case 'credits':
             $pageData = [
+                "bodyId" => $page,
                 "page_css_id" => 'page-credit',
                 "meta" => [
                     "page_title" => 'Crédits - Association ELS-Togo',
@@ -72,6 +102,7 @@ try {
             $_SESSION['csrf_token'] = $mainController->generateCsrfToken();
             $projects = $createProject->getJsonProjectData();
             $pageData = [
+                "bodyId" => $page,
                 "page_css_id" => 'page-cook',
                 "meta" => [
                     "page_title" => 'Mon Espace - Association ELS-Togo',
@@ -103,6 +134,7 @@ try {
 
 } catch (Exception $e) {
     $pageData = [
+        "bodyId" => 'route-error',
         "page_css_id" => 'page-error',
         "meta" => [
             "page_title" => "Erreur 404 - Els Togo",
@@ -110,7 +142,10 @@ try {
         ],
         "view" => 'views/error.view.php',
         "template" => "views/templates/template.php",
-        "siteUrl" => $siteUrl
+        "siteUrl" => $siteUrl,
+        "data" => [
+            "css-footer" => "els-footer--fixed"
+        ]
     ];
     $mainController->pageError($pageData);
 }

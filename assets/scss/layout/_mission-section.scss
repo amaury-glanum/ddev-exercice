@@ -5,8 +5,6 @@
     .pre-title {
         color: #FAFAFA;
     }
-
-
 }
 
 .value-cards {
@@ -16,7 +14,7 @@
     justify-content: space-between;
     row-gap: 20px;
 
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(lg) {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;

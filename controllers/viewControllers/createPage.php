@@ -18,6 +18,7 @@ class createPage
     public function setPageData(array $pageData): void
     {
         $data_page = [
+            "bodyId" => $pageData["bodyId"],
             "page_css_id" => $pageData["page_css_id"] ?? "",
             "page_description" => $pageData["meta"]["page_description"] ?? "",
             "page_title" => $pageData["meta"]["page_title"] ?? "",
@@ -33,6 +34,7 @@ class createPage
     public function pageError(array $pageData)
     {
         $data_page = [
+            "bodyId" => $pageData["bodyId"],
             "page_css_id" => $pageData["page_css_id"],
             "page_description" => $pageData["meta"]["page_description"],
             "page_title" => $pageData["meta"]["page_title"],
