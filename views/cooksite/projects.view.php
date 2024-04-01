@@ -11,145 +11,6 @@ if($_SESSION['csrf_token'] !== $data['crsf_token']) {
 $projects = $data['projects'];
 $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
 ?>
-<style>
-
-    #cooking-page {
-        background: #fff;
-    }
-
-    .project-form__wrapper {
-        background: #fff;
-        margin-top: 150px;
-        padding-bottom: 30px;
-    }
-
-    .project-form__title-wrapper {
-        margin-bottom: 30px;
-    }
-
-    form {
-        margin-top: 20px auto;
-        max-width: 100%;
-        padding: 20px;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: bold;
-    }
-
-    .input-field {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 16px;
-        box-sizing: border-box;
-    }
-
-    .textarea-field {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 16px;
-        box-sizing: border-box;
-    }
-
-    .button {
-        background-color: #4caf50;
-        color: #fff;
-        padding: 10px 15px;
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-    }
-
-    .button:hover {
-        background-color: #45a049;
-    }
-
-    /* Image upload form */
-
-    .els-image-form {
-        background: #fff;
-    }
-
-    .els-image-form form {
-        max-width: 600px;
-        margin: 20px 0;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
-    }
-
-    .els-image-form label {
-        margin-bottom: 8px;
-        font-weight: bold;
-    }
-
-    .els-image-form select,
-    .els-image-form input[type="file"] {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 16px;
-        box-sizing: border-box;
-    }
-
-    .els-image-form button {
-        background-color: #4caf50;
-        color: #fff;
-        padding: 10px 15px;
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-    }
-
-    .els-image-form button:hover {
-        background-color: #45a049;
-    }
-
-    .els-image-form a {
-        color: #4caf50;
-        text-decoration: none;
-    }
-
-    .els-image-form a:hover {
-        text-decoration: underline;
-    }
-
-    /* project list */
-    .els-projects-list {
-        padding: 20px;
-        background: #fff;
-    }
-
-    /* images list */
-    .els-cooking-img-list-wrapper {
-        background: #fff;
-        margin-bottom: 150px;
-    }
-
-    .els-cooking-img-list-wrapper .images-list {
-        margin-top: 20px;
-        row-gap: 40px;
-    }
-
-    .els-cooking-img-list-wrapper .img-wrapper {
-        background: #fff;
-        margin: 0;
-        padding: 10px;
-        border: 1px solid #0036a3;
-        border-radius: 10px;
-    }
-
-    .els-cooking-img-list-wrapper .img-wrapper img {
-        width: 100%;
-        border-radius: 10px;
-        object-fit: contain;
-    }
-
-</style>
 
 <main id="cooking-page" class="<?php echo $page_css_id ?>">
     <section class="container project-form__wrapper">
@@ -281,10 +142,10 @@ $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
                 }
                 ?>
                 <div class="col-auto">
-                    <div>
-                        <p class="els-text-xs els-text--bold els-text--centered"><?php echo $project['title'] ?></p>
+                    <div class="images-list__text-wrapper tooltip" data-text="<?php echo $project['title'] ?>">
+                        <p class="images-list-text text-nowrap text-ellipsis els-text-xs els-text--bold els-text--centered"><?php echo $project['title'] ?></p>
                     </div>
-                    <div class="img-wrapper">
+                    <div class="images-list__img-wrapper">
                         <img src="<?php echo $imgCleanPath ?? "" ?>" alt="" height="100" width="100">
                     </div>
                 </div>

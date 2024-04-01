@@ -8624,4 +8624,160 @@ body.menu-opened .mainHeader .burger-menu .line3 {
   opacity: 1;
 }
 
+#cooking-page {
+  background: #fff;
+  /* Image upload form */
+  /* project list */
+  /* images list */
+}
+#cooking-page .project-form__wrapper {
+  background: #fff;
+  margin-top: 150px;
+  padding-bottom: 30px;
+}
+#cooking-page .project-form__title-wrapper {
+  margin-bottom: 30px;
+}
+#cooking-page form {
+  margin-top: 20px auto;
+  max-width: 100%;
+  padding: 20px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+#cooking-page label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+#cooking-page .input-field {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+#cooking-page .textarea-field {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+#cooking-page .button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+#cooking-page .button:hover {
+  background-color: #45a049;
+}
+#cooking-page .els-image-form {
+  background: #fff;
+}
+#cooking-page .els-image-form form {
+  max-width: 600px;
+  margin: 20px 0;
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+#cooking-page .els-image-form label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+#cooking-page .els-image-form select,
+#cooking-page .els-image-form input[type=file] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+#cooking-page .els-image-form button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+#cooking-page .els-image-form button:hover {
+  background-color: #45a049;
+}
+#cooking-page .els-image-form a {
+  color: #4caf50;
+  text-decoration: none;
+}
+#cooking-page .els-image-form a:hover {
+  text-decoration: underline;
+}
+#cooking-page .els-projects-list {
+  padding: 20px;
+  background: #fff;
+}
+#cooking-page .els-cooking-img-list-wrapper {
+  background: #fff;
+  margin-bottom: 150px;
+}
+#cooking-page .els-cooking-img-list-wrapper .images-list {
+  margin-top: 20px;
+  row-gap: 40px;
+}
+#cooking-page .els-cooking-img-list-wrapper .images-list__img-wrapper {
+  max-width: 150px;
+  background: #fff;
+  margin: 0;
+  padding: 10px;
+  border: 1px solid #0036a3;
+  border-radius: 10px;
+}
+#cooking-page .els-cooking-img-list-wrapper .images-list__img-wrapper img {
+  width: 100%;
+  border-radius: 10px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+#cooking-page .els-cooking-img-list-wrapper .images-list__text-wrapper.tooltip {
+  position: relative;
+}
+#cooking-page .els-cooking-img-list-wrapper .images-list__text-wrapper.tooltip:before {
+  z-index: 999;
+  content: attr(data-text); /* here's the magic */
+  position: absolute;
+  /* move to top */
+  top: 100%;
+  -webkit-transform: translateY(-150%);
+      -ms-transform: translateY(-150%);
+          transform: translateY(-150%);
+  /* basic styles */
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #004aad;
+  border-radius: 10px;
+  background: #fff;
+  color: #004aad;
+  text-align: center;
+  display: none; /* hide by default */
+}
+#cooking-page .els-cooking-img-list-wrapper .images-list__text-wrapper.tooltip:hover:before {
+  background: #fff;
+  display: block;
+}
+#cooking-page .els-cooking-img-list-wrapper .images-list__text-wrapper .images-list-text {
+  overflow: hidden;
+  max-width: 150px;
+}
+
 /*# sourceMappingURL=style.css.map*/
