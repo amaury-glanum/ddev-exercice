@@ -57,7 +57,6 @@ $partners = [
     ],
 ];
 
-
 ?>
 
 <main id="homepage" class="<?php echo $page_css_id ?>">

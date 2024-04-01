@@ -7845,6 +7845,12 @@ body.menu-opened .mainHeader .burger-menu .line3 {
 .button--secondary:hover, .button--secondary:active, .button--secondary:focus {
   background-color: #00998a;
 }
+.button--tertiary {
+  background-color: #00AD9C;
+}
+.button--tertiary:hover, .button--tertiary:active, .button--tertiary:focus {
+  background-color: #00998a;
+}
 .button--radius-light {
   border-radius: 10px;
 }
@@ -8625,114 +8631,168 @@ body.menu-opened .mainHeader .burger-menu .line3 {
 }
 
 #cooking-page {
-  background: #fff;
   /* Image upload form */
   /* project list */
   /* images list */
 }
 #cooking-page .project-form__wrapper {
-  background: #fff;
-  margin-top: 150px;
+  margin-top: 50px;
   padding-bottom: 30px;
 }
 #cooking-page .project-form__title-wrapper {
   margin-bottom: 30px;
 }
-#cooking-page form {
-  margin-top: 20px auto;
-  max-width: 100%;
+#cooking-page .project-form {
+  margin: 30px 0;
+  max-width: 800px;
   padding: 20px;
   background-color: #fff;
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-#cooking-page label {
+#cooking-page .project-form label {
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
 }
-#cooking-page .input-field {
+#cooking-page .project-form .input-field {
   width: 100%;
   padding: 8px;
   margin-bottom: 16px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
-#cooking-page .textarea-field {
+#cooking-page .project-form .textarea-field {
   width: 100%;
   padding: 8px;
   margin-bottom: 16px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
-#cooking-page .button {
-  background-color: #4caf50;
-  color: #fff;
-  padding: 10px 15px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-}
-#cooking-page .button:hover {
-  background-color: #45a049;
-}
-#cooking-page .els-image-form {
-  background: #fff;
-}
-#cooking-page .els-image-form form {
-  max-width: 600px;
+#cooking-page .els-image-form .images-form {
+  max-width: 800px;
   margin: 20px 0;
   background-color: #fff;
+  padding: 20px;
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  /* select custom style */
 }
-#cooking-page .els-image-form label {
+#cooking-page .els-image-form .images-form .input-label {
   margin-bottom: 8px;
   font-weight: bold;
 }
-#cooking-page .els-image-form select,
-#cooking-page .els-image-form input[type=file] {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 16px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-#cooking-page .els-image-form button {
-  background-color: #4caf50;
+#cooking-page .els-image-form .images-form .input-upload-label {
+  min-width: 100px;
+  margin: 20px 0;
+  padding: 5px 10px;
+  background: #00AD9C;
+  outline: 1px solid #00AD9C;
+  display: table;
   color: #fff;
-  padding: 10px 15px;
-  border: none;
+  text-align: center;
   cursor: pointer;
-  font-size: 16px;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
 }
-#cooking-page .els-image-form button:hover {
-  background-color: #45a049;
+#cooking-page .els-image-form .images-form .input-upload-label:hover {
+  background: #fff;
+  color: #00AD9C;
 }
-#cooking-page .els-image-form a {
+#cooking-page .els-image-form .images-form .select-wrapper {
+  /* Custom Select wrapper */
+}
+#cooking-page .els-image-form .images-form .select-wrapper select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 0;
+  outline: 0;
+  background: none;
+  color: inherit;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+#cooking-page .els-image-form .images-form .select-wrapper select::-ms-expand {
+  display: none;
+}
+#cooking-page .els-image-form .images-form .select-wrapper .custom-select {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #00AD9C;
+  overflow: hidden;
+}
+#cooking-page .els-image-form .images-form .select-wrapper .custom-select select {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 5px;
+  cursor: pointer;
+}
+#cooking-page .els-image-form .images-form .select-wrapper .custom-select .select-icon {
+  padding: 5px;
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: #00AD9C;
+  pointer-events: none;
+}
+#cooking-page .els-image-form .images-form .select-wrapper .custom-select .select-icon:hover {
+  color: #004aad;
+}
+#cooking-page .els-image-form .images-form .upload-wrapper {
+  margin-top: 40px;
+  /* Reset <select> defaults */
+  /* input file style */
+}
+#cooking-page .els-image-form .images-form .upload-wrapper input[type=file] {
+  display: none;
+}
+#cooking-page .els-image-form .images-form a {
   color: #4caf50;
   text-decoration: none;
 }
-#cooking-page .els-image-form a:hover {
+#cooking-page .els-image-form .images-form a:hover {
   text-decoration: underline;
 }
+#cooking-page .els-image-form .images-form .submit-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+#cooking-page .els-image-form .images-form .submit-container .button {
+  margin: 0 auto;
+  padding: 10px 65px;
+}
 #cooking-page .els-projects-list {
-  padding: 20px;
-  background: #fff;
+  margin-top: 50px;
 }
 #cooking-page .els-cooking-img-list-wrapper {
   background: #fff;
   margin-bottom: 150px;
 }
 #cooking-page .els-cooking-img-list-wrapper .images-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  max-width: 800px;
   margin-top: 20px;
+  -webkit-column-gap: 20px;
+     -moz-column-gap: 20px;
+          column-gap: 20px;
   row-gap: 40px;
 }
 #cooking-page .els-cooking-img-list-wrapper .images-list__img-wrapper {

@@ -50,6 +50,17 @@
     }
   }
 
+  &--tertiary {
+    background-color: $tertiary;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: darken($tertiary, 4%);
+    }
+  }
+
+
   &--radius-light {
     border-radius: 10px;
   }

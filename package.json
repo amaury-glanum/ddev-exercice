@@ -55,6 +55,7 @@
   "license": "(╯°□°）╯︵ ┻━┻",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "gsap": "^3.12.5"
+    "gsap": "^3.12.5",
+    "toastify-js": "^1.12.0"
   }
 }

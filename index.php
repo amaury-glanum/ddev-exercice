@@ -7,14 +7,14 @@ require_once(dirname(__FILE__) . '/controllers/projectsControllers/deleteProject
 require_once(dirname(__FILE__) . '/controllers/projectsControllers/uploadProjectImages.php');
 require_once(dirname(__FILE__) . '/controllers/utilsControllers/stringManager.php');
 require_once(dirname(__FILE__) . '/controllers/viewControllers/createPage.php');
-
+require_once(dirname(__FILE__) . '/controllers/utilsControllers/flashMessagesManager.php');
 
 $mainController = new createPage();
 $createProject = new createProject();
 $uploadProjectImages = new uploadProjectImages();
 $deleteProject = new deleteProject();
 $stringManager = new stringManager();
-
+$flashMessageManager = new flashMessagesManager();
 try {
     if (empty($_GET['page'])) {
         $page = '';
@@ -82,7 +82,8 @@ try {
                 "data" => [
                     'projects' => $projects,
                     'activeProject' => $activeProject,
-                    'stringManager' => $stringManager
+                    'stringManager' => $stringManager,
+                    'flashMessageManager' => $flashMessageManager
                 ],
             ];
             $mainController->setPageData($pageData);
@@ -116,7 +117,8 @@ try {
                 "siteUrl" => $siteUrl,
                 "data" => [
                     'crsf_token' => $_SESSION['csrf_token'],
-                    'projects' => $projects
+                    'projects' => $projects,
+                    'flashMessageManager' => $flashMessageManager
                 ]
             ];
 
