@@ -1,7 +1,7 @@
 [
   {
     "id": "project-1",
-    "date": "",
+    "date": "Date 1",
     "place": "",
     "category": "",
     "title": "Reboisement transfrontalier",
@@ -14,7 +14,7 @@
   },
   {
   "id": "project-2",
-  "date": "",
+  "date": "Date 2",
   "place": "",
   "category": "",
   "title": "Création d’un centre optique humanitaire",
@@ -27,7 +27,7 @@
   },
   {
   "id": "project-3",
-  "date": "",
+  "date": "Date 3",
   "place": "",
   "category": "",
   "title": "Camp chantier et tourisme",
@@ -40,7 +40,7 @@
   },
   {
   "id": "project-4",
-  "date": "",
+  "date": "Date 4",
   "place": "",
   "category": "",
   "title": "Collecte et de valorisation des déchets",
@@ -53,7 +53,7 @@
   },
   {
   "id": "project-5",
-  "date": "",
+  "date": "Date 5",
   "place": "",
   "category": "",
   "title": "Hygiène et assainissement",
@@ -66,7 +66,7 @@
   },
   {
   "id": "project-6",
-  "date": "",
+  "date": "Date 6",
   "place": "",
   "category": "",
   "title": "Don de fournitures scolaires aux enfants démunies",
@@ -79,7 +79,7 @@
   },
   {
   "id": "project-7",
-  "date": "",
+  "date": "Date 7",
   "place": "",
   "category": "",
   "title": "Reboisement dans les quartiers de la ville de Tsévié",
