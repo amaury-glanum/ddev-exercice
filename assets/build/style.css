@@ -1,3 +1,12 @@
+/**
+    ----- ROOT COLORS -------
+ */
+/*
+    ------ Color accessible in inspector by using css var() in scss -------
+*/
+/**
+    ----- COLORS ON ELEMENTS -------
+ */
 @-webkit-keyframes spin {
   from {
     -webkit-transform: rotate(0deg);
@@ -6854,6 +6863,13 @@ p {
   color: #262c28;
   text-decoration: none;
 }
+.els-text-link--blue {
+  color: #004aad;
+}
+.els-text-link--blue:hover, .els-text-link--blue:active, .els-text-link--blue:focus {
+  color: #00AD9C;
+  text-decoration: none;
+}
 
 ul.els-list {
   list-style: none;
@@ -6886,6 +6902,10 @@ ul.els-list--light li::before {
 
 .text-nowrap {
   white-space: nowrap;
+}
+
+.text-ellipsis {
+  text-overflow: ellipsis;
 }
 
 .clearfix::after {
@@ -7843,7 +7863,7 @@ body.menu-opened .mainHeader .burger-menu .line3 {
   border-radius: -webkit-calc(var(--size) / 2);
   border-radius: calc(var(--size) / 2);
   opacity: 0;
-  background: #142cac;
+  background: #0036a3;
   color: #004aad;
   cursor: pointer;
 }
@@ -8435,8 +8455,7 @@ body.menu-opened .mainHeader .burger-menu .line3 {
 }
 
 .project #main:target {
-  padding-top: -webkit-calc(var(--header-height) * 1.2);
-  padding-top: calc(var(--header-height) * 1.2);
+  padding-top: var(--header-height);
 }
 .project .project-page {
   -webkit-box-flex: 1;
@@ -8444,15 +8463,60 @@ body.menu-opened .mainHeader .burger-menu .line3 {
           flex-grow: 1;
 }
 .project .project-page .container .section-title {
-  padding-top: var(--header-height);
-  margin: 0 auto 50px auto;
+  padding-top: 30px;
+  margin: 0 auto 30px auto;
+}
+.project .project-page .container .inter-post-section {
+  max-width: 800px;
+  margin: 20px auto;
+}
+.project .project-page .container .inter-post-section .inter-post-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.project .project-page .container .inter-post-section .inter-post-link {
+  visibility: hidden;
+  pointer-events: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  overflow: hidden;
+  max-width: 200px;
+  gap: 4px;
+}
+.project .project-page .container .inter-post-section .inter-post-link.active {
+  visibility: visible;
+  pointer-events: auto;
+}
+.project .project-page .container .inter-post-section .inter-post-link span {
+  font-weight: bold;
+}
+.project .project-page .container .inter-post-section .inter-post-link .inter-post-text {
+  display: none;
+  margin: 0.8px 0 0 0;
+}
+@media (min-width: 576px) {
+  .project .project-page .container .inter-post-section .inter-post-link .inter-post-text {
+    display: block;
+  }
 }
 .project .project-page .container .section-project {
   max-width: 800px;
   min-height: 50vh;
+  background: -webkit-linear-gradient(top, #fff 70px, #0036a3 70px);
+  background: linear-gradient(to bottom, #fff 70px, #0036a3 70px);
   -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
           box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
-  outline: 1px solid #e5e5e5;
+  outline: 1px solid #0036a3;
   border-radius: 10px;
   margin: 0 auto 50px auto;
   padding-top: 70px;
@@ -8465,7 +8529,6 @@ body.menu-opened .mainHeader .burger-menu .line3 {
 }
 .project .project-page .container .section-project .project__image {
   border-radius: 0;
-  background: #e5e5e5;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8514,7 +8577,6 @@ body.menu-opened .mainHeader .burger-menu .line3 {
 }
 .project .project-page .container .section-project .project__content {
   border-radius: 0 0 10px 10px;
-  background: #e5e5e5;
 }
 .project .project-page .container .section-project .project__content .content__tabs-wrapper {
   padding: 20px 5px;

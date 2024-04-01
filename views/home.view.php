@@ -34,74 +34,6 @@ $members = [
     ],
 ];
 
-$projects = [
-    [
-        'id' => 'project-1',
-        'date' => "Avril 2024",
-        'place' => "Tsévié, Togo",
-        'category' => "Santé",
-        'title' => "Création d'un centre optique",
-        'project-img' => "https://images.pexels.com/photos/7014337/pexels-photo-7014337.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-
-    ],
-    [
-        'id' => 'project-2',
-        'date' => "Juin - Septembre 2024",
-        'place' => "Tsévié, Togo",
-        'category' => "Volontariat",
-        'title' => "Camp Chantier",
-        'project-img' => "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    ],
-    [
-        'id' => 'project-3',
-        'date' => "Depuis 2024",
-        'place' => "Commune Moyen Mono 1, Togo",
-        'category' => "Santé et environnement",
-        'title' => "Collecte des ordures ménagères",
-        'project-img' => "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-
-    ],
-    [
-        'id' => 'project-4',
-        'date' => "Dés 2024",
-        'place' => "Tsévié, Togo",
-        'category' => "Environnement",
-        'title' => "Reboisement transfrontalier",
-        'img' => "https://images.pexels.com/photos/8837496/pexels-photo-8837496.jpeg",
-    ]
-];
-
-$items = [
-    [
-        'title' => 'lorem ipsum',
-        'description' => 'Lorem ipsum dolor, sit amet consectetur dolorem magni molestias ipsam laboriosam recusandae, corporis aut!'
-    ],
-    [
-        'title' => 'lorem ipsum',
-        'description' => 'Lorem ipsum dolor, sit amet consectetur dolorem magni molestias ipsam laboriosam recusandae, corporis aut!'
-    ],
-    [
-        'title' => 'lorem ipsum',
-        'description' => 'Lorem ipsum dolor, sit amet consectetur dolorem magni molestias ipsam laboriosam recusandae, corporis aut!'
-    ],
-    [
-        'title' => 'lorem ipsum',
-        'description' => 'Lorem ipsum dolor, sit amet consectetur dolorem magni molestias ipsam laboriosam recusandae, corporis aut!'
-    ],
-    [
-        'title' => 'lorem ipsum',
-        'description' => 'Lorem ipsum dolor, sit amet consectetur dolorem magni molestias ipsam laboriosam recusandae, corporis aut!'
-    ],
-    [
-        'title' => 'lorem ipsum',
-        'description' => 'Lorem ipsum dolor, sit amet consectetur dolorem magni molestias ipsam laboriosam recusandae, corporis aut!'
-    ],
-    [
-        'title' => 'lorem ipsum',
-        'description' => 'Lorem ipsum dolor, sit amet consectetur dolorem magni molestias ipsam laboriosam recusandae, corporis aut!'
-    ],
-];
-
 $partners = [
     [
         'link' => [ 'href' => '', 'text'=>''],
@@ -124,8 +56,7 @@ $partners = [
         'partner-name' => 'partner'
     ],
 ];
-//
-//var_dump('DATA', $data);
+
 
 ?>
 

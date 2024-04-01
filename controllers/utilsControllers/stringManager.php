@@ -1,9 +1,8 @@
 <?php
 
-class displayProject {
+class stringManager {
 
-
-    public function separateSentences($text, $wordsPerSentence) {
+    public function separateSentences($text, $wordsPerSentence, $css="") {
         // Explode the text into sentences
         $sentences = explode('.', $text);
 
@@ -30,10 +29,10 @@ class displayProject {
                     $newParagraphs[] = $currentParagraph;
 
                     // Start a new paragraph with the current sentence
-                    $currentParagraph = '<p class="els-text-lg">' . $sentence . '.'.'</p>';
+                    $currentParagraph = '<p class="' . $css . '">' . $sentence . '.' . '</p>';
                 } else {
                     // If the word count is within the limit, add the sentence to the current paragraph
-                    $currentParagraph .= '<p class="els-text-lg">'. $sentence . '.'.'</p>';
+                    $currentParagraph .= '<p class="' . $css . '">' . $sentence . '.' . '</p>';
                 }
             }
         }
@@ -46,4 +45,5 @@ class displayProject {
         // Return the new paragraphs as HTML
         return implode(' ', $newParagraphs);
     }
+
 }

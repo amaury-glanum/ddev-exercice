@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 require_once(dirname(__FILE__) . '/controllers/projectsControllers/createProject.php');
 require_once(dirname(__FILE__) . '/controllers/projectsControllers/deleteProject.php');
 require_once(dirname(__FILE__) . '/controllers/projectsControllers/uploadProjectImages.php');
-require_once(dirname(__FILE__) . '/controllers/projectsControllers/displayProject.php');
+require_once(dirname(__FILE__) . '/controllers/utilsControllers/stringManager.php');
 require_once(dirname(__FILE__) . '/controllers/viewControllers/createPage.php');
 
 
@@ -13,7 +13,7 @@ $mainController = new createPage();
 $createProject = new createProject();
 $uploadProjectImages = new uploadProjectImages();
 $deleteProject = new deleteProject();
-$displayProject = new displayProject();
+$stringManager = new stringManager();
 
 try {
     if (empty($_GET['page'])) {
@@ -82,7 +82,7 @@ try {
                 "data" => [
                     'projects' => $projects,
                     'activeProject' => $activeProject,
-                    'displayProject' => $displayProject
+                    'stringManager' => $stringManager
                 ],
             ];
             $mainController->setPageData($pageData);

@@ -55,7 +55,9 @@ $state-colors: (
 
 
 
-//colors
+/**
+    ----- ROOT COLORS -------
+ */
 $primary: #004aad;
 $primary-darken: darken(#004aad, 4%);
 $primary-05: rgb(0, 74, 173, 0.5);
@@ -86,6 +88,10 @@ $gray-900: #171717;
 $white: #fff;
 $black: #262c28;
 
+/*
+    ------ Color accessible in inspector by using css var() in scss -------
+*/
+
 // Colors must be named in kebab case based on this : https://colornamer.robertcooper.me/
 $colors: (
   'primary': $primary,
@@ -113,6 +119,23 @@ $colors: (
   'input-color': $gray-400,
   'bg-color': $gray-100
 );
+
+/**
+    ----- COLORS ON ELEMENTS -------
+ */
+
+// text colors
+$title-blue: $secondary;
+$text-dark-color: $black;
+$text-light-color: $white;
+
+//link color
+$els-link-primary: $primary;
+$els-link-primary-hover: $tertiary;
+
+// btn colors
+$btn-color: $secondary;
+$btn-color-hover: darken($secondary, 5%);
 
 $custom-variable-prefix: els-;
 
@@ -153,21 +176,3 @@ $contact-us-br: 30px 0 0 30px;
 $border-radius-sm: 5px;
 $border-radius-md: 10px;
 $border-radius-xl: 20px;
-
-
-//general colors
-$dci-neutral-bg: #ffffff;
-$dci-dark-blue: #142cac;
-$dci-dark-black: #000000;
-$dci-medium-grey: #cccccc;
-$dci-beige: #f4ece4;
-
-// text colors
-$dci-title-blue: $dci-dark-blue;
-$text-dark-color: $dci-dark-black;
-$text-light-color: $dci-neutral-bg;
-
-// btn colors
-$btn-color: $dci-dark-blue;
-$btn-color-hover: #227ed4;
-$bg-color: $dci-neutral-bg;

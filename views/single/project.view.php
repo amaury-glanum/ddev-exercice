@@ -3,6 +3,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
     header('HTTP/1.0 403 Forbidden', TRUE, 403);
     die();
 }
+
 $project = [
     'description' => "",
     'goal' => "",
@@ -35,7 +36,20 @@ if(!empty($data['activeProject'])) {
     };
 }
 
-$utils = $data['displayProject']
+$stringManager = $data['stringManager'];
+
+$activeProjectPageId = $_GET['project-page-id'];
+$strProjectIdNext = strval(intval($activeProjectPageId) + 1);
+$strProjectIdPrev = strval(intval($activeProjectPageId) - 1);
+$intProjectIdNext = intval($activeProjectPageId) + 1;
+$intProjectIdPrev = intval($activeProjectPageId) - 1;
+$validProject = $intProjectIdNext > 0 && $intProjectIdNext <= count($data['projects']);
+$indexNext = $intProjectIdNext - 1;
+$indexPrev = $intProjectIdPrev - 1;
+$validIndexNext = $indexNext >= 0 && $indexNext <= count($data['projects']);
+$validIndexPrev = $indexPrev >= 0 && $indexPrev <= count($data['projects']);
+$nextProject =  $validProject && $validIndexNext ? $data['projects'][$indexNext] : "";
+$previousProject =  $validProject && $validIndexPrev ? $data['projects'][$indexPrev] : "";
 
 ?>
 <main id="#main" class="project-page <?php echo $page_css_id ?>">
@@ -44,6 +58,36 @@ $utils = $data['displayProject']
             <div class="col-12">
                 <h1 class="pre-title pre-title--centered"><?php echo $projectElements['title'] ?? "" ?></h1>
             </div>
+        </section>
+        <section class="inter-post-section">
+                <div class="inter-post-wrapper">
+                    <a class=" inter-post-link els-text-link els-text-link--blue  <?php echo intval($strProjectIdPrev) > 0 ? 'active' : '' ?>" href="/project?project-page-id=<?php echo $strProjectIdPrev ?>" >
+                        <span class="inter-post-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="lucide lucide-chevrons-left">
+                                <path d="m11 17-5-5 5-5"/>
+                                <path d="m18 17-5-5 5-5"/>
+                            </svg>
+                        </span>
+                        <span class="inter-post-text"> Précèdent</span>
+                    </a>
+
+                    <a class="inter-post-link els-text-link els-text-link--blue <?php echo intval($strProjectIdNext) <= count($data['projects']) ? 'active': '' ?>" href="/project?project-page-id=<?php echo $strProjectIdNext ?>" >
+                        <span class="inter-post-text">
+                           Suivant
+                        </span>
+                        <span class="inter-post-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="lucide lucide-chevrons-right">
+                                <path d="m6 17 5-5-5-5"/>
+                                <path d="m13 17 5-5-5-5"/>
+                            </svg>
+                        </span>
+                    </a>
+
+                </div>
         </section>
         <section class="row section-project">
             <div class="col-12 col-md-4 project__image">
@@ -77,8 +121,7 @@ $utils = $data['displayProject']
                         foreach ($project as $key => $value) {
                             if(!empty($value) && $key !== 'title') { ?>
                                 <div data-content="<?php echo $key ?>" class="content__text js-content__text <?php echo $i !== 1 ? '' : 'active' ?>">
-<!--                                    <p class="els-text-lg">--><?php //echo $value ?><!--</p>-->
-                                    <?php $newParagraphs = $utils->separateSentences($value, 6); ?>
+                                    <?php $newParagraphs = $stringManager->separateSentences($value, 6, 'els-text-lg els-text--light'); ?>
                                     <?php echo $newParagraphs ?>
                                 </div>
                             <?php $i++; } ?>
