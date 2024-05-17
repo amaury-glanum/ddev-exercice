@@ -23,7 +23,7 @@ try {
         $page = $url[0];
     }
 
-    $siteUrl = $_ENV["ELS_SITE_URL"] ?? "http://local.els-togo.com";
+    $siteUrl = getenv("ELS_SITE_URL") ?? "http://els-togo.ddev.site:8080";
 
     switch ($page) {
         case '':
