@@ -1,6 +1,5 @@
 <?php
-// Permet de se saisir des méthodes (getters) qui vont permettre de démarrer une connexion de database via leurs paramètres (voir constructeur)
-// Ne retourne qu'un objet PDO car ça implémente Database (interface)
+
 namespace Els\Factory;
 
 use Els\Interfaces\Database;
@@ -12,7 +11,7 @@ class PDOFactory implements Database
     private string $userName;
     private string $password;
 
-    public function __construct(string $host = "database", string $dbName = "glad_blog", string $userName = "root", string $password = "password")
+    public function __construct(string $host = "db:3306", string $dbName = "mariadb:10.11", string $userName = "root", string $password = "root")
     {
         $this->host = $host;
         $this->dbName = $dbName;

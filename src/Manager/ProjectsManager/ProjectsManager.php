@@ -1,5 +1,5 @@
 <?php
-namespace Els\Manager;
+namespace Els\Manager\ProjectsManager;
 
 use Els\Entity\Projects;
 use Els\Manager\BaseManager;

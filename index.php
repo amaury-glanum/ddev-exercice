@@ -1,21 +1,31 @@
 <?php
-
-use controllers\projectsControllers\createProject;
-use controllers\projectsControllers\deleteProject;
-use controllers\projectsControllers\uploadProjectImages;
-use controllers\utilsControllers\flashMessagesManager;
-use controllers\utilsControllers\stringManager;
-use controllers\viewControllers\createPage;
-
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-require_once(dirname(__FILE__) . '/Controllers/projectsControllers/createProject.php');
-require_once(dirname(__FILE__) . '/Controllers/projectsControllers/deleteProject.php');
-require_once(dirname(__FILE__) . '/Controllers/projectsControllers/uploadProjectImages.php');
-require_once(dirname(__FILE__) . '/Controllers/utilsControllers/stringManager.php');
-require_once(dirname(__FILE__) . '/Controllers/viewControllers/createPage.php');
-require_once(dirname(__FILE__) . '/Controllers/utilsControllers/flashMessagesManager.php');
+require_once 'vendor/autoload.php';
+use Els\Factory\PDOFactory;
+use Els\Manager\MembersManager\MembersManager;
+use Els\Controllers\projectsControllers\createProject;
+use Els\Controllers\projectsControllers\deleteProject;
+use Els\Controllers\projectsControllers\uploadProjectImages;
+use Els\Controllers\utilsControllers\flashMessagesManager;
+use Els\Controllers\utilsControllers\stringManager;
+use Els\Controllers\viewControllers\createPage;
+
+//require_once(dirname(__FILE__) . '/src/Controllers/projectsControllers/createProject.php');
+//require_once(dirname(__FILE__) . '/src/Controllers/projectsControllers/deleteProject.php');
+//require_once(dirname(__FILE__) . '/src/Controllers/projectsControllers/uploadProjectImages.php');
+//require_once(dirname(__FILE__) . '/src/Controllers/utilsControllers/stringManager.php');
+//require_once(dirname(__FILE__) . '/src/Controllers/viewControllers/createPage.php');
+//require_once(dirname(__FILE__) . '/src/Controllers/utilsControllers/flashMessagesManager.php');
+
+$showMembers = new MembersManager(new PDOFactory(
+    getenv('DB_HOST'),
+    getenv('DB_DATABASE'),
+    getenv('DB_USERNAME'),
+    getenv('DB_PASSWORD')
+));
+$members = $showMembers->getMembers();
 
 $mainController = new createPage();
 $createProject = new createProject();
@@ -23,6 +33,7 @@ $uploadProjectImages = new uploadProjectImages();
 $deleteProject = new deleteProject();
 $stringManager = new stringManager();
 $flashMessageManager = new flashMessagesManager();
+
 try {
     if (empty($_GET['page'])) {
         $page = '';
@@ -35,7 +46,7 @@ try {
 
     switch ($page) {
         case '':
-            $projects = $createProject->getJsonProjectData();
+            $jsonProjects = $createProject->getJsonProjectData();
             $pageData = [
                 "bodyId" => 'route-home',
                 "page_css_id" => 'page-home',
@@ -47,7 +58,8 @@ try {
                 "template" => "views/templates/template.php",
                 "siteUrl" => $siteUrl,
                 "data" => [
-                    'projects' => $projects
+                    'projects' => $jsonProjects,
+                    'members' => $members
                 ]
             ];
 

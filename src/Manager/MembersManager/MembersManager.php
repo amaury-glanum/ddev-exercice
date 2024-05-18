@@ -1,5 +1,5 @@
 <?php
-namespace Els\Manager;
+namespace Els\Manager\MembersManager;
 
 use Els\Entity\Members;
 use Els\Manager\BaseManager;
@@ -9,7 +9,7 @@ class MembersManager extends BaseManager
     /**
      * @return Members[]
      */
-    public function getAllPosts(): array
+    public function getMembers(): array
     {
         $query = $this->pdo->query("SELECT * FROM members");
         $members = [];
@@ -21,7 +21,7 @@ class MembersManager extends BaseManager
         return $members;
     }
 
-    public function getMember(int $id): array {
+    public function getMemberById(int $id): array {
         $getPostReq = $this->pdo->prepare("SELECT * FROM members WHERE id = :id");
         $getPostReq->execute([
             'id' => $id

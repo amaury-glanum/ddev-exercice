@@ -1,6 +1,6 @@
 <?php
 
-namespace controllers\utilsControllers;
+namespace Els\Controllers\utilsControllers;
 class jsonManager
 {
 

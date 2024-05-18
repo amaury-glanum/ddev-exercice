@@ -1,7 +1,7 @@
 <?php
 
-namespace controllers\utilsControllers;
-use const FLASH;
+namespace Els\Controllers\utilsControllers;
+
 
 const FLASH = 'FLASH_MESSAGES';
 const FLASH_ERROR = 'error';
