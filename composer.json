@@ -1,0 +1,13 @@
+{
+  "name": "Els",
+  "description": "a blog to learn mvc pattern",
+  "autoload": {
+    "psr-4": {
+      "Els\\": "src/"
+    }
+  },
+  "require": {
+    "symfony/yaml": "^3.4",
+    "ext-pdo": "*"
+  }
+}

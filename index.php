@@ -1,13 +1,21 @@
 <?php
+
+use controllers\projectsControllers\createProject;
+use controllers\projectsControllers\deleteProject;
+use controllers\projectsControllers\uploadProjectImages;
+use controllers\utilsControllers\flashMessagesManager;
+use controllers\utilsControllers\stringManager;
+use controllers\viewControllers\createPage;
+
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-require_once(dirname(__FILE__) . '/controllers/projectsControllers/createProject.php');
-require_once(dirname(__FILE__) . '/controllers/projectsControllers/deleteProject.php');
-require_once(dirname(__FILE__) . '/controllers/projectsControllers/uploadProjectImages.php');
-require_once(dirname(__FILE__) . '/controllers/utilsControllers/stringManager.php');
-require_once(dirname(__FILE__) . '/controllers/viewControllers/createPage.php');
-require_once(dirname(__FILE__) . '/controllers/utilsControllers/flashMessagesManager.php');
+require_once(dirname(__FILE__) . '/Controllers/projectsControllers/createProject.php');
+require_once(dirname(__FILE__) . '/Controllers/projectsControllers/deleteProject.php');
+require_once(dirname(__FILE__) . '/Controllers/projectsControllers/uploadProjectImages.php');
+require_once(dirname(__FILE__) . '/Controllers/utilsControllers/stringManager.php');
+require_once(dirname(__FILE__) . '/Controllers/viewControllers/createPage.php');
+require_once(dirname(__FILE__) . '/Controllers/utilsControllers/flashMessagesManager.php');
 
 $mainController = new createPage();
 $createProject = new createProject();
