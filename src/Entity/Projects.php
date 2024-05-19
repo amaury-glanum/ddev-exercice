@@ -4,7 +4,6 @@ namespace Els\Entity;
 class Projects extends BaseEntity
 {
     private int | null $id;
-    private int | null $user_id;
     private string | null $project_date;
     private string | null $project_place;
     private string | null $project_category;
@@ -20,9 +19,6 @@ class Projects extends BaseEntity
     private string | null $project_img_name;
     private array | null $project_infos;
     private array | null $project_meta;
-    private string | null $project_publish_status;
-    private \DateTime | null $created_at;
-    private \DateTime | null $updated_at;
 
     /**
      * @return int|null
@@ -39,24 +35,6 @@ class Projects extends BaseEntity
     public function setId(int | null $id): Projects
     {
         $this->id = $id;
-        return $this;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getUserId(): int | null
-    {
-        return $this->user_id;
-    }
-
-    /**
-     * @param int|null $user_id
-     * @return Projects
-     */
-    public function setUserId(int | null $user_id): Projects
-    {
-        $this->user_id = $user_id;
         return $this;
     }
 
@@ -327,60 +305,6 @@ class Projects extends BaseEntity
     public function setProjectMeta(array | null $project_meta): Projects
     {
         $this->project_meta = $project_meta;
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getProjectPublishStatus(): string | null
-    {
-        return $this->project_publish_status;
-    }
-
-    /**
-     * @param string|null $project_publish_status
-     * @return Projects
-     */
-    public function setProjectPublishStatus(string | null $project_publish_status): Projects
-    {
-        $this->project_publish_status = $project_publish_status;
-        return $this;
-    }
-
-    /**
-     * @return \DateTime|null
-     */
-    public function getCreatedAt(): \DateTime | null
-    {
-        return $this->created_at;
-    }
-
-    /**
-     * @param \DateTime|null $created_at
-     * @return Projects
-     */
-    public function setCreatedAt(\DateTime | null $created_at): Projects
-    {
-        $this->created_at = $created_at;
-        return $this;
-    }
-
-    /**
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt(): \DateTime | null
-    {
-        return $this->updated_at;
-    }
-
-    /**
-     * @param \DateTime|null $updated_at
-     * @return Projects
-     */
-    public function setUpdatedAt(\DateTime | null $updated_at): Projects
-    {
-        $this->updated_at = $updated_at;
         return $this;
     }
 }

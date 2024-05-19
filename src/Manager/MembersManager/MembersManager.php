@@ -11,7 +11,7 @@ class MembersManager extends BaseManager
      */
     public function getMembers(): array
     {
-        $query = $this->pdo->query("SELECT * FROM members");
+        $query = $this->pdo->query("SELECT id, nom, prenom, email, presentation, role FROM members");
         $members = [];
 
         while ($data = $query->fetch(\PDO::FETCH_ASSOC)) {

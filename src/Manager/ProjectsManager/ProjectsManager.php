@@ -9,28 +9,28 @@ class ProjectsManager extends BaseManager
     /**
      * @return Projects[]
      */
-    public function getAllProjects(): array
+    public function getProjects(): array
     {
-        $query = $this->pdo->query("SELECT * FROM projects");
-        $members = [];
+        $query = $this->pdo->query("SELECT id, project_date, project_title, project_place FROM projects");
+        $projects= [];
 
         while ($data = $query->fetch(\PDO::FETCH_ASSOC)) {
-            $members[] = new Members($data);
+            $projects[] = new Projects($data);
         }
 
-        return $members;
+        return $projects;
     }
 
     public function getProject(int $id): array {
-        $getPostReq = $this->pdo->prepare("SELECT * FROM projects WHERE id = :id");
-        $getPostReq->execute([
+        $getProjectReq = $this->pdo->prepare("SELECT id, project_date, project_title, project_place FROM projects WHERE id = :id");
+        $getProjectReq->execute([
             'id' => $id
         ]);
-        $readMembers = [];
-        while ($data = $getPostReq->fetch(\PDO::FETCH_ASSOC)) {
-            $readMembers[] = new Members($data);
+        $readProjects = [];
+        while ($data = $getProjectReq->fetch(\PDO::FETCH_ASSOC)) {
+            $readProjects[] = new Projects($data);
         }
-        return $readMembers;
+        return $readProjects;
     }
 
 }

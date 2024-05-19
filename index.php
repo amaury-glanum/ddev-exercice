@@ -5,6 +5,7 @@ ini_set('display_errors', 1);
 require_once 'vendor/autoload.php';
 use Els\Factory\PDOFactory;
 use Els\Manager\MembersManager\MembersManager;
+use Els\Manager\ProjectsManager\ProjectsManager;
 use Els\Controllers\projectsControllers\createProject;
 use Els\Controllers\projectsControllers\deleteProject;
 use Els\Controllers\projectsControllers\uploadProjectImages;
@@ -12,20 +13,17 @@ use Els\Controllers\utilsControllers\flashMessagesManager;
 use Els\Controllers\utilsControllers\stringManager;
 use Els\Controllers\viewControllers\createPage;
 
-//require_once(dirname(__FILE__) . '/src/Controllers/projectsControllers/createProject.php');
-//require_once(dirname(__FILE__) . '/src/Controllers/projectsControllers/deleteProject.php');
-//require_once(dirname(__FILE__) . '/src/Controllers/projectsControllers/uploadProjectImages.php');
-//require_once(dirname(__FILE__) . '/src/Controllers/utilsControllers/stringManager.php');
-//require_once(dirname(__FILE__) . '/src/Controllers/viewControllers/createPage.php');
-//require_once(dirname(__FILE__) . '/src/Controllers/utilsControllers/flashMessagesManager.php');
-
-$showMembers = new MembersManager(new PDOFactory(
+$mysqlConn = new PDOFactory(
     getenv('DB_HOST'),
     getenv('DB_DATABASE'),
     getenv('DB_USERNAME'),
     getenv('DB_PASSWORD')
-));
+);
+
+$showMembers = new MembersManager($mysqlConn);
 $members = $showMembers->getMembers();
+$showProjects = new ProjectsManager($mysqlConn);
+$projects = $showProjects->getProjects();
 
 $mainController = new createPage();
 $createProject = new createProject();
@@ -58,7 +56,8 @@ try {
                 "template" => "views/templates/template.php",
                 "siteUrl" => $siteUrl,
                 "data" => [
-                    'projects' => $jsonProjects,
+                    'jsonProjects' => $jsonProjects,
+                    'projects' => $projects,
                     'members' => $members
                 ]
             ];
