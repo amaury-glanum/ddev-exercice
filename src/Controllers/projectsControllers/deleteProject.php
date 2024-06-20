@@ -1,11 +1,16 @@
 <?php
+
+namespace Els\Controllers\projectsControllers;
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
     header('HTTP/1.0 403 Forbidden', TRUE, 403);
     die();
 }
-class deleteProject {
 
-    public function deleteProject() {
+class deleteProject
+{
+
+    public function deleteProject()
+    {
 
         $filePath = $_SERVER['DOCUMENT_ROOT'] . '/assets/data/project.json';
         $jsonProjects = file_get_contents($filePath);
@@ -21,9 +26,9 @@ class deleteProject {
             // Use htmlspecialchars() only if the value is not null
             $safeProjectId = htmlspecialchars($projectId, ENT_QUOTES, 'UTF-8');
             try {
-                $projectIdToDelete =  $safeProjectId;
+                $projectIdToDelete = $safeProjectId;
                 $keyToDelete = array_search($projectIdToDelete, array_column($projects, 'id'));
-            } catch(Exception $e) {
+            } catch (Exception $e) {
                 throw new Exception("Erreur lors de la recherche de clé", $e->getMessage());
             }
 
@@ -31,7 +36,6 @@ class deleteProject {
             header('Location: /els-cooking?error=id non-trouvé');
             exit();
         }
-
 
 
         // Check if the project was found
@@ -44,7 +48,7 @@ class deleteProject {
 
             $i = 1;
             foreach ($projects as &$project) {
-                $project['id'] = 'project-'. $i;
+                $project['id'] = 'project-' . $i;
                 $project['project-img'] = '../uploads/' . $project['id'] . '.jpg';
                 $i++;
             }

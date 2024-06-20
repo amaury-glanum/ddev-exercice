@@ -1,0 +1,12 @@
+{
+  "name": "amaury/els",
+  "description": "",
+  "autoload": {
+    "psr-4": {
+      "Els\\": "src/"
+    }
+  },
+  "require": {
+    "ext-pdo": "*"
+  }
+}

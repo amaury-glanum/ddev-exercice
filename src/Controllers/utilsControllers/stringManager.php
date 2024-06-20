@@ -1,11 +1,16 @@
 <?php
+
+namespace Els\Controllers\utilsControllers;
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
     header('HTTP/1.0 403 Forbidden', TRUE, 403);
     die();
 }
-class stringManager {
 
-    public function separateSentences($text, $wordsPerSentence, $css="") {
+class stringManager
+{
+
+    public function separateSentences($text, $wordsPerSentence, $css = "")
+    {
         // Explode the text into sentences
         $sentences = explode('.', $text);
 

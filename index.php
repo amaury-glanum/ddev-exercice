@@ -2,12 +2,28 @@
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-require_once(dirname(__FILE__) . '/controllers/projectsControllers/createProject.php');
-require_once(dirname(__FILE__) . '/controllers/projectsControllers/deleteProject.php');
-require_once(dirname(__FILE__) . '/controllers/projectsControllers/uploadProjectImages.php');
-require_once(dirname(__FILE__) . '/controllers/utilsControllers/stringManager.php');
-require_once(dirname(__FILE__) . '/controllers/viewControllers/createPage.php');
-require_once(dirname(__FILE__) . '/controllers/utilsControllers/flashMessagesManager.php');
+require_once 'vendor/autoload.php';
+use Els\Factory\PDOFactory;
+use Els\Manager\MembersManager\MembersManager;
+use Els\Manager\ProjectsManager\ProjectsManager;
+use Els\Controllers\projectsControllers\createProject;
+use Els\Controllers\projectsControllers\deleteProject;
+use Els\Controllers\projectsControllers\uploadProjectImages;
+use Els\Controllers\utilsControllers\flashMessagesManager;
+use Els\Controllers\utilsControllers\stringManager;
+use Els\Controllers\viewControllers\createPage;
+
+$mysqlConn = new PDOFactory(
+    getenv('DB_HOST'),
+    getenv('DB_DATABASE'),
+    getenv('DB_USERNAME'),
+    getenv('DB_PASSWORD')
+);
+
+$showMembers = new MembersManager($mysqlConn);
+$members = $showMembers->getMembers();
+$showProjects = new ProjectsManager($mysqlConn);
+$projects = $showProjects->getProjects();
 
 $mainController = new createPage();
 $createProject = new createProject();
@@ -15,6 +31,7 @@ $uploadProjectImages = new uploadProjectImages();
 $deleteProject = new deleteProject();
 $stringManager = new stringManager();
 $flashMessageManager = new flashMessagesManager();
+
 try {
     if (empty($_GET['page'])) {
         $page = '';
@@ -23,11 +40,11 @@ try {
         $page = $url[0];
     }
 
-    $siteUrl = $_ENV["ELS_SITE_URL"] ?? "http://local.els-togo.com";
+    $siteUrl = getenv("ELS_SITE_URL") ?? "http://els-togo.ddev.site:8080";
 
     switch ($page) {
         case '':
-            $projects = $createProject->getJsonProjectData();
+            $jsonProjects = $createProject->getJsonProjectData();
             $pageData = [
                 "bodyId" => 'route-home',
                 "page_css_id" => 'page-home',
@@ -39,7 +56,9 @@ try {
                 "template" => "views/templates/template.php",
                 "siteUrl" => $siteUrl,
                 "data" => [
-                    'projects' => $projects
+                    'jsonProjects' => $jsonProjects,
+                    'projects' => $projects,
+                    'members' => $members
                 ]
             ];
 
