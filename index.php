@@ -20,6 +20,23 @@ $mysqlConn = new PDOFactory(
     getenv('DB_PASSWORD')
 );
 
+$supabaseConn = new PHPSupabase\Service(
+    getenv('SUPABASE_ANNON_KEY'),
+    getenv('SUPABASE_URI')
+);
+
+$db = $supabaseConn->initializeDatabase('projects', 'id');
+
+try{
+    $projects = $db->fetchAll()->getResult(); //fetch all products
+    foreach ($projects as $project){
+        echo $project->id . ' - ' . $project->project_title . '<br />';
+    }
+}
+catch(Exception $e){
+    echo $e->getMessage();
+}
+
 $showMembers = new MembersManager($mysqlConn);
 $members = $showMembers->getMembers();
 $showProjects = new ProjectsManager($mysqlConn);
