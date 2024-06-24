@@ -20,17 +20,4 @@ class MembersManager extends BaseManager
 
         return $members;
     }
-
-    public function getMemberById(int $id): array {
-        $getPostReq = $this->pdo->prepare("SELECT * FROM members WHERE id = :id");
-        $getPostReq->execute([
-            'id' => $id
-        ]);
-        $readMembers = [];
-        while ($data = $getPostReq->fetch(\PDO::FETCH_ASSOC)) {
-            $readMembers[] = new Members($data);
-        }
-        return $readMembers;
-    }
-
 }

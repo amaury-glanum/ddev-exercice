@@ -29,9 +29,7 @@ trait Hydrator
         foreach ($data as $key => $value) {
 
             $method = 'set' . ucfirst($this->getCamelCase($key));
-            echo '<pre>';
-            var_dump($method);
-            echo '</pre>';
+
             if (is_callable([$this, $method])) {
                 $this->$method($value);
             }

@@ -13,34 +13,25 @@ use Els\Controllers\utilsControllers\flashMessagesManager;
 use Els\Controllers\utilsControllers\stringManager;
 use Els\Controllers\viewControllers\createPage;
 
-$mysqlConn = new PDOFactory(
+
+$pdoConn = new PDOFactory(
     getenv('DB_HOST'),
+    getenv('DB_PORT'),
     getenv('DB_DATABASE'),
     getenv('DB_USERNAME'),
     getenv('DB_PASSWORD')
 );
 
-$supabaseConn = new PHPSupabase\Service(
-    getenv('SUPABASE_ANNON_KEY'),
-    getenv('SUPABASE_URI')
-);
 
-$db = $supabaseConn->initializeDatabase('projects', 'id');
+//$supabaseConn = new PHPSupabase\Service(
+//    getenv('SUPABASE_ANNON_KEY'),
+//    getenv('SUPABASE_URI')
+//);
 
-try{
-    $projects = $db->fetchAll()->getResult(); //fetch all products
-    foreach ($projects as $project){
-        echo $project->id . ' - ' . $project->project_title . '<br />';
-    }
-}
-catch(Exception $e){
-    echo $e->getMessage();
-}
-
-$showMembers = new MembersManager($mysqlConn);
+$showMembers = new MembersManager($pdoConn);
 $members = $showMembers->getMembers();
-$showProjects = new ProjectsManager($mysqlConn);
-$projects = $showProjects->getProjects();
+$showProjects = new ProjectsManager($pdoConn);
+$projects = $showProjects->getProjectsFromUrl('https://nextjs-with-supabase-ebon-six.vercel.app/api/projects');
 
 $mainController = new createPage();
 $createProject = new createProject();
@@ -75,7 +66,7 @@ try {
                 "data" => [
                     'jsonProjects' => $jsonProjects,
                     'projects' => $projects,
-                    'members' => $members
+                    'members' => $members,
                 ]
             ];
 

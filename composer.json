@@ -8,6 +8,7 @@
   },
   "require": {
     "ext-pdo": "*",
-    "rafaelwendel/phpsupabase": "^0.0.7"
+    "rafaelwendel/phpsupabase": "^0.0.7",
+    "guzzlehttp/guzzle": "^7.8"
   }
 }
