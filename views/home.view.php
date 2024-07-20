@@ -81,7 +81,7 @@ $partners = [
         </div>
     </section>
 
-    <?php if(!empty($data['projects'])) { ?>
+    <?php if(!empty($projects)) { ?>
     <section id="nos-projets" class="projects-section">
         <div class="projects-section-inner container">
             <div class="content">
@@ -202,7 +202,7 @@ $partners = [
             </div>
     </section>
 
-
+    <?php if(!empty($members)) { ?>
     <section id="qui-sommes-nous" class="text-cards-horizon team-section">
         <div class="container">
             <div class="row mainRow">
@@ -212,10 +212,7 @@ $partners = [
                     <p class="els-text-lg els-text-centered">Depuis 2010, nous nous sommes engagées ensemble et avons bâti pierre par pierre cette association. Découvrez le parcours des membres fondateurs.</p>
                 </div>
                 <div class="col-12 text-cards-horizon__cardsWrapper">
-                    <?php
-                    if(!empty($members))
-                        foreach($members as $member) { ?>
-
+                    <?php foreach($members as $member) { ?>
                             <div data-typebtn="team-btn" class="box modal-open-btn"
                                  data-title="<?php echo $member->getNom() . $member->getPrenom() ?>">
                                 <div class="top-bar"></div>
@@ -235,6 +232,7 @@ $partners = [
             </div>
         </div>
     </section>
+    <?php } ?>
 
     <?php /*
 <!---->

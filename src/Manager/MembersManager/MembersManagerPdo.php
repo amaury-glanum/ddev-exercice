@@ -2,9 +2,9 @@
 namespace Els\Manager\MembersManager;
 
 use Els\Entity\Members;
-use Els\Manager\BaseManager;
+use Els\Manager\PdoBaseManager;
 
-class MembersManager extends BaseManager
+class MembersManagerPdo extends PdoBaseManager
 {
     /**
      * @return Members[]
