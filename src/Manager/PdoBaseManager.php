@@ -4,7 +4,7 @@ namespace Els\Manager;
 
 use Els\Interfaces\Database;
 
-abstract class BaseManager
+abstract class PdoBaseManager
 {
     protected \PDO $pdo;
 

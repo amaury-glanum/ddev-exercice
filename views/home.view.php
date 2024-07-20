@@ -3,10 +3,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
     header('HTTP/1.0 403 Forbidden', TRUE, 403);
     die();
 }
+use Els\Entity\Projects;
 
 $members = $data['members'];
 $projects = $data['projects'];
-var_dump($projects);
+
 $jsonMembers = [
     [
         'nom' => 'Kpeglo Bessou',
@@ -74,12 +75,13 @@ $partners = [
                     <a href="#contact" class="button">Je veux m'engager</a>
                 </div>
                 <div class="col-12 col-lg-6 ps-lg-5 image-text__imageWrapper">
-                    <img src="assets/img/livre-ecole.jpg" alt="école" />
+                    <img src="/assets/img/livre-ecole.jpg" alt="école" />
                 </div>
             </div>
         </div>
     </section>
-    <?php if(!empty($data['projects'])) { ?>
+
+    <?php if(!empty($projects)) { ?>
     <section id="nos-projets" class="projects-section">
         <div class="projects-section-inner container">
             <div class="content">
@@ -90,24 +92,25 @@ $partners = [
                         Nous mettons un point d'honneur à la coopération et l'autonomisation.</p>
                 </div>
             </div>
+
             <div class="swiper-container els-swiper-projects">
                 <div class="swiper">
                     <div class="swiper-wrapper">
                         <?php
                             $i = 1;
-                            foreach($data['jsonProjects'] as $project) { ?>
+                            foreach($projects as $project) { ?>
                                 <div
                                     class="swiper-slide"
-                                    data-imageid="<?php echo $project['project-img'] ?? "./assets/img/projects/placeholder/placeholder-project.jpg" ?>"
+                                    data-imageid="<?php echo $project->getProjectImgUrl() ?>"
                                 >
-                                        <span><?php echo $project['date']; ?></span>
+                                        <span><?php echo $project->getProjectDate() ?></span>
 
                                         <div class="swiper__inner-btn">
-                                            <a class="button button--secondary button--radius-light" href="/project?project-page-id=<?php echo $project['id'][-1] ?>">En savoir + </a>
+                                            <a class="button button--secondary button--radius-light" href="/project?project-page-id=<?php echo $project->getId() ?>">En savoir + </a>
                                         </div>
                                         <div class="slide-content">
-                                            <h3 class="els-title"><?php echo $project['title']; ?></h3>
-                                            <p class="els-text els-text--white"><?php echo $project['place']; ?></p>
+                                            <h3 class="els-title"><?php echo $project->getProjectTitle() ?? "Aucun titre"; ?></h3>
+                                            <p class="els-text els-text--white"><?php echo $project->getProjectPlace() ?? "Aucune ville" ?></p>
                                         </div>
 
                                 </div>
@@ -116,6 +119,7 @@ $partners = [
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
+
         </div>
     </section>
     <?php } ?>
@@ -198,7 +202,7 @@ $partners = [
             </div>
     </section>
 
-
+    <?php if(!empty($members)) { ?>
     <section id="qui-sommes-nous" class="text-cards-horizon team-section">
         <div class="container">
             <div class="row mainRow">
@@ -208,10 +212,7 @@ $partners = [
                     <p class="els-text-lg els-text-centered">Depuis 2010, nous nous sommes engagées ensemble et avons bâti pierre par pierre cette association. Découvrez le parcours des membres fondateurs.</p>
                 </div>
                 <div class="col-12 text-cards-horizon__cardsWrapper">
-                    <?php
-                    if(!empty($members))
-                        foreach($members as $member) { ?>
-
+                    <?php foreach($members as $member) { ?>
                             <div data-typebtn="team-btn" class="box modal-open-btn"
                                  data-title="<?php echo $member->getNom() . $member->getPrenom() ?>">
                                 <div class="top-bar"></div>
@@ -231,6 +232,7 @@ $partners = [
             </div>
         </div>
     </section>
+    <?php } ?>
 
     <?php /*
 <!---->

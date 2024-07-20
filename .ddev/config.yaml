@@ -12,12 +12,15 @@ database:
 use_dns_when_possible: true
 composer_version: "2"
 web_environment:
-  - ELS_SITE_URL=http://els-togo.ddev.site:8080
+  - ELS_SITE_URL=https://els-togo.ddev.site:8443
   - DB_HOST=b0djintrilfiraqshcjd-mysql.services.clever-cloud.com:3306
   - DB_DATABASE=b0djintrilfiraqshcjd
   - DB_USERNAME=uuseyjnfxxf7rwbv
+  - DB_SUPABASE_HOST=aws-0-eu-central-1.pooler.supabase.com:6543
+  - DB_SUPABASE_USER=postgres.ssywvborygrmfswmpdnl
+  - DB_SUPABASE_NAME=postgres
   - DB_PORT=3306
-  - DB_PASSWORD=jNARXCVQTmLrIPckAADM
+
 corepack_enable: false
 
 # Key features of DDEV's config.yaml:
