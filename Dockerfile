@@ -1,8 +1,20 @@
 FROM php:8.1.2-apache
 
-RUN docker-php-ext-install mysqli pdo pdo_mysql \
+RUN docker-php-ext-install mysqli pdo pdo_mysql zip mbstring exif pcntl bcmath gd \
     && a2enmod rewrite \
     && a2enmod ssl
+
+RUN apt-get update && \
+    apt-get install -y \
+    libzip-dev \
+    unzip \
+    libonig-dev \
+    libxml2-dev \
+    libpng-dev \
+    libjpeg-dev  \
+
+# Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Set the working directory to /var/www/html
 WORKDIR /var/www/html
@@ -29,6 +41,10 @@ RUN npm install
 
 #Run the Webpack build (modify the command according to your needs)
 RUN npm run build
+
+RUN composer install
+
+RUN composer dump-autoload
 
 # Make port 80 available to the world outside this container
 EXPOSE 80
