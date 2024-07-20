@@ -24,22 +24,21 @@ try {
         getenv('DB_PASSWORD')
     );
 
-    $showMembers = new MembersManagerPdo($pdoConn);
-    $members = $showMembers->getMembers();
+//    $showMembers = new MembersManagerPdo($pdoConn);
+//    $members = $showMembers->getMembers();
 
     $showMembers = new MembersApiManager("https://nextjs-with-supabase-ebon-six.vercel.app/api/members");
     $members = $showMembers->getMembersFromUrl();
 
+    // https://jsonplaceholder.typicode.com/todos
+    $showProjects = new ProjectsApiManager("https://nextjs-with-supabase-ebon-six.vercel.app/api/projects");
+    $projects = $showProjects->getProjectsFromUrl();
+
 } catch (PDOException $e) {
     $errorMessage = $e->getMessage();
     $members = [];
-
+    $projects = [];
 }
-// https://jsonplaceholder.typicode.com/todos
-$showProjects = new ProjectsApiManager("https://nextjs-with-supabase-ebon-six.vercel.app/api/projects");
-$projects = $showProjects->getProjectsFromUrl();
-
-
 
 $mainController = new createPage();
 $createProject = new createProject();
