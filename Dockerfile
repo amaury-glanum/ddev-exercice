@@ -7,6 +7,7 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql \
 RUN apt-get update && \
 apt-get install -y \
 libzip-dev \
+curl \
 unzip \
 libonig-dev \
 libxml2-dev \
@@ -41,9 +42,11 @@ RUN chmod -R 777 /var/www/html/uploads/
 # Adjust file permissions (e.g., read, write for everyone)
 RUN chmod 666 /var/www/html/assets/data/project.json
 
-RUN php -r "copy(‘https://getcomposer.org/installer', ‘composer-setup.php’);” \
-&& php composer-setup.php — install-dir=/usr/local/bin — filename=composer \
-&& php -r “unlink(‘composer-setup.php’);”
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
+    php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
+    php -r "unlink('composer-setup.php');"
+
+
 RUN composer install
 
 # Node.js 18
