@@ -5,8 +5,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
 }
 use Els\Entity\Projects;
 
-$members = $data['members'];
-$projects = $data['projects'];
+$members = $data['members'] ?? "";
+$projects = $data['projects'] ?? "";
+
 
 $jsonMembers = [
     [
@@ -65,6 +66,7 @@ $partners = [
 ?>
 
 <main id="homepage" class="<?php echo $page_css_id ?>">
+
     <section id="hero" class="image-text">
         <div class="container">
             <div class="row mainRow">
@@ -92,8 +94,7 @@ $partners = [
                         Nous mettons un point d'honneur à la coopération et l'autonomisation.</p>
                 </div>
             </div>
-
-            <div class="swiper-container els-swiper-projects">
+            <div class="swiper-container els-swiper-projects <?php echo count($projects) < 3 ? "minimal-view" : "" ?>">
                 <div class="swiper">
                     <div class="swiper-wrapper">
                         <?php
@@ -106,7 +107,7 @@ $partners = [
                                         <span><?php echo $project->getProjectDate() ?></span>
 
                                         <div class="swiper__inner-btn">
-                                            <a class="button button--secondary button--radius-light" href="/project?project-page-id=<?php echo $project->getId() ?>">En savoir + </a>
+                                            <a class="button button--secondary button--radius-light" href="/project?project-page-id=<?php echo $i ?>">En savoir + </a>
                                         </div>
                                         <div class="slide-content">
                                             <h3 class="els-title"><?php echo $project->getProjectTitle() ?? "Aucun titre"; ?></h3>
@@ -119,7 +120,6 @@ $partners = [
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
-
         </div>
     </section>
     <?php } ?>
@@ -217,13 +217,13 @@ $partners = [
                                  data-title="<?php echo $member->getNom() . $member->getPrenom() ?>">
                                 <div class="top-bar"></div>
                                 <div class="content">
-                                    <img src="<?php echo '/assets/img/persons/persons-man.jpg' ?>" alt="<?php echo $member->getPrenom() . " " . $member->getNom() ?? '' ?>">
+                                    <img src="<?php echo $member->getImgPath() ?? "" ?>" alt="<?php echo $member->getPrenom() . " " . $member->getNom() ?? '' ?>">
                                     <strong><?php echo $member->getPrenom() ?? "" ?></strong>
                                     <p><?php echo $member->getNom() ?? "" ?></p>
                                     <?php echo $member->getEmail() ?? "" ?>
                                 </div>
                                 <div class="box-footer">
-                                    <p><?php echo $member->getPresentation() ?? "" ?></p>
+                                    <p><?php echo $member->getRole() ?? "" ?></p>
                                 </div>
                             </div>
 
@@ -233,6 +233,8 @@ $partners = [
         </div>
     </section>
     <?php } ?>
+
+
 
     <?php /*
 <!---->

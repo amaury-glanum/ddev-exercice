@@ -2,6 +2,10 @@
     header('HTTP/1.0 403 Forbidden', TRUE, 403);
     die();
 } ?>
+<?php
+$siteUrl = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'];
+
+?>
 <header class="mainHeader">
     <div class="container">
         <div class="row align-items-center mainRow g-lg-0">
