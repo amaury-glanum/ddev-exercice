@@ -36,11 +36,11 @@ try {
     $members = $showMembers->getMembersFromUrl();
 
     // https://jsonplaceholder.typicode.com/todos
-    $showProjects = new ProjectsApiManager("http://192.168.122.1:3000/api/projects");
+    $showProjects = new ProjectsApiManager("https://nextjs-with-supabase-ebon-six.vercel.app/api/projects");
     $projects = $showProjects->getProjectsFromUrl();
 
     foreach ($sections as $key => $value) {
-        $temp = new SectionsApiManager("http://192.168.122.1:3000/api/sections/". $key);
+        $temp = new SectionsApiManager("https://nextjs-with-supabase-ebon-six.vercel.app/api/sections/". $key);
         $sections[$key] = $temp->getSectionsFromUrl();
     }
 
