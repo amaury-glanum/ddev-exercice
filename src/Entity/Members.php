@@ -12,6 +12,8 @@ class Members extends BaseEntity
     private string | null $role = null;
     private string | null $presentation = null;
 
+    private string $imgPath = "/assets/img/persons/persons-man.jpg";
+
     /**
      * @return int|null
      */
@@ -109,6 +111,15 @@ class Members extends BaseEntity
     public function setPresentation(string | null $presentation): Members
     {
         $this->presentation = $presentation;
+        return $this;
+    }
+
+    public function getImgPath(): string | null {
+        return $this->imgPath;
+    }
+
+    public function setImgPath(string | null $imgPath): Members {
+        $this->imgPath = $imgPath;
         return $this;
     }
 

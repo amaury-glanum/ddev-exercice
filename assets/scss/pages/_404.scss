@@ -25,6 +25,8 @@
 .error-page {
   display: flex;
   flex-direction: column;
+
+
   /*--------------------
   Page
   --------------------*/
@@ -38,11 +40,16 @@
     overflow: hidden;
   }
 
+  section, section .container, section .container .row {
+    height: 100%;
+  }
+
   /*--------------------
   Content
   --------------------*/
   .content {
     max-width: 400px;
+    max-height: 100%;
     margin: 0 auto;
     background: rgba(255,255,255, 0.3);
     text-align: center;
@@ -53,6 +60,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 20px;
+    overflow: hidden;
 
     h1 {
       color: $primary;
@@ -68,7 +76,7 @@
       font-weight: 700;
       font-size: 54px;
       margin-bottom: 6px;
-      opacity: 0.9;
+      opacity: 0.9
     }
 
     p {
@@ -104,5 +112,7 @@
     height: auto;
     z-index: -1;
     transform: scale(1.1);
+    aspect-ratio: 1;
+    object-fit: cover;
   }
 }

@@ -14,6 +14,11 @@ use Els\Controllers\utilsControllers\stringManager;
 use Els\Controllers\viewControllers\createPage;
 use Els\Manager\MembersManager\MembersApiManager;
 use Els\Manager\ProjectsManager\ProjectsApiManager;
+use Els\Manager\SectionsManager\SectionsApiManager;
+
+$sections = [
+    "project" => [], "members" => []
+];
 
 try {
     $pdoConn = new PDOFactory(
@@ -31,14 +36,24 @@ try {
     $members = $showMembers->getMembersFromUrl();
 
     // https://jsonplaceholder.typicode.com/todos
-    $showProjects = new ProjectsApiManager("https://nextjs-with-supabase-ebon-six.vercel.app/api/projects");
+    $showProjects = new ProjectsApiManager("http://192.168.122.1:3000/api/projects");
     $projects = $showProjects->getProjectsFromUrl();
+
+    foreach ($sections as $key => $value) {
+        $temp = new SectionsApiManager("http://192.168.122.1:3000/api/sections/". $key);
+        $sections[$key] = $temp->getSectionsFromUrl();
+    }
 
 } catch (PDOException $e) {
     $errorMessage = $e->getMessage();
     $members = [];
     $projects = [];
+    $sectionsTexts = [];
+
 }
+
+
+
 
 $mainController = new createPage();
 $createProject = new createProject();
@@ -55,7 +70,8 @@ try {
         $page = $url[0];
     }
 
-    $siteUrl = getenv("ELS_SITE_URL") ?? "https://els-togo.ddev.site:8443";
+    //$siteUrl = getenv("ELS_SITE_URL") ?? "https://els-togo.ddev.site:8443";
+    $siteUrl = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'];
 
     switch ($page) {
         case '':
@@ -74,6 +90,8 @@ try {
                     'jsonProjects' => $jsonProjects,
                     'projects' => $projects,
                     'members' => $members,
+                    'sectionsProject' => $sections['project'],
+                    'sectionsMembers' => $sections['members']
                 ]
             ];
 
@@ -94,15 +112,20 @@ try {
             $mainController->setPageData($pageData);
             break;
         case 'project':
-            $projects = $createProject->getJsonProjectData();
-            $projectId = 'project-'.$_GET['project-page-id'];
+            $projectId = $_GET['project-page-id'];
             $activeProject = null;
+            $apiProjectIds = [];
+            $i = 0;
             foreach ($projects as $project) {
-                if ($project['id'] === $projectId) {
+                $i++;
+                if(strval($i) === $projectId) {
                     $activeProject = $project;
                     break;
+                } else {
+                    $activeProject = null;
                 }
             }
+
             $pageData = [
                 "bodyId" => $page,
                 "page_css_id" => 'page-project-'.$projectId,
@@ -120,8 +143,29 @@ try {
                     'flashMessageManager' => $flashMessageManager
                 ],
             ];
-            $mainController->setPageData($pageData);
-            break;
+            if($activeProject) {
+                $mainController->setPageData($pageData);
+                break;
+            } else {
+                $pageData = [
+                    "bodyId" => 'route-error',
+                    "page_css_id" => 'page-error',
+                    "meta" => [
+                        "page_title" => "Erreur 404 - Els Togo",
+                        "page_description" => 'Els-Togo - erreur 404',
+                    ],
+                    "view" => 'views/error.view.php',
+                    "template" => "views/templates/template.php",
+                    "siteUrl" => $siteUrl,
+                    "data" => [
+                        "css-footer" => "els-footer--fixed",
+                        "message" => "Ce projet n'existe pas"
+                    ]
+                ];
+                $mainController->pageError($pageData);
+                break;
+            }
+
         case 'credits':
             $pageData = [
                 "bodyId" => $page,
@@ -183,7 +227,8 @@ try {
         "template" => "views/templates/template.php",
         "siteUrl" => $siteUrl,
         "data" => [
-            "css-footer" => "els-footer--fixed"
+            "css-footer" => "els-footer--fixed",
+            "message" => $e->getMessage()
         ]
     ];
     $mainController->pageError($pageData);
