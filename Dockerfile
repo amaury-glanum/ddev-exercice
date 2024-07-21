@@ -23,12 +23,7 @@ bcmath \
 gd
 
 # Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-#RUN php -r "copy(‘https://getcomposer.org/installer', ‘composer-setup.php’);” \
-#&& php composer-setup.php — install-dir=/usr/local/bin — filename=composer \
-#&& php -r “unlink(‘composer-setup.php’);”
-#RUN composer install
+#RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Set the working directory to /var/www/html
 WORKDIR /var/www/html
@@ -46,6 +41,11 @@ RUN chmod -R 777 /var/www/html/uploads/
 # Adjust file permissions (e.g., read, write for everyone)
 RUN chmod 666 /var/www/html/assets/data/project.json
 
+RUN php -r "copy(‘https://getcomposer.org/installer', ‘composer-setup.php’);” \
+&& php composer-setup.php — install-dir=/usr/local/bin — filename=composer \
+&& php -r “unlink(‘composer-setup.php’);”
+RUN composer install
+
 # Node.js 18
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get install -y nodejs
@@ -55,8 +55,6 @@ RUN npm install
 
 #Run the Webpack build (modify the command according to your needs)
 RUN npm run build
-
-RUN composer install
 
 RUN composer dump-autoload
 
