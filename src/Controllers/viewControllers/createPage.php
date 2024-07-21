@@ -44,7 +44,8 @@ class createPage
             "page_title" => $pageData["meta"]["page_title"],
             "view" => $pageData['view'],
             "template" => $pageData['template'],
-            "messageError" => "Erreur 404"
+            "messageError" => "Erreur 404",
+            "data" => $pageData['data'] ?? []
         ];
         $this->generatePage($data_page);
     }

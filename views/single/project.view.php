@@ -4,18 +4,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
     die();
 }
 
+$activeProjectPageId = $_GET['project-page-id'];
+$activeProject = $data['activeProject'];
+
 $project = [
-    'description' => "",
-    'goal' => "",
-    'result' => "",
-    'how-we-do' => ""
+    'description' => $activeProject->getProjectDescription(),
+    'goal' => $activeProject->getProjectGoal(),
+    'result' => $activeProject->getProjectResults(),
+    'how-we-do' => $activeProject->getProjectMethod(),
 ];
 
 $projectElements = [
-    'title' =>"",
-    'date' => "",
-    'category' => "",
-    'project-img' => ""
+    'title' => $activeProject->getProjectTitle(),
+    'date' => $activeProject->getProjectDate(),
+    'category' => $activeProject->getProjectCategory(),
+    'project-img' => $activeProject->getProjectImgUrl(),
 ];
 
 $translateKeys = [
@@ -25,33 +28,23 @@ $translateKeys = [
     'how-we-do' => 'Démarche'
 ];
 
-if(!empty($data['activeProject'])) {
-    foreach ($data['activeProject'] as $key => $value) {
-        if(array_key_exists($key, $project))  {
-            $project[$key] = $value;
-        }
-        if(array_key_exists($key, $projectElements))  {
-            $projectElements[$key] = $value;
-        }
-    };
-}
-
 $stringManager = $data['stringManager'];
-
-$activeProjectPageId = $_GET['project-page-id'];
 $strProjectIdNext = strval(intval($activeProjectPageId) + 1);
 $strProjectIdPrev = strval(intval($activeProjectPageId) - 1);
 $intProjectIdNext = intval($activeProjectPageId) + 1;
 $intProjectIdPrev = intval($activeProjectPageId) - 1;
+
 $validProject = $intProjectIdNext > 0 && $intProjectIdNext <= count($data['projects']);
 $indexNext = $intProjectIdNext - 1;
 $indexPrev = $intProjectIdPrev - 1;
 $validIndexNext = $indexNext >= 0 && $indexNext <= count($data['projects']);
 $validIndexPrev = $indexPrev >= 0 && $indexPrev <= count($data['projects']);
+
 $nextProject =  $validProject && $validIndexNext ? $data['projects'][$indexNext] : "";
 $previousProject =  $validProject && $validIndexPrev ? $data['projects'][$indexPrev] : "";
 
 ?>
+
 <main id="#main" class="project-page <?php echo $page_css_id ?>">
     <div class="container">
         <section class="row section-title">
@@ -95,7 +88,7 @@ $previousProject =  $validProject && $validIndexPrev ? $data['projects'][$indexP
                     <img src="<?php echo $projectElements['project-img'] ?? "https://images.pexels.com/photos/547114/pexels-photo-547114.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" ?>" alt=""/>
                 </div>
                 <div class="subtext-wrapper">
-                    <span class="els-text-xs els-text--bold">
+                    <span class="els-text-xs els-text--bold els-text--light">
                         <?php echo empty($projectElements['date']) ? "" : $projectElements['date']; ?>
                     </span>
                 </div>
