@@ -50,6 +50,9 @@ build/Release
 node_modules/
 jspm_packages/
 /node_modules
+/vendor
+vendor
+.ddev/config.local.yaml
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
 

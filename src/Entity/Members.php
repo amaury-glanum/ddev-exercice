@@ -3,14 +3,14 @@ namespace Els\Entity;
 
 class Members extends BaseEntity
 {
-    private int | null $id;
+    private int | null $id = null;
 
-    private string | null $prenom;
-    private string | null $nom;
+    private string | null $prenom = null;
+    private string | null $nom = null;
 
-    private string | null $email;
-    private string | null $role;
-    private string | null $presentation;
+    private string | null $email = null;
+    private string | null $role = null;
+    private string | null $presentation = null;
 
     /**
      * @return int|null

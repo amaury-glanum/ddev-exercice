@@ -4,26 +4,42 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require_once 'vendor/autoload.php';
 use Els\Factory\PDOFactory;
-use Els\Manager\MembersManager\MembersManager;
-use Els\Manager\ProjectsManager\ProjectsManager;
+use Els\Manager\MembersManager\MembersManagerPdo;
+use Els\Manager\ProjectsManager\ProjectsManagerPdo;
 use Els\Controllers\projectsControllers\createProject;
 use Els\Controllers\projectsControllers\deleteProject;
 use Els\Controllers\projectsControllers\uploadProjectImages;
 use Els\Controllers\utilsControllers\flashMessagesManager;
 use Els\Controllers\utilsControllers\stringManager;
 use Els\Controllers\viewControllers\createPage;
+use Els\Manager\MembersManager\MembersApiManager;
+use Els\Manager\ProjectsManager\ProjectsApiManager;
 
-$mysqlConn = new PDOFactory(
-    getenv('DB_HOST'),
-    getenv('DB_DATABASE'),
-    getenv('DB_USERNAME'),
-    getenv('DB_PASSWORD')
-);
+try {
+    $pdoConn = new PDOFactory(
+        getenv('DB_HOST'),
+        getenv('DB_PORT'),
+        getenv('DB_DATABASE'),
+        getenv('DB_USERNAME'),
+        getenv('DB_PASSWORD')
+    );
 
-$showMembers = new MembersManager($mysqlConn);
-$members = $showMembers->getMembers();
-$showProjects = new ProjectsManager($mysqlConn);
-$projects = $showProjects->getProjects();
+    $showMembers = new MembersManagerPdo($pdoConn);
+    $members = $showMembers->getMembers();
+
+    $showMembers = new MembersApiManager("https://nextjs-with-supabase-ebon-six.vercel.app/api/members");
+    $members = $showMembers->getMembersFromUrl();
+
+} catch (PDOException $e) {
+    $errorMessage = $e->getMessage();
+    $members = [];
+
+}
+// https://jsonplaceholder.typicode.com/todos
+$showProjects = new ProjectsApiManager("https://nextjs-with-supabase-ebon-six.vercel.app/api/projects");
+$projects = $showProjects->getProjectsFromUrl();
+
+
 
 $mainController = new createPage();
 $createProject = new createProject();
@@ -40,7 +56,7 @@ try {
         $page = $url[0];
     }
 
-    $siteUrl = getenv("ELS_SITE_URL") ?? "http://els-togo.ddev.site:8080";
+    $siteUrl = getenv("ELS_SITE_URL") ?? "https://els-togo.ddev.site:8443";
 
     switch ($page) {
         case '':
@@ -54,11 +70,11 @@ try {
                 ],
                 "view" => 'views/home.view.php',
                 "template" => "views/templates/template.php",
-                "siteUrl" => $siteUrl,
+                "siteUrl" => $siteUrl || "localhost:7000",
                 "data" => [
                     'jsonProjects' => $jsonProjects,
                     'projects' => $projects,
-                    'members' => $members
+                    'members' => $members,
                 ]
             ];
 

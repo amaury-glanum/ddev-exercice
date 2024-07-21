@@ -2,10 +2,16 @@
 namespace Els\Manager\ProjectsManager;
 
 use Els\Entity\Projects;
-use Els\Manager\BaseManager;
-
-class ProjectsManager extends BaseManager
+use Els\Factory\ELSHTTPFactory;
+use Els\Manager\PdoBaseManager;
+use ReflectionException;
+use ReflectionProperty;
+use GuzzleHttp\Client;
+use GuzzleHttp\Promise;
+use Els\Traits\Hydrator;
+class ProjectsManagerPdo extends PdoBaseManager
 {
+    use Hydrator;
     /**
      * @return Projects[]
      */
@@ -32,6 +38,6 @@ class ProjectsManager extends BaseManager
         }
         return $readProjects;
     }
-
 }
+
 
