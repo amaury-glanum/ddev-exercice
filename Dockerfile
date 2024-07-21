@@ -5,16 +5,30 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql \
     && a2enmod ssl
 
 RUN apt-get update && \
-    apt-get install -y \
-    libzip-dev \
-    unzip \
-    libonig-dev \
-    libxml2-dev \
-    libpng-dev \
-    libjpeg-dev  \
+apt-get install -y \
+libzip-dev \
+unzip \
+libonig-dev \
+libxml2-dev \
+libpng-dev \
+libjpeg-dev && \
+docker-php-ext-configure gd --with-jpeg && \
+docker-php-ext-install \
+pdo_mysql \
+zip \
+mbstring \
+exif \
+pcntl \
+bcmath \
+gd
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+#RUN php -r "copy(‘https://getcomposer.org/installer', ‘composer-setup.php’);” \
+#&& php composer-setup.php — install-dir=/usr/local/bin — filename=composer \
+#&& php -r “unlink(‘composer-setup.php’);”
+#RUN composer install
 
 # Set the working directory to /var/www/html
 WORKDIR /var/www/html
