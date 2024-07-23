@@ -2,12 +2,58 @@
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-require_once(dirname(__FILE__) . '/controllers/projectsControllers/createProject.php');
-require_once(dirname(__FILE__) . '/controllers/projectsControllers/deleteProject.php');
-require_once(dirname(__FILE__) . '/controllers/projectsControllers/uploadProjectImages.php');
-require_once(dirname(__FILE__) . '/controllers/utilsControllers/stringManager.php');
-require_once(dirname(__FILE__) . '/controllers/viewControllers/createPage.php');
-require_once(dirname(__FILE__) . '/controllers/utilsControllers/flashMessagesManager.php');
+require_once 'vendor/autoload.php';
+use Els\Factory\PDOFactory;
+use Els\Manager\MembersManager\MembersManagerPdo;
+use Els\Manager\ProjectsManager\ProjectsManagerPdo;
+use Els\Controllers\projectsControllers\createProject;
+use Els\Controllers\projectsControllers\deleteProject;
+use Els\Controllers\projectsControllers\uploadProjectImages;
+use Els\Controllers\utilsControllers\flashMessagesManager;
+use Els\Controllers\utilsControllers\stringManager;
+use Els\Controllers\viewControllers\createPage;
+use Els\Manager\MembersManager\MembersApiManager;
+use Els\Manager\ProjectsManager\ProjectsApiManager;
+use Els\Manager\SectionsManager\SectionsApiManager;
+
+$sections = [
+    "project" => [], "members" => []
+];
+
+try {
+    $pdoConn = new PDOFactory(
+        getenv('DB_HOST'),
+        getenv('DB_PORT'),
+        getenv('DB_DATABASE'),
+        getenv('DB_USERNAME'),
+        getenv('DB_PASSWORD')
+    );
+
+//    $showMembers = new MembersManagerPdo($pdoConn);
+//    $members = $showMembers->getMembers();
+
+    $showMembers = new MembersApiManager("https://nextjs-with-supabase-ebon-six.vercel.app/api/members");
+    $members = $showMembers->getMembersFromUrl();
+
+    // https://jsonplaceholder.typicode.com/todos
+    $showProjects = new ProjectsApiManager("https://nextjs-with-supabase-ebon-six.vercel.app/api/projects");
+    $projects = $showProjects->getProjectsFromUrl();
+
+    foreach ($sections as $key => $value) {
+        $temp = new SectionsApiManager("https://nextjs-with-supabase-ebon-six.vercel.app/api/sections/". $key);
+        $sections[$key] = $temp->getSectionsFromUrl();
+    }
+
+} catch (PDOException $e) {
+    $errorMessage = $e->getMessage();
+    $members = [];
+    $projects = [];
+    $sectionsTexts = [];
+
+}
+
+
+
 
 $mainController = new createPage();
 $createProject = new createProject();
@@ -15,6 +61,7 @@ $uploadProjectImages = new uploadProjectImages();
 $deleteProject = new deleteProject();
 $stringManager = new stringManager();
 $flashMessageManager = new flashMessagesManager();
+
 try {
     if (empty($_GET['page'])) {
         $page = '';
@@ -23,11 +70,12 @@ try {
         $page = $url[0];
     }
 
-    $siteUrl = $_ENV["ELS_SITE_URL"] ?? "http://local.els-togo.com";
+    //$siteUrl = getenv("ELS_SITE_URL") ?? "https://els-togo.ddev.site:8443";
+    $siteUrl = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'];
 
     switch ($page) {
         case '':
-            $projects = $createProject->getJsonProjectData();
+            $jsonProjects = $createProject->getJsonProjectData();
             $pageData = [
                 "bodyId" => 'route-home',
                 "page_css_id" => 'page-home',
@@ -37,9 +85,13 @@ try {
                 ],
                 "view" => 'views/home.view.php',
                 "template" => "views/templates/template.php",
-                "siteUrl" => $siteUrl,
+                "siteUrl" => $siteUrl || "localhost:7000",
                 "data" => [
-                    'projects' => $projects
+                    'jsonProjects' => $jsonProjects,
+                    'projects' => $projects,
+                    'members' => $members,
+                    'sectionsProject' => $sections['project'],
+                    'sectionsMembers' => $sections['members']
                 ]
             ];
 
@@ -60,15 +112,20 @@ try {
             $mainController->setPageData($pageData);
             break;
         case 'project':
-            $projects = $createProject->getJsonProjectData();
-            $projectId = 'project-'.$_GET['project-page-id'];
+            $projectId = $_GET['project-page-id'];
             $activeProject = null;
+            $apiProjectIds = [];
+            $i = 0;
             foreach ($projects as $project) {
-                if ($project['id'] === $projectId) {
+                $i++;
+                if(strval($i) === $projectId) {
                     $activeProject = $project;
                     break;
+                } else {
+                    $activeProject = null;
                 }
             }
+
             $pageData = [
                 "bodyId" => $page,
                 "page_css_id" => 'page-project-'.$projectId,
@@ -86,8 +143,29 @@ try {
                     'flashMessageManager' => $flashMessageManager
                 ],
             ];
-            $mainController->setPageData($pageData);
-            break;
+            if($activeProject) {
+                $mainController->setPageData($pageData);
+                break;
+            } else {
+                $pageData = [
+                    "bodyId" => 'route-error',
+                    "page_css_id" => 'page-error',
+                    "meta" => [
+                        "page_title" => "Erreur 404 - Els Togo",
+                        "page_description" => 'Els-Togo - erreur 404',
+                    ],
+                    "view" => 'views/error.view.php',
+                    "template" => "views/templates/template.php",
+                    "siteUrl" => $siteUrl,
+                    "data" => [
+                        "css-footer" => "els-footer--fixed",
+                        "message" => "Ce projet n'existe pas"
+                    ]
+                ];
+                $mainController->pageError($pageData);
+                break;
+            }
+
         case 'credits':
             $pageData = [
                 "bodyId" => $page,
@@ -149,7 +227,8 @@ try {
         "template" => "views/templates/template.php",
         "siteUrl" => $siteUrl,
         "data" => [
-            "css-footer" => "els-footer--fixed"
+            "css-footer" => "els-footer--fixed",
+            "message" => $e->getMessage()
         ]
     ];
     $mainController->pageError($pageData);

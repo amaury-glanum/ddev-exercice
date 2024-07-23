@@ -53,6 +53,11 @@
     @include media-breakpoint-up(lg) {
       width: 100%;
       right: -60px;
+
+      &.minimal-view {
+        max-width: 500px;
+        right: 0;
+      }
     }
   }
 

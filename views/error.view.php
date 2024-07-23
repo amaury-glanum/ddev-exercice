@@ -2,12 +2,7 @@
     header('HTTP/1.0 403 Forbidden', TRUE, 403);
     die();
 } ?>
-<!--<div className="error-page">-->
-<!--    <div className="error-wrapper">-->
-<!--        <h1> Erreur 404 </h1>-->
-<!--        <a class="" href="/">Retour à l'accueil</a>-->
-<!--    </div>-->
-<!--</div>-->
+
 <main class="error-page page">
     <section>
         <div class="container">
@@ -15,10 +10,10 @@
                 <div class="col-12">
                     <div class="content">
                         <h1>404</h1>
-                        <h2>Page non trouvée</h2>
+                        <h2><?= !empty($data['message']) && strlen($data['message']) < 25 ? htmlspecialchars($data['message']) : "Page non trouvée" ?></h2>
                         <a href="/" class="button button--secondary">Retour vers l'accueil</a>
                     </div>
-                    <img class="error-img" src="http://www.supah.it/dribbble/008/008.jpg" />
+                    <img class="error-img" src="https://images.pexels.com/photos/7957992/pexels-photo-7957992.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
                 </div>
             </div>
         </div>

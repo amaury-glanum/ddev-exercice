@@ -1,0 +1,14 @@
+{
+  "name": "amaury/els",
+  "description": "",
+  "autoload": {
+    "psr-4": {
+      "Els\\": "src/"
+    }
+  },
+  "require": {
+    "ext-pdo": "*",
+    "rafaelwendel/phpsupabase": "^0.0.7",
+    "guzzlehttp/guzzle": "^7.8"
+  }
+}

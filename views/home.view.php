@@ -3,31 +3,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
     header('HTTP/1.0 403 Forbidden', TRUE, 403);
     die();
 }
-$members = [
+use Els\Entity\Projects;
+
+$members = $data['members'] ?? "";
+$projects = $data['projects'] ?? "";
+
+
+$jsonMembers = [
     [
-        'name' => 'Kpeglo Bessou',
-        'firstname' => 'Kokou Jacques',
+        'nom' => 'Kpeglo Bessou',
+        'prenom' => 'Kokou Jacques',
         'img' => ['src'=>'./assets/img/persons/persons-man.jpg', 'alt'=>"personne"],
         'email' => 'email@mail.com',
         'role' => 'Président du Conseil d\'Administration'
     ],
     [
-        'name' => 'Azanli',
-        'firstname' => 'Koffi Djifa',
+        'nom' => 'Azanli',
+        'prenom' => 'Koffi Djifa',
         'img' => ['src'=>'./assets/img/persons/persons-man.jpg', 'alt'=>"personne"],
         'email' => 'email@mail.com',
         'role' => 'Directeur exécutif'
     ],
     [
-        'name' => 'Dewa Kassa',
-        'firstname' => 'Kodjo Akonta Florent',
+        'nom' => 'Dewa Kassa',
+        'prenom' => 'Kodjo Akonta Florent',
         'img' => ['src'=>'./assets/img/persons/persons-man.jpg', 'alt'=>"personne"],
         'email' => 'email@mail.com',
         'role' => 'Responsable planification et suivi'
     ],
     [
-        'name' => 'Tate',
-        'firstname' => 'Yawo Akponi',
+        'nom' => 'Tate',
+        'prenom' => 'Yawo Akponi',
         'img' => ['src'=>'./assets/img/persons/persons-man.jpg', 'alt'=>"personne"],
         'email' => 'email@mail.com',
         'role' => 'Coordonnateur de l\'association'
@@ -60,6 +66,7 @@ $partners = [
 ?>
 
 <main id="homepage" class="<?php echo $page_css_id ?>">
+
     <section id="hero" class="image-text">
         <div class="container">
             <div class="row mainRow">
@@ -70,12 +77,13 @@ $partners = [
                     <a href="#contact" class="button">Je veux m'engager</a>
                 </div>
                 <div class="col-12 col-lg-6 ps-lg-5 image-text__imageWrapper">
-                    <img src="assets/img/livre-ecole.jpg" alt="école" />
+                    <img src="/assets/img/livre-ecole.jpg" alt="école" />
                 </div>
             </div>
         </div>
     </section>
-    <?php if(!empty($data['projects'])) { ?>
+
+    <?php if(!empty($projects)) { ?>
     <section id="nos-projets" class="projects-section">
         <div class="projects-section-inner container">
             <div class="content">
@@ -86,36 +94,24 @@ $partners = [
                         Nous mettons un point d'honneur à la coopération et l'autonomisation.</p>
                 </div>
             </div>
-            <div class="swiper-container els-swiper-projects">
+            <div class="swiper-container els-swiper-projects <?php echo count($projects) < 3 ? "minimal-view" : "" ?>">
                 <div class="swiper">
                     <div class="swiper-wrapper">
                         <?php
                             $i = 1;
-                            foreach($data['projects'] as $project) { ?>
+                            foreach($projects as $project) { ?>
                                 <div
                                     class="swiper-slide"
-                                    data-imageid="<?php echo $project['project-img'] ?? "./assets/img/projects/placeholder/placeholder-project.jpg" ?>"
+                                    data-imageid="<?php echo $project->getProjectImgUrl() ?>"
                                 >
-                                        <span><?php echo $project['date']; ?></span>
-<!--                                        <div class="swiper__inner-btn">-->
-<!--                                            <button-->
-<!--                                                data-typebtn="project-btn"-->
-<!--                                                data-date="--><?php //echo $project['date'] ?><!--"-->
-<!--                                                data-place="--><?php //echo $project['place'] ?><!--"-->
-<!--                                                data-category="--><?php //echo $project['category'] ?><!--"-->
-<!--                                                data-title="--><?php //echo $project['title'] ?><!--"-->
-<!--                                                data-slideid="slide-btn---><?php //echo strval($i) ?><!--"-->
-<!--                                                data-id="--><?php //echo $project['id'] ?><!--"-->
-<!--                                                class="button button--secondary button--radius-light modal-open-btn">-->
-<!--                                                En savoir +-->
-<!--                                            </button>-->
-<!--                                        </div>-->
+                                        <span><?php echo $project->getProjectDate() ?></span>
+
                                         <div class="swiper__inner-btn">
-                                            <a class="button button--secondary button--radius-light" href="/project?project-page-id=<?php echo $project['id'][-1] ?>">En savoir + </a>
+                                            <a class="button button--secondary button--radius-light" href="/project?project-page-id=<?php echo $i ?>">En savoir + </a>
                                         </div>
                                         <div class="slide-content">
-                                            <h3 class="els-title"><?php echo $project['title']; ?></h3>
-                                            <p class="els-text els-text--white"><?php echo $project['place']; ?></p>
+                                            <h3 class="els-title"><?php echo $project->getProjectTitle() ?? "Aucun titre"; ?></h3>
+                                            <p class="els-text els-text--white"><?php echo $project->getProjectPlace() ?? "Aucune ville" ?></p>
                                         </div>
 
                                 </div>
@@ -206,7 +202,7 @@ $partners = [
             </div>
     </section>
 
-
+    <?php if(!empty($members)) { ?>
     <section id="qui-sommes-nous" class="text-cards-horizon team-section">
         <div class="container">
             <div class="row mainRow">
@@ -216,27 +212,29 @@ $partners = [
                     <p class="els-text-lg els-text-centered">Depuis 2010, nous nous sommes engagées ensemble et avons bâti pierre par pierre cette association. Découvrez le parcours des membres fondateurs.</p>
                 </div>
                 <div class="col-12 text-cards-horizon__cardsWrapper">
-                    <?php
-                    if(!empty($members))
-                        foreach($members as $member) { ?>
+                    <?php foreach($members as $member) { ?>
                             <div data-typebtn="team-btn" class="box modal-open-btn"
-                                 data-title="<?php echo $member['name'] . $member['firstname'] ?>">
+                                 data-title="<?php echo $member->getNom() . $member->getPrenom() ?>">
                                 <div class="top-bar"></div>
                                 <div class="content">
-                                    <img src="<?php echo $member['img']['src'] ?? '/assets/img/persons/persons-man.jpg' ?>" alt="<?php echo $member['img']['alt'] ?? '' ?>">
-                                    <strong><?php echo $member['firstname'] ?? "" ?></strong>
-                                    <p><?php echo $member['name'] ?? "" ?></p>
-                                    <p><?php echo $member['email'] ?? "" ?></p>
+                                    <img src="<?php echo $member->getImgPath() ?? "" ?>" alt="<?php echo $member->getPrenom() . " " . $member->getNom() ?? '' ?>">
+                                    <strong><?php echo $member->getPrenom() ?? "" ?></strong>
+                                    <p><?php echo $member->getNom() ?? "" ?></p>
+                                    <?php echo $member->getEmail() ?? "" ?>
                                 </div>
                                 <div class="box-footer">
-                                    <p><?php echo $member['role'] ?? "" ?></p>
+                                    <p><?php echo $member->getRole() ?? "" ?></p>
                                 </div>
                             </div>
+
                         <?php } ?>
                 </div>
             </div>
         </div>
     </section>
+    <?php } ?>
+
+
 
     <?php /*
 <!---->

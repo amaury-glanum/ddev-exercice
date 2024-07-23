@@ -7574,6 +7574,10 @@ body.menu-opened .mainHeader .burger-menu .line3 {
     width: 100%;
     right: -60px;
   }
+  .projects-section .swiper-container.minimal-view {
+    max-width: 500px;
+    right: 0;
+  }
 }
 .projects-section .swiper {
   position: relative;
@@ -8393,8 +8397,12 @@ body.menu-opened .mainHeader .burger-menu .line3 {
   border-radius: 10px;
   overflow: hidden;
 }
+.error-page section, .error-page section .container, .error-page section .container .row {
+  height: 100%;
+}
 .error-page .content {
   max-width: 400px;
+  max-height: 100%;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.3);
   text-align: center;
@@ -8414,6 +8422,7 @@ body.menu-opened .mainHeader .burger-menu .line3 {
       -ms-flex-align: center;
           align-items: center;
   gap: 20px;
+  overflow: hidden;
 }
 .error-page .content h1 {
   color: #004aad;
@@ -8458,6 +8467,9 @@ body.menu-opened .mainHeader .burger-menu .line3 {
   -webkit-transform: scale(1.1);
       -ms-transform: scale(1.1);
           transform: scale(1.1);
+  aspect-ratio: 1;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .project #main:target {
@@ -8518,8 +8530,8 @@ body.menu-opened .mainHeader .burger-menu .line3 {
 .project .project-page .container .section-project {
   max-width: 800px;
   min-height: 50vh;
-  background: -webkit-linear-gradient(top, #fff 70px, #0036a3 70px);
-  background: linear-gradient(to bottom, #fff 70px, #0036a3 70px);
+  background: -webkit-linear-gradient(top, #f5F5F5 70px, #0036a3 70px);
+  background: linear-gradient(to bottom, #f5F5F5 70px, #0036a3 70px);
   -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
           box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   outline: 1px solid #0036a3;
