@@ -3,22 +3,26 @@ namespace Els\Entity;
 
 class Projects extends BaseEntity
 {
-    private int | null $id;
-    private string | null $project_date;
-    private string | null $project_place;
-    private string | null $project_category;
-    private string $project_title;
-    private string | null $project_extract;
-    private string | null $project_teaser;
-    private string | null $project_description;
-    private string | null $project_goal;
-    private string | null $project_method;
-    private string | null $project_results;
-    private string | null $project_single_url;
-    private string | null $project_img_url;
-    private string | null $project_img_name;
-    private array | null $project_infos;
-    private array | null $project_meta;
+    private int | null $id = 0;
+    private string | null $project_date = "";
+    private string | null $project_place = "";
+    private string | null $project_category = "";
+    private string $project_title = "";
+    private string | null $project_extract = "";
+    private string | null $project_teaser = "";
+    private string | null $project_description = "";
+    private string | null $project_goal = "";
+    private string | null $project_method = "";
+    private string | null $project_results = "";
+    private string | null $project_single_url = "";
+    private string | null $project_img_url = "./assets/img/projects/placeholder/placeholder-project.jpg";
+    private string | null $project_img_name = "";
+    private array | null $project_infos = [];
+    private array | null $project_meta = [];
+
+    private string | null $title = "";
+
+    private string | null $userId = "";
 
     /**
      * @return int|null
@@ -35,6 +39,42 @@ class Projects extends BaseEntity
     public function setId(int | null $id): Projects
     {
         $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getUserId(): string | null
+    {
+        return $this->userId;
+    }
+
+    /**
+     * @param string|null $id
+     * @return Projects
+     */
+    public function setUserId(string | null $userId): Projects
+    {
+        $this->userId = $userId;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getTitle(): string | null
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param int|null $id
+     * @return Projects
+     */
+    public function setTitle(string | null $title): Projects
+    {
+        $this->title = $title;
         return $this;
     }
 
